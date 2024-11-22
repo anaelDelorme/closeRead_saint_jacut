@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/index.html</loc>
-    <lastmod>2024-11-22T12:37:34.353Z</lastmod>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/test.html</loc>
+    <lastmod>2024-11-22T13:20:00.934Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/saint_jacut_de_la_mer.html</loc>
+    <lastmod>2024-11-22T13:20:00.934Z</lastmod>
   </url>
   <url>
     <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/about.html</loc>
-    <lastmod>2024-11-22T12:37:34.353Z</lastmod>
+    <lastmod>2024-11-22T13:20:00.710Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/index.html</loc>
+    <lastmod>2024-11-22T13:20:00.934Z</lastmod>
   </url>
 </urlset>
