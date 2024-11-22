@@ -1,5 +1,4 @@
 on:
-  workflow_dispatch:
   push:
     branches: main
 
@@ -28,7 +27,7 @@ jobs:
           cache-version: 1
       
       - name: Install closeread extension 
-        run: quarto add qmd-lab/closeread
+        run: quarto add qmd-lab/closeread -y
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2

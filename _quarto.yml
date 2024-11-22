@@ -6,8 +6,9 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Saint-JActude la mer
+      - href: test.qmd
+        text: Tests
 
 format:
   html:
