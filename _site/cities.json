@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::2154"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paris",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [649950.28, 6862262.56]
+      }
+    },{
+      "type": "Feature",
+      "properties": {
+        "name": "Toulouse",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [570106.70, 6278645.64]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rennes",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [351097.66, 6789578.07]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brest",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [145481.04, 6836677.43]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Saint-Malo",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [329992.17, 6850425.59]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dinan",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [326516.99, 6829030.99]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cap Fréhel",
+        "size": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [308296.74, 6855934.89]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Saint-Jacut-de-la-Mer",
+        "size": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [317242.10,6845564.51]
+      }
+    }
+  ]
+}

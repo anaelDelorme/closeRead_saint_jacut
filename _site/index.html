@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Saint-Jacut-de-la-Mer – closeRead_saint_jacut</title>
+<title>Saint-Jacut-de-la-Mer – CloseRead</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -42,6 +76,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
 <script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
 <script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,6 +106,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <meta cr-debug-mode="false">
 <meta cr-remove-header-space="false">
 
@@ -84,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">closeRead_saint_jacut</span>
+    <span class="navbar-title">CloseRead</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -95,11 +134,11 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Saint-JActude la mer</span></a>
+<span class="menu-text">Saint-Jacut-de-la-Mer</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./test.html"> 
-<span class="menu-text">Tests</span></a>
+    <a class="nav-link" href="./formation.html"> 
+<span class="menu-text">Formation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -118,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Saint-Jacut-de-la-Mer</h1>
+<div class="quarto-title-block"><div><h1 class="title">Saint-Jacut-de-la-Mer</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">L’écrin de mon enfance</p>
 </div>
 
@@ -139,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- some quick style customisation: see https://closeread.dev/guide/styling -->
 <style>
   .cr-section.overlay-left {
-    background-color: aliceblue;
+    background-color: white;
   }
 
   .cr-section.overlay-left .narrative-col .narrative {
@@ -161,9 +200,235 @@ C’est un village niché au creux des Côtes-d’Armor, une presqu’île presq
 Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauvage que l’on atteignait à pied, à marée basse, comme si on franchissait la porte d’un autre monde. Aujourd’hui encore, c’est là que je retourne, avec mes propres enfants. Comme un passage de relais, comme un hommage à ce coin de paradis où le temps suspend son vol.</p>
 <section id="à-la-découverte-dun-coin-de-paradis-breton" class="level2">
 <h2 class="anchored" data-anchor-id="à-la-découverte-dun-coin-de-paradis-breton">À la découverte d’un coin de paradis breton</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="45" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 44;"><span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>bertin <span class="op">=</span> <span class="pp">require</span>(<span class="st">"bertin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="51" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 50;"><span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>regs <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"reg_francemetro_2024.json"</span>)<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"cities.json"</span>)<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="57" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 56;"><span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>bretagne <span class="op">=</span> bertin<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="fu">subset</span>({</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="dt">geojson</span><span class="op">:</span> regs<span class="op">,</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="dt">field</span><span class="op">:</span> <span class="st">"code"</span><span class="op">,</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    <span class="dt">selection</span><span class="op">:</span>   [<span class="st">"53"</span>]<span class="op">,</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="dt">inverse</span><span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>Les paysages de Bretagne sont d’abord les paysages d’un cap à l’extrémité occidentale de l’Eurasie, d’une avancée de terre dans l’océan Atlantique, des paysages de bout du monde. La découverte de ces paysages après de longues heures d’approche, comme leur fréquentation quotidienne à distance des centres continentaux, ne peut faire abstraction de cette position géographique sur la façade atlantique. Pour la Bretagne, la conscience d’être sur une péninsule est d’autant plus forte que le schéma est reproduit à différentes échelles, comme un emboîtement infini de caps, une déclinaison fractale du bout du monde.</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="78" data-source-offset="-65"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 77;"><span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculateExtent</span>(geojson) {</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> coordinates <span class="op">=</span> geojson<span class="op">.</span><span class="at">features</span><span class="op">.</span><span class="fu">flatMap</span>(feature <span class="kw">=&gt;</span> </span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>        feature<span class="op">.</span><span class="at">geometry</span><span class="op">.</span><span class="at">coordinates</span><span class="op">.</span><span class="fu">flat</span>(<span class="kw">Infinity</span>)</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> xValues <span class="op">=</span> coordinates<span class="op">.</span><span class="fu">filter</span>((_<span class="op">,</span> index) <span class="kw">=&gt;</span> index <span class="op">%</span> <span class="dv">2</span> <span class="op">===</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> yValues <span class="op">=</span> coordinates<span class="op">.</span><span class="fu">filter</span>((_<span class="op">,</span> index) <span class="kw">=&gt;</span> index <span class="op">%</span> <span class="dv">2</span> <span class="op">===</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>        [<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="op">...</span>xValues)<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="op">...</span>yValues)]<span class="op">,</span> <span class="co">// Coin inférieur gauche</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>        [<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>xValues)<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>yValues)]  <span class="co">// Coin supérieur droit</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">;</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>franceExtent <span class="op">=</span> <span class="fu">calculateExtent</span>(regs)<span class="op">;</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>bretagneExtent <span class="op">=</span> <span class="fu">calculateExtent</span>(bretagne)<span class="op">;</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">// Define interpolations for extent values</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>interpolateXMin <span class="op">=</span> d3<span class="op">.</span><span class="fu">interpolateNumber</span>(franceExtent[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">,</span> bretagneExtent[<span class="dv">0</span>][<span class="dv">0</span>])<span class="op">;</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>interpolateXMax <span class="op">=</span> d3<span class="op">.</span><span class="fu">interpolateNumber</span>(franceExtent[<span class="dv">1</span>][<span class="dv">0</span>]<span class="op">,</span> bretagneExtent[<span class="dv">1</span>][<span class="dv">0</span>])<span class="op">;</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>interpolateYMin <span class="op">=</span> d3<span class="op">.</span><span class="fu">interpolateNumber</span>(franceExtent[<span class="dv">0</span>][<span class="dv">1</span>]<span class="op">,</span> bretagneExtent[<span class="dv">0</span>][<span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>interpolateYMax <span class="op">=</span> d3<span class="op">.</span><span class="fu">interpolateNumber</span>(franceExtent[<span class="dv">1</span>][<span class="dv">1</span>]<span class="op">,</span> bretagneExtent[<span class="dv">1</span>][<span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="co">// Use crScrollProgress for interpolation</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>progress <span class="op">=</span> crProgressBlock<span class="op">;</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="co">// Interpolate extent values</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>x_min <span class="op">=</span> <span class="fu">interpolateXMin</span>(progress)<span class="op">;</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>x_max <span class="op">=</span> <span class="fu">interpolateXMax</span>(progress)<span class="op">;</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> <span class="fu">interpolateYMin</span>(progress)<span class="op">;</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> <span class="fu">interpolateYMax</span>(progress)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-left">
+<div class="narrative-col">
+<div class="progress-block">
+<div class="trigger new-trigger" data-focus-on="cr-cartes">
+<div class="narrative">
+<p>La Bretagne est une terre singulière, fief familiale d’Anaël et François, deux personnalités aussi antinomiques qu’attachantes.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-cartes">
+<div class="narrative">
+<p>Mais aujourd’hui, ce qui nous intéresse, ce n’est pas la Bretagne dans son ensemble, mais un département bien précis..&nbsp;</p>
+</div>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>En avant vers les Côtes-d’Armor ! Et sa côté d’Emeraude.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-cartes" class="sticky">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="131" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>map <span class="op">=</span> bertin<span class="op">.</span><span class="fu">draw</span>({</span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>  <span class="dt">params</span><span class="op">:</span> {</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">background</span><span class="op">:</span> <span class="st">"#bde1f0"</span><span class="op">,</span></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>    <span class="dt">projection</span><span class="op">:</span> <span class="st">"user"</span><span class="op">,</span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">extent</span> <span class="op">:</span> [[x_min <span class="op">,</span> y_min]<span class="op">,</span> [x_max<span class="op">,</span> y_max]]</span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>  <span class="dt">layers</span><span class="op">:</span> [</span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>      <span class="dt">id</span><span class="op">:</span> <span class="st">"city-layer"</span><span class="op">,</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"bubble"</span><span class="op">,</span></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>      <span class="dt">geojson</span><span class="op">:</span> cities<span class="op">,</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>      <span class="dt">values</span><span class="op">:</span> <span class="st">"size"</span><span class="op">,</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>      <span class="dt">k</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tooltip</span><span class="op">:</span> [ <span class="st">"$name"</span> ]</span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>      <span class="dt">id</span><span class="op">:</span> <span class="st">"mylayerid"</span><span class="op">,</span></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"layer"</span><span class="op">,</span></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>      <span class="dt">geojson</span><span class="op">:</span> bretagne<span class="op">,</span></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span>  <span class="st">"#10454F"</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a>      <span class="dt">id</span><span class="op">:</span> <span class="st">"tout"</span><span class="op">,</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a>      <span class="dt">type</span><span class="op">:</span> <span class="st">"layer"</span><span class="op">,</span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>      <span class="dt">geojson</span><span class="op">:</span> regs<span class="op">,</span></span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"#BDE038"</span></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="trésors-de-saint-jacut-de-la-mer" class="level1">
-<h1>Trésors de Saint-Jacut-de-la-Mer</h1>
+<section id="trésors-de-saint-jacut-de-la-mer" class="level2">
+<h2 class="anchored" data-anchor-id="trésors-de-saint-jacut-de-la-mer">Trésors de Saint-Jacut-de-la-Mer</h2>
 <div class="cr-section cr-column-screen overlay-left">
 <div class="narrative-col">
 <div class="trigger new-trigger" data-scale-by="1.0" data-pan-to="10%,-10%" data-focus-on="cr-banche">
@@ -200,26 +465,27 @@ Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauv
 <div class="sticky-col">
 <div class="sticky-col-stack">
 <div id="cr-banche" class="sticky">
-<p><img src="img/banche.jpg" class="img-fluid"></p>
+<p><a href="img/banche.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/banche.jpg" class="img-fluid"></a></p>
 </div>
 <div id="cr-port" class="sticky">
-<p><img src="img/port.jpg" class="img-fluid"></p>
+<p><a href="img/port.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/port.jpg" class="img-fluid"></a></p>
 </div>
 <div id="cr-camping" class="sticky">
-<p><img src="img/camping.jpeg" class="img-fluid"></p>
+<p><a href="img/camping.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/camping.jpeg" class="img-fluid"></a></p>
 </div>
 <div id="cr-rougeret" class="sticky">
-<p><img src="img/rougeret.jpg" title="Title : Plage du Rougeret © Yannick Le Gal" class="img-fluid" alt="Plage du Rougeret © Yannick Le Gal"></p>
+<p><a href="img/rougeret.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/rougeret.jpg" title="Title : Plage du Rougeret © Yannick Le Gal" class="img-fluid" alt="Plage du Rougeret © Yannick Le Gal"></a></p>
 </div>
 <div id="cr-chef_ile" class="sticky">
-<p><img src="img/chef_ile.jpg" class="img-fluid"></p>
+<p><a href="img/chef_ile.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/chef_ile.jpg" class="img-fluid"></a></p>
 </div>
 <div id="cr-ebihens" class="sticky">
-<p><img src="img/ebihens.avif" class="img-fluid"></p>
+<p><a href="img/ebihens.avif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/ebihens.avif" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
 </div>
+</section>
 <section id="des-pépites-à-proximité" class="level2">
 <h2 class="anchored" data-anchor-id="des-pépites-à-proximité">Des pépites à proximité</h2>
 <img src="img/transition.png" class="full-width">
@@ -230,19 +496,19 @@ Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauv
 <p>Autour de Saint-Jacut-de-la-Mer, à quelques battements d’ailes de mouette, se cachent des trésors qui donnent envie de prendre la route. Des lieux chargés de récits et de beautés, où l’histoire et la nature se rencontrent pour offrir des paysages à couper le souffle.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-pan-to="55%,50%" data-scale-by="2" data-focus-on="cr-table_pepites">
+<div class="trigger new-trigger" data-scale-by="2" data-pan-to="55%,50%" data-focus-on="cr-table_pepites">
 <div class="narrative">
 <p><strong>Saint-Malo : La cité corsaire</strong><br>
 Saint-Malo, entourée par ses remparts, semble défier le temps et l’océan. Chaque ruelle murmure des récits de corsaires, tandis que le Fort National veille stoïquement. Flâner dans l’intra-muros, avec l’odeur du sel et des crêpes, c’est plonger dans une aventure gravée dans la pierre et le vent.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-pan-to="55%,-30%" data-scale-by="2" data-focus-on="cr-table_pepites">
+<div class="trigger new-trigger" data-scale-by="2" data-pan-to="55%,-30%" data-focus-on="cr-table_pepites">
 <div class="narrative">
 <p><strong>Cap Fréhel : L’appel du large</strong><br>
 Au Cap Fréhel, les falaises abruptes se jettent dans l’océan, caressées par le vent et habillées de bruyères. Depuis le phare, la vue est un miracle : mer infinie, Fort La Latte et ciel sans limite. Ici, tout invite à se sentir libre, porté par l’immensité.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-pan-to="55%,-70%" data-scale-by="2" data-focus-on="cr-table_pepites">
+<div class="trigger new-trigger" data-scale-by="2" data-pan-to="55%,-70%" data-focus-on="cr-table_pepites">
 <div class="narrative">
 <p><strong>Île de Bréhat : Le bijou des eaux</strong><br>
 L’île de Bréhat est un jardin posé sur la mer. Sans voitures, juste des sentiers fleuris, des criques paisibles et une lumière douce. Ici, le temps ralentit, laissant place à la poésie du silence et des vagues.</p>
@@ -345,7 +611,7 @@ L’île de Bréhat est un jardin posé sur la mer. Sans voitures, juste des sen
 <img src="img/meteo.png" class="full-width">
 <div class="cr-section cr-column-screen overlay-left">
 <div class="narrative-col">
-<div class="trigger new-trigger" data-pan-to="50%,-10%" data-scale-by="1.3" data-focus-on="cr-temperature-morning">
+<div class="trigger new-trigger" data-scale-by="1.3" data-focus-on="cr-temperature-morning">
 <div class="narrative">
 <p>Le matin, à Saint-Jacut, l’air est frais mais jamais vraiment mordant. En janvier, on frôle les 5°C, une douceur glacée qui fait toute la différence quand le soleil commence à peine à pointer.<br>
 En mai, la température monte un peu, autour de 10°C, mais c’est encore un matin calme, parfait pour une promenade au bord de l’eau.<br>
@@ -353,7 +619,7 @@ Et l’été arrive avec ses 15 à 17°C en juillet et août, offrant une belle 
 En novembre, la fraîcheur revient tout doucement, à 12°C, un peu de répit avant que l’hiver ne s’installe.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-pan-to="50%,-10%" data-scale-by="1.3" data-focus-on="cr-temperature-evening">
+<div class="trigger new-trigger" data-scale-by="1.3" data-focus-on="cr-temperature-evening">
 <div class="narrative">
 <p>L’après-midi, le temps se réchauffe doucement.<br>
 En hiver, la température monte à 8-10°C, mais ça reste agréable, pas trop de vent, juste assez pour se réchauffer au soleil.<br>
@@ -369,7 +635,7 @@ Puis vient l’automne, qui ramène la température à 15°C, un air plus frais 
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/morning_temp_plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="index_files/figure-html/morning_temp_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/morning_temp_plot-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -380,7 +646,7 @@ Puis vient l’automne, qui ramène la température à 15°C, un air plus frais 
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/morning_evening_temp_plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="index_files/figure-html/morning_evening_temp_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="index_files/figure-html/morning_evening_temp_plot-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -392,13 +658,25 @@ Puis vient l’automne, qui ramène la température à 15°C, un air plus frais 
 <p><br>
 <br>
 <br>
-<em>Créé par Anaël Delorme, bien aidé par ChatGPT et Claude.ai.</em></p>
+<em>Créé par Anaël Delorme et François Semecurbe, bien aidés par ChatGPT et Claude.ai.</em></p>
 
 
-</section>
+<!-- -->
+
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJlcnRpbiA9IHJlcXVpcmUoXCJiZXJ0aW5cIilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InJlZ3MgPSBGaWxlQXR0YWNobWVudChcInJlZ19mcmFuY2VtZXRyb18yMDI0Lmpzb25cIikuanNvbigpO1xuY2l0aWVzID0gRmlsZUF0dGFjaG1lbnQoXCJjaXRpZXMuanNvblwiKS5qc29uKCk7XG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJyZXRhZ25lID0gYmVydGluLnByb3BlcnRpZXMuc3Vic2V0KHtcbiAgICBnZW9qc29uOiByZWdzLFxuICAgIGZpZWxkOiBcImNvZGVcIixcbiAgICBzZWxlY3Rpb246ICAgW1wiNTNcIl0sXG4gICAgaW52ZXJzZTogZmFsc2Vcbn0pXG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gQ2FsY3VsZXIgbCfDqXRlbmR1ZSAoZXh0ZW50KSBtYW51ZWxsZW1lbnQgw6AgcGFydGlyIGRlIEdlb0pTT05cbmZ1bmN0aW9uIGNhbGN1bGF0ZUV4dGVudChnZW9qc29uKSB7XG4gICAgY29uc3QgY29vcmRpbmF0ZXMgPSBnZW9qc29uLmZlYXR1cmVzLmZsYXRNYXAoZmVhdHVyZSA9PiBcbiAgICAgICAgZmVhdHVyZS5nZW9tZXRyeS5jb29yZGluYXRlcy5mbGF0KEluZmluaXR5KVxuICAgICk7XG4gICAgY29uc3QgeFZhbHVlcyA9IGNvb3JkaW5hdGVzLmZpbHRlcigoXywgaW5kZXgpID0+IGluZGV4ICUgMiA9PT0gMCk7XG4gICAgY29uc3QgeVZhbHVlcyA9IGNvb3JkaW5hdGVzLmZpbHRlcigoXywgaW5kZXgpID0+IGluZGV4ICUgMiA9PT0gMSk7XG4gICAgcmV0dXJuIFtcbiAgICAgICAgW01hdGgubWluKC4uLnhWYWx1ZXMpLCBNYXRoLm1pbiguLi55VmFsdWVzKV0sIC8vIENvaW4gaW5mw6lyaWV1ciBnYXVjaGVcbiAgICAgICAgW01hdGgubWF4KC4uLnhWYWx1ZXMpLCBNYXRoLm1heCguLi55VmFsdWVzKV0gIC8vIENvaW4gc3Vww6lyaWV1ciBkcm9pdFxuICAgIF07XG59XG5cbmZyYW5jZUV4dGVudCA9IGNhbGN1bGF0ZUV4dGVudChyZWdzKTtcbmJyZXRhZ25lRXh0ZW50ID0gY2FsY3VsYXRlRXh0ZW50KGJyZXRhZ25lKTtcblxuLy8gRGVmaW5lIGludGVycG9sYXRpb25zIGZvciBleHRlbnQgdmFsdWVzXG5pbnRlcnBvbGF0ZVhNaW4gPSBkMy5pbnRlcnBvbGF0ZU51bWJlcihmcmFuY2VFeHRlbnRbMF1bMF0sIGJyZXRhZ25lRXh0ZW50WzBdWzBdKTtcbmludGVycG9sYXRlWE1heCA9IGQzLmludGVycG9sYXRlTnVtYmVyKGZyYW5jZUV4dGVudFsxXVswXSwgYnJldGFnbmVFeHRlbnRbMV1bMF0pO1xuaW50ZXJwb2xhdGVZTWluID0gZDMuaW50ZXJwb2xhdGVOdW1iZXIoZnJhbmNlRXh0ZW50WzBdWzFdLCBicmV0YWduZUV4dGVudFswXVsxXSk7XG5pbnRlcnBvbGF0ZVlNYXggPSBkMy5pbnRlcnBvbGF0ZU51bWJlcihmcmFuY2VFeHRlbnRbMV1bMV0sIGJyZXRhZ25lRXh0ZW50WzFdWzFdKTtcblxuLy8gVXNlIGNyU2Nyb2xsUHJvZ3Jlc3MgZm9yIGludGVycG9sYXRpb25cbnByb2dyZXNzID0gY3JQcm9ncmVzc0Jsb2NrO1xuXG4vLyBJbnRlcnBvbGF0ZSBleHRlbnQgdmFsdWVzXG54X21pbiA9IGludGVycG9sYXRlWE1pbihwcm9ncmVzcyk7XG54X21heCA9IGludGVycG9sYXRlWE1heChwcm9ncmVzcyk7XG55X21pbiA9IGludGVycG9sYXRlWU1pbihwcm9ncmVzcyk7XG55X21heCA9IGludGVycG9sYXRlWU1heChwcm9ncmVzcyk7XG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1hcCA9IGJlcnRpbi5kcmF3KHtcbiAgcGFyYW1zOiB7XG4gICAgYmFja2dyb3VuZDogXCIjYmRlMWYwXCIsXG4gICAgcHJvamVjdGlvbjogXCJ1c2VyXCIsXG4gICAgZXh0ZW50IDogW1t4X21pbiAsIHlfbWluXSwgW3hfbWF4LCB5X21heF1dXG4gIH0sXG5cbiAgbGF5ZXJzOiBbXG4gICAgIFxuICAgIHtcbiAgICAgIGlkOiBcImNpdHktbGF5ZXJcIixcbiAgICAgIHR5cGU6IFwiYnViYmxlXCIsXG4gICAgICBnZW9qc29uOiBjaXRpZXMsXG4gICAgICB2YWx1ZXM6IFwic2l6ZVwiLFxuICAgICAgazogMTAsXG4gICAgICBmaWxsOiBcIndoaXRlXCIsXG4gICAgICB0b29sdGlwOiBbIFwiJG5hbWVcIiBdXG4gICAgfSxcbiAgICB7XG4gICAgICBpZDogXCJteWxheWVyaWRcIixcbiAgICAgIHR5cGU6IFwibGF5ZXJcIixcbiAgICAgIGdlb2pzb246IGJyZXRhZ25lLFxuICAgICAgZmlsbDogIFwiIzEwNDU0RlwiXG4gICAgICBcbiAgICB9LFxuICAgIFxuICAgIHtcbiAgICAgIGlkOiBcInRvdXRcIixcbiAgICAgIHR5cGU6IFwibGF5ZXJcIixcbiAgICAgIGdlb2pzb246IHJlZ3MsXG4gICAgICBmaWxsOiBcIiNCREUwMzhcIlxuICAgICAgXG4gICAgfVxuIFxuICAgIFxuICBdXG59KVxuIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -488,6 +766,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -818,8 +1147,424 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Saint-Jacut-de-la-Mer </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "L'écrin de mon enfance"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">lightbox:</span><span class="co"> true</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">  closeread-html:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">    cr-section:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">      layout: overlay-left</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">      remove-header-space: true</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;!-- some quick style customisation: see https://closeread.dev/guide/styling --&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;style&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="in">  .cr-section.overlay-left {</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="in">    background-color: white;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="in">  .cr-section.overlay-left .narrative-col .narrative {</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="in">    font-size: 1.15em;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="in">    background-color: #3a79aa;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="in">    color: #f1f1f1;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="in">    padding: 0.6em 0.8em;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="in">    border-radius: 1;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="in">    backdrop-filter: blur(10px);</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="in">  img.full-width {</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="in">  width: 100%;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="in">  height: auto;</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/style&gt;</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>Ah, Saint-Jacut-de-la-Mer… rien qu’à prononcer ce nom, voilà que surgissent les images de mon enfance, éclaboussées de lumière et de sel.    </span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>C’est un village niché au creux des Côtes-d’Armor, une presqu’île presque irréelle, où la mer et la terre se chuchotent des secrets. Chaque été, nous nous y retrouvions, mon frère, mes parents et cette grande tribu de cousins et cousines qui faisait vibrer les rues et les plages de nos rires. Les journées semblaient infinies, partagées entre les jeux de carte sur la plage, les parties de babyfoot endiablées à la Frégate, et les longues heures passées à scruter l’horizon.     </span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauvage que l’on atteignait à pied, à marée basse, comme si on franchissait la porte d’un autre monde. Aujourd’hui encore, c’est là que je retourne, avec mes propres enfants. Comme un passage de relais, comme un hommage à ce coin de paradis où le temps suspend son vol.</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## À la découverte d’un coin de paradis breton      </span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="in">bertin = require("bertin")</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="in">regs = FileAttachment("reg_francemetro_2024.json").json();</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="in">cities = FileAttachment("cities.json").json();</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="in">bretagne = bertin.properties.subset({</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">    geojson: regs,</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="in">    field: "code",</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="in">    selection:   ["53"],</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="in">    inverse: false</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>Les paysages de Bretagne sont d’abord les paysages d’un cap à l’extrémité occidentale de l’Eurasie, d’une avancée de terre dans l’océan Atlantique, des paysages de bout du monde. La découverte de ces paysages après de longues heures d’approche, comme leur fréquentation quotidienne à distance des centres continentaux, ne peut faire abstraction de cette position géographique sur la façade atlantique. Pour la Bretagne, la conscience d’être sur une péninsule est d’autant plus forte que le schéma est reproduit à différentes échelles, comme un emboîtement infini de caps, une déclinaison fractale du bout du monde.</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="in">//| echo: false</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="in">//| code-fold: false</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="in">// Calculer l'étendue (extent) manuellement à partir de GeoJSON</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="in">function calculateExtent(geojson) {</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="in">    const coordinates = geojson.features.flatMap(feature =&gt; </span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="in">        feature.geometry.coordinates.flat(Infinity)</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="in">    );</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="in">    const xValues = coordinates.filter((_, index) =&gt; index % 2 === 0);</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="in">    const yValues = coordinates.filter((_, index) =&gt; index % 2 === 1);</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="in">    return [</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="in">        [Math.min(...xValues), Math.min(...yValues)], // Coin inférieur gauche</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="in">        [Math.max(...xValues), Math.max(...yValues)]  // Coin supérieur droit</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="in">    ];</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="in">franceExtent = calculateExtent(regs);</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="in">bretagneExtent = calculateExtent(bretagne);</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="in">// Define interpolations for extent values</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="in">interpolateXMin = d3.interpolateNumber(franceExtent[0][0], bretagneExtent[0][0]);</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="in">interpolateXMax = d3.interpolateNumber(franceExtent[1][0], bretagneExtent[1][0]);</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="in">interpolateYMin = d3.interpolateNumber(franceExtent[0][1], bretagneExtent[0][1]);</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="in">interpolateYMax = d3.interpolateNumber(franceExtent[1][1], bretagneExtent[1][1]);</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a><span class="in">// Use crScrollProgress for interpolation</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a><span class="in">progress = crProgressBlock;</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="in">// Interpolate extent values</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="in">x_min = interpolateXMin(progress);</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a><span class="in">x_max = interpolateXMax(progress);</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="in">y_min = interpolateYMin(progress);</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="in">y_max = interpolateYMax(progress);</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>::::{.cr-section}</span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>:::{.progress-block}</span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>La Bretagne est une terre singulière, fief familiale d’Anaël et François, deux personnalités aussi antinomiques qu’attachantes. @cr-cartes</span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>Mais aujourd'hui, ce qui nous intéresse, ce n'est pas la Bretagne dans son ensemble, mais un département bien précis..\ @cr-cartes</span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>En avant vers les Côtes-d'Armor ! Et sa côté d'Emeraude.</span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>:::{#cr-cartes}</span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a><span class="in">map = bertin.draw({</span></span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a><span class="in">  params: {</span></span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a><span class="in">    background: "#bde1f0",</span></span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a><span class="in">    projection: "user",</span></span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a><span class="in">    extent : [[x_min , y_min], [x_max, y_max]]</span></span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a><span class="in">  },</span></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a><span class="in">  layers: [</span></span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a><span class="in">     </span></span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a><span class="in">    {</span></span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a><span class="in">      id: "city-layer",</span></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="in">      type: "bubble",</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a><span class="in">      geojson: cities,</span></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a><span class="in">      values: "size",</span></span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a><span class="in">      k: 10,</span></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="in">      fill: "white",</span></span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a><span class="in">      tooltip: [ "$name" ]</span></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="in">    },</span></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="in">    {</span></span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a><span class="in">      id: "mylayerid",</span></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a><span class="in">      type: "layer",</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a><span class="in">      geojson: bretagne,</span></span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a><span class="in">      fill:  "#10454F"</span></span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="in">    },</span></span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a><span class="in">    {</span></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a><span class="in">      id: "tout",</span></span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a><span class="in">      type: "layer",</span></span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a><span class="in">      geojson: regs,</span></span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a><span class="in">      fill: "#BDE038"</span></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a><span class="in"> </span></span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a><span class="in">  ]</span></span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## Trésors de Saint-Jacut-de-la-Mer    </span></span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a>::::{.cr-section}</span>
+<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a>:::{#cr-banche}</span>
+<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/banche.jpg)</span></span>
+<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>**La Banche** : Le cœur animé de Saint-Jacut, avec ses maisons de pêcheurs et ses petites ruelles. On y sent l’âme du village.<span class="co">[</span><span class="ot">@cr-banche</span><span class="co">]</span>{pan-to="10%,-10%" scale-by="1.0"}</span>
+<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>:::{#cr-port}</span>
+<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/port.jpg)</span></span>
+<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>**Le Port** : Un havre tranquille où se balancent doucement les bateaux de plaisance et les coquilliers. Le départ idéal pour une escapade maritime.<span class="co">[</span><span class="ot">@cr-port</span><span class="co">]</span>{pan-to="10%,10%" scale-by="1.2"}</span>
+<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a>:::{#cr-camping}</span>
+<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/camping.jpeg)</span></span>
+<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>**Le Camping** : Un espace familial, à deux pas de la plage, où les générations se croisent, entre rires d’enfants et soirées sous les étoiles.<span class="co">[</span><span class="ot">@cr-camping</span><span class="co">]</span>{pan-to="10%,10%" scale-by="1.5"}</span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>:::{#cr-rougeret}</span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/rougeret.jpg "Title : Plage du Rougeret © Yannick Le Gal")</span>{fig-alt="Plage du Rougeret © Yannick Le Gal"}</span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>**La plage du Rougeret** : Une étendue de sable doré qui s’étire doucement, parfaite pour les balades pieds nus et les parties de pêche aux crabes. À marée basse, elle dévoile des trésors, à marée haute, elle invite à la baignade.<span class="co">[</span><span class="ot">@cr-rougeret</span><span class="co">]</span>{pan-to="10%,10%" scale-by="1.0"}</span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>:::{#cr-chef_ile}</span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/chef_ile.jpg)</span></span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>**La Pointe du Chevet (Chef de l'île)** : Un promontoire sauvage où les pins se courbent sous le vent, offrant une vue imprenable sur l’archipel des Ebihens. Un lieu pour rêver et respirer.<span class="co">[</span><span class="ot">@cr-chef_ile</span><span class="co">]</span>{pan-to="10%,10%" scale-by="1.5"}</span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>:::{#cr-ebihens}</span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/ebihens.avif)</span></span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>**L’île des Ébihens** : Un archipel mystérieux, accessible seulement à marée basse, quand la mer se retire pour dévoiler son chemin secret. Là-bas, le monde change. On y trouve des plages de sable blanc, des sentiers bordés de pins et une sensation de bout du monde. C’est un lieu d’aventure et de contemplation, où l’on peut oublier le temps, bercé par le chant des vagues et le cri des mouettes. <span class="co">[</span><span class="ot">@cr-ebihens</span><span class="co">]</span>{pan-to="10%,10%" scale-by="1.1"}</span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a><span class="fu">## Des pépites à proximité</span></span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;img src="img/transition.png" class="full-width"&gt;</span></span>
+<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a>::::{.cr-section}</span>
+<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a>Autour de Saint-Jacut-de-la-Mer, à quelques battements d’ailes de mouette, se cachent des trésors qui donnent envie de prendre la route. Des lieux chargés de récits et de beautés, où l’histoire et la nature se rencontrent pour offrir des paysages à couper le souffle. <span class="co">[</span><span class="ot">@cr-table_pepites</span><span class="co">]</span></span>
+<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a>**Saint-Malo : La cité corsaire**      </span>
+<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a>Saint-Malo, entourée par ses remparts, semble défier le temps et l’océan. Chaque ruelle murmure des récits de corsaires, tandis que le Fort National veille stoïquement. Flâner dans l’intra-muros, avec l’odeur du sel et des crêpes, c’est plonger dans une aventure gravée dans la pierre et le vent.<span class="co">[</span><span class="ot">@cr-table_pepites</span><span class="co">]</span>{scale-by="2" pan-to="55%,50%"}    </span>
+<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a>**Cap Fréhel : L’appel du large**        </span>
+<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a>Au Cap Fréhel, les falaises abruptes se jettent dans l’océan, caressées par le vent et habillées de bruyères. Depuis le phare, la vue est un miracle : mer infinie, Fort La Latte et ciel sans limite. Ici, tout invite à se sentir libre, porté par l’immensité. <span class="co">[</span><span class="ot">@cr-table_pepites</span><span class="co">]</span>{scale-by="2" pan-to="55%,-30%"} </span>
+<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a>**Île de Bréhat : Le bijou des eaux**      </span>
+<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a>L’île de Bréhat est un jardin posé sur la mer. Sans voitures, juste des sentiers fleuris, des criques paisibles et une lumière douce. Ici, le temps ralentit, laissant place à la poésie du silence et des vagues. <span class="co">[</span><span class="ot">@cr-table_pepites</span><span class="co">]</span>{scale-by="2" pan-to="55%,-70%"}   </span>
+<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a>:::{#cr-table_pepites}</span>
+<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a>| Image                                                                                             | Nom              | Distance (km) | Nombre de touristes/an | Lien Google Maps                                                                                     |</span>
+<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a>|---------------------------------------------------------------------------------------------------|------------------|----------------|-------------------------|-------------------------------------------------------------------------------------------------------|</span>
+<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Dinard_-_Promenade_du_moulinet.jpg" width="80"&gt; | Dinard           | 21 km             | 800 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Dinard/@48.6333,-2.0622,15z/)</span>                        |</span>
+<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Saint-Malo_hdsr_S5IS_IMG_3994.jpg" width="80"&gt; | Saint-Malo      | 25 km            | 1 500 000                | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Saint-Malo/@48.6514,-2.0271,15z/)</span>                    |</span>
+<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Saint-Malo_-_Fort_National.jpg" width="80"&gt; | Fort National    | 25 km             | 300 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Fort+National/@48.6542,-2.0233,15z/)</span>                 |</span>
+<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Erquy..._%28515064250%29.jpg" width="80"&gt; | Erquy            | 26 km             | 250 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Erquy/@48.6383,-2.4656,15z/)</span>                         |</span>
+<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Fort-LaLatte-byRundvald.jpg?uselang=fr" width="80"&gt; | Fort La Latte    | 31             | 200000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Fort+La+Latte/@48.6519,-2.3033,15z/)</span>                  |</span>
+<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Cap_Frehel_Lighthouse.jpg" width="80"&gt; | Cap Fréhel       | 34 km          | 400 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Cap+Fr%C3%A9hel/@48.6849,-2.3197,15z/)</span>                |</span>
+<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Place_des_Merciers_%28Dinan%29.jpg" width="80"&gt; | Dinan            | 36 km             | 600 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Dinan/@48.4552,-2.0489,15z/)</span>                         |</span>
+<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Cancale_20171011_14.jpg/640px-Cancale_20171011_14.jpg" width="80"&gt; | Cancale          | 46 km            | 500 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Cancale/@48.6769,-1.8517,15z/)</span>                       |</span>
+<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Br%C3%A9hat_Ajoncs_2010.jpg/640px-Br%C3%A9hat_Ajoncs_2010.jpg" width="80"&gt; | Île de Bréhat    | 74 km             | 350 000                 | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/%C3%8Ele+de+Br%C3%A9hat/@48.8393,-3.0039,15z/)</span>        |</span>
+<span id="cb6-264"><a href="#cb6-264" aria-hidden="true" tabindex="-1"></a>| &lt;img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Mont_St_Michel_in_the_morning.jpg" width="80"&gt; | Mont Saint-Michel| 79 km             | 2 800 000                | <span class="co">[</span><span class="ot">Google Maps</span><span class="co">](https://www.google.com/maps/place/Mont+Saint-Michel/@48.6359,-1.5114,15z/)</span>              |</span>
+<span id="cb6-265"><a href="#cb6-265" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-266"><a href="#cb6-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-267"><a href="#cb6-267" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb6-268"><a href="#cb6-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-269"><a href="#cb6-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-270"><a href="#cb6-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Météo</span></span>
+<span id="cb6-271"><a href="#cb6-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-272"><a href="#cb6-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb6-273"><a href="#cb6-273" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;img src="img/meteo.png" class="full-width"&gt;</span></span>
+<span id="cb6-274"><a href="#cb6-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-275"><a href="#cb6-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-276"><a href="#cb6-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-279"><a href="#cb6-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-280"><a href="#cb6-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-281"><a href="#cb6-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-282"><a href="#cb6-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-283"><a href="#cb6-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-284"><a href="#cb6-284" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-285"><a href="#cb6-285" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb6-286"><a href="#cb6-286" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb6-287"><a href="#cb6-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-288"><a href="#cb6-288" aria-hidden="true" tabindex="-1"></a><span class="co"># Fonction pour charger et nettoyer les données</span></span>
+<span id="cb6-289"><a href="#cb6-289" aria-hidden="true" tabindex="-1"></a>load_weather_data <span class="ot">&lt;-</span> <span class="cf">function</span>(year) {</span>
+<span id="cb6-290"><a href="#cb6-290" aria-hidden="true" tabindex="-1"></a>  filename <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"data/export-saint-jacut-de-la-mer"</span>, year, <span class="st">".csv"</span>)</span>
+<span id="cb6-291"><a href="#cb6-291" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lire le fichier en ignorant les 3 premières lignes</span></span>
+<span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(filename, <span class="at">skip =</span> <span class="dv">3</span>, </span>
+<span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>                   <span class="at">DATE =</span> <span class="fu">col_date</span>(<span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>),</span>
+<span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.default =</span> <span class="fu">col_double</span>()</span>
+<span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a>                 )) <span class="sc">%&gt;%</span></span>
+<span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">YEAR =</span> <span class="fu">year</span>(DATE))</span>
+<span id="cb6-299"><a href="#cb6-299" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-300"><a href="#cb6-300" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb6-301"><a href="#cb6-301" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-302"><a href="#cb6-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-303"><a href="#cb6-303" aria-hidden="true" tabindex="-1"></a>all_years_data <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="dv">2009</span><span class="sc">:</span><span class="dv">2024</span>, load_weather_data)</span>
+<span id="cb6-304"><a href="#cb6-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-305"><a href="#cb6-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-306"><a href="#cb6-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-307"><a href="#cb6-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-308"><a href="#cb6-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-311"><a href="#cb6-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-312"><a href="#cb6-312" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-313"><a href="#cb6-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-314"><a href="#cb6-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-315"><a href="#cb6-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-316"><a href="#cb6-316" aria-hidden="true" tabindex="-1"></a>annee_choisie <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
+<span id="cb6-317"><a href="#cb6-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-318"><a href="#cb6-318" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> all_years_data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-319"><a href="#cb6-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">year</span>(DATE) <span class="sc">==</span> annee_choisie)</span>
+<span id="cb6-320"><a href="#cb6-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-321"><a href="#cb6-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-322"><a href="#cb6-322" aria-hidden="true" tabindex="-1"></a>title_morning <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Températures du matin à Saint-Jacut-de-la-Mer en "</span>,annee_choisie)</span>
+<span id="cb6-323"><a href="#cb6-323" aria-hidden="true" tabindex="-1"></a>title_evening <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Températures du matin et du soir à Saint-Jacut-de-la-Mer en "</span>,annee_choisie)</span>
+<span id="cb6-324"><a href="#cb6-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-325"><a href="#cb6-325" aria-hidden="true" tabindex="-1"></a><span class="co"># Graphiques des températures</span></span>
+<span id="cb6-326"><a href="#cb6-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-327"><a href="#cb6-327" aria-hidden="true" tabindex="-1"></a>blank_plot <span class="ot">&lt;-</span> data_select <span class="sc">%&gt;%</span></span>
+<span id="cb6-328"><a href="#cb6-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> DATE, <span class="at">y =</span> TEMPERATURE_MORNING_C)) <span class="sc">+</span></span>
+<span id="cb6-329"><a href="#cb6-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title_morning,</span>
+<span id="cb6-330"><a href="#cb6-330" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Température (°C)"</span>) <span class="sc">+</span></span>
+<span id="cb6-331"><a href="#cb6-331" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb6-333"><a href="#cb6-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-334"><a href="#cb6-334" aria-hidden="true" tabindex="-1"></a>morning_temp_plot <span class="ot">&lt;-</span> data_select <span class="sc">%&gt;%</span></span>
+<span id="cb6-335"><a href="#cb6-335" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> DATE, <span class="at">y =</span> TEMPERATURE_MORNING_C)) <span class="sc">+</span></span>
+<span id="cb6-336"><a href="#cb6-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">color =</span> <span class="st">"#6874ED"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">span=</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb6-337"><a href="#cb6-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title_morning,</span>
+<span id="cb6-338"><a href="#cb6-338" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Température (°C)"</span>) <span class="sc">+</span></span>
+<span id="cb6-339"><a href="#cb6-339" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb6-340"><a href="#cb6-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb6-341"><a href="#cb6-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-342"><a href="#cb6-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-343"><a href="#cb6-343" aria-hidden="true" tabindex="-1"></a>morning_evening_temp_plot <span class="ot">&lt;-</span> data_select <span class="sc">%&gt;%</span></span>
+<span id="cb6-344"><a href="#cb6-344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> DATE, <span class="at">y =</span> TEMPERATURE_NOON_C)) <span class="sc">+</span></span>
+<span id="cb6-345"><a href="#cb6-345" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">color =</span> <span class="st">"#87EF4D"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">span=</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb6-346"><a href="#cb6-346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> TEMPERATURE_MORNING_C), <span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">color =</span> <span class="st">"#6874ED"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">span =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb6-347"><a href="#cb6-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> title_evening,</span>
+<span id="cb6-348"><a href="#cb6-348" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Température (°C)"</span>) <span class="sc">+</span></span>
+<span id="cb6-349"><a href="#cb6-349" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb6-350"><a href="#cb6-350" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_light</span>()</span>
+<span id="cb6-351"><a href="#cb6-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-352"><a href="#cb6-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-353"><a href="#cb6-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-354"><a href="#cb6-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-355"><a href="#cb6-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-356"><a href="#cb6-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-357"><a href="#cb6-357" aria-hidden="true" tabindex="-1"></a>::::{.cr-section}</span>
+<span id="cb6-358"><a href="#cb6-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-359"><a href="#cb6-359" aria-hidden="true" tabindex="-1"></a>Le matin, à Saint-Jacut, l’air est frais mais jamais vraiment mordant. En janvier, on frôle les 5°C, une douceur glacée qui fait toute la différence quand le soleil commence à peine à pointer. \</span>
+<span id="cb6-360"><a href="#cb6-360" aria-hidden="true" tabindex="-1"></a>En mai, la température monte un peu, autour de 10°C, mais c’est encore un matin calme, parfait pour une promenade au bord de l’eau. \</span>
+<span id="cb6-361"><a href="#cb6-361" aria-hidden="true" tabindex="-1"></a>Et l’été arrive avec ses 15 à 17°C en juillet et août, offrant une belle douceur sans chaleur étouffante. \</span>
+<span id="cb6-362"><a href="#cb6-362" aria-hidden="true" tabindex="-1"></a>En novembre, la fraîcheur revient tout doucement, à 12°C, un peu de répit avant que l’hiver ne s’installe. <span class="co">[</span><span class="ot">@cr-temperature-morning</span><span class="co">]</span>{scale-by="1.3"}</span>
+<span id="cb6-363"><a href="#cb6-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-364"><a href="#cb6-364" aria-hidden="true" tabindex="-1"></a>:::{#cr-temperature-morning}</span>
+<span id="cb6-367"><a href="#cb6-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-368"><a href="#cb6-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: morning_temp_plot</span></span>
+<span id="cb6-369"><a href="#cb6-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-370"><a href="#cb6-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-371"><a href="#cb6-371" aria-hidden="true" tabindex="-1"></a>morning_temp_plot</span>
+<span id="cb6-372"><a href="#cb6-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-373"><a href="#cb6-373" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-374"><a href="#cb6-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-375"><a href="#cb6-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-376"><a href="#cb6-376" aria-hidden="true" tabindex="-1"></a>L’après-midi, le temps se réchauffe doucement. \</span>
+<span id="cb6-377"><a href="#cb6-377" aria-hidden="true" tabindex="-1"></a>En hiver, la température monte à 8-10°C, mais ça reste agréable, pas trop de vent, juste assez pour se réchauffer au soleil. \</span>
+<span id="cb6-378"><a href="#cb6-378" aria-hidden="true" tabindex="-1"></a>Le printemps, lui, offre une transition plus marquée, entre 10 et 15°C, et l’été, c’est le grand confort avec 20°C, juste ce qu’il faut pour profiter du ciel sans se brûler. \</span>
+<span id="cb6-379"><a href="#cb6-379" aria-hidden="true" tabindex="-1"></a>Puis vient l’automne, qui ramène la température à 15°C, un air plus frais mais encore doux. <span class="co">[</span><span class="ot">@cr-temperature-evening</span><span class="co">]</span>{scale-by="1.3"} </span>
+<span id="cb6-380"><a href="#cb6-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-381"><a href="#cb6-381" aria-hidden="true" tabindex="-1"></a>:::{#cr-temperature-evening}</span>
+<span id="cb6-384"><a href="#cb6-384" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-385"><a href="#cb6-385" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: morning_evening_temp_plot</span></span>
+<span id="cb6-386"><a href="#cb6-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-387"><a href="#cb6-387" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-388"><a href="#cb6-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-389"><a href="#cb6-389" aria-hidden="true" tabindex="-1"></a>morning_evening_temp_plot</span>
+<span id="cb6-390"><a href="#cb6-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-391"><a href="#cb6-391" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-392"><a href="#cb6-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-393"><a href="#cb6-393" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb6-394"><a href="#cb6-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-395"><a href="#cb6-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-396"><a href="#cb6-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-397"><a href="#cb6-397" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb6-398"><a href="#cb6-398" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb6-399"><a href="#cb6-399" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb6-400"><a href="#cb6-400" aria-hidden="true" tabindex="-1"></a>*Créé par Anaël Delorme et François Semecurbe, bien aidés par ChatGPT et Claude.ai.*</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

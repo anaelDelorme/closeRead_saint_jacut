@@ -1,0 +1,150 @@
+---
+title: "Zoom sur Saint-Jacut"
+# image: "globe.png"
+subtitle: "Animé une carte avec bertin"
+format:
+  closeread-html:
+    code-tools: true
+    cr-style:
+      narrative-background-color-overlay: "#708090dd"
+      narrative-text-color-overlay: white
+      narrative-background-color-sidebar: transparent
+      section-background-color: transparent
+
+---
+
+
+```{ojs}
+bertin = require("bertin")
+```
+
+
+```{ojs}
+regs = FileAttachment("reg_francemetro_2024.json").json();
+```
+
+```{ojs}
+bretagne = bertin.properties.subset({
+    geojson: regs,
+    field: "code",
+    selection:   ["53"],
+    inverse: false
+})
+
+```
+
+
+
+Les paysages de Bretagne sont d’abord les paysages d’un cap à l’extrémité occidentale de l’Eurasie, d’une avancée de terre dans l’océan Atlantique, des paysages de bout du monde. La découverte de ces paysages après de longues heures d’approche, comme leur fréquentation quotidienne à distance des centres continentaux, ne peut faire abstraction de cette position géographique sur la façade atlantique. Pour la Bretagne, la conscience d’être sur une péninsule est d’autant plus forte que le schéma est reproduit à différentes échelles, comme un emboîtement infini de caps, une déclinaison fractale du bout du monde.
+
+
+```{ojs}
+//| echo: false
+//| code-fold: false
+x_min_f = d3.scaleLinear()
+  .domain([0, 4])
+  .range([99225, 118203])
+  .clamp(true)
+  
+x_max_f = d3.scaleLinear()
+  .domain([0, 4])
+  .range([1242375, 403455])
+  .clamp(true)
+  
+y_min_f = d3.scaleLinear()
+  .domain([0, 4])
+  .range([6049646, 6691429])
+  .clamp(true)  
+
+y_max_f = d3.scaleLinear()
+  .domain([0, 4])
+  .range([7110480, 6892032])
+  .clamp(true)
+
+
+
+x_min = x_min_f((crTriggerIndex != null ? crTriggerIndex : 0) + crTriggerProgress)
+x_max = x_max_f((crTriggerIndex != null ? crTriggerIndex : 0) + crTriggerProgress)
+y_min = y_min_f((crTriggerIndex != null ? crTriggerIndex : 0) + crTriggerProgress)
+y_max = y_max_f((crTriggerIndex != null ? crTriggerIndex : 0) + crTriggerProgress)
+
+
+```
+
+
+
+::::{.cr-section layout="overlay-center"}
+
+
+:::{.progress-block}
+
+
+La Bretagne est une terre singulière qui a vu naître des personnalités aussi antinomiques qu'Anaël et François. @cr-cartes
+
+Mais aujourd'hui, ce qui nous intéresse, ce n'est pas la Bretagne dans son ensemble, mais un département bien précis..\ @cr-cartes
+
+En avant vers les Côtes-d'Armor  ${angle2} @cr-cartes
+
+
+En avant vers les Côtes-d'Armor  ${angle2} @cr-cartes
+
+:::
+
+En avant vers les Côtes-d'Armor  ${angle2} @cr-cartes
+
+
+
+:::{#cr-cartes}
+```{ojs}
+map = bertin.draw({
+  params: {
+    background: "#bde1f0",
+    projection: "user",
+    extent : [[x_min , y_min], [x_max, y_max]]
+  },
+
+  layers: [
+     {
+      id: "mylayerid",
+      type: "layer",
+      geojson: bretagne,
+      fill:  "red"
+      
+    },
+    
+    {
+      id: "toto",
+      type: "layer",
+      geojson: regs,
+      fill: "orange"
+      
+    },
+ 
+    
+  ]
+})
+```
+
+:::
+
+
+::::
+
+:::{.counter style="position: fixed; top: 10px; right: 10px; background-color: skyblue; border-radius: 5px; padding: 18px 18px 0 18px; line-height: .8em;"}
+```{ojs}
+md`Active sticky: ${crActiveSticky}`
+md`Active trigger: ${crTriggerIndex}`
+md`Trigger progress: ${(crTriggerProgress * 100).toFixed(1)}%`
+md`Scroll direction: ${crDirection}`
+md`Progress Block progress: ${(crProgressBlock * 100).toFixed(1)}%`
+md`-----`
+```
+:::
+
+Sometimes it can be worth closing your story with some additional text to give the scrollytelling section some room to breathe. So here's some nonsense!
+
+Eu in culpa officia cupidatat nostrud laborum do consequat officia Lorem tempor consectetur pariatur sunt. Veniam culpa dolore laborum nostrud ipsum pariatur ipsum dolore consectetur commodo ex. Non culpa deserunt voluptate. Amet excepteur incididunt deserunt pariatur velit labore do sunt occaecat eiusmod. Tempor proident sint exercitation culpa incididunt sunt proident sunt reprehenderit. Sint ipsum qui id nisi quis officia in. Anim velit minim fugiat qui dolor enim occaecat amet excepteur do aliqua ex adipisicing laboris labore.
+
+Culpa aute sint aliquip in aute enim cillum in exercitation cupidatat ex cupidatat mollit dolore ut. Et culpa minim laborum in ipsum laborum velit laboris fugiat ad culpa cillum. Sit nulla eu minim in nulla. Nulla esse sint occaecat eiusmod in irure in dolor veniam pariatur laboris consectetur sunt laboris excepteur. Dolor dolore ad incididunt consequat. Ad elit ullamco veniam cillum reprehenderit pariatur pariatur nisi ea. Pariatur quis ut deserunt eiusmod ipsum magna ullamco.
+
+

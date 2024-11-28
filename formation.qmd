@@ -1,0 +1,123 @@
+---
+title: "Formation CloseRead"
+image: gabbert.png
+author: Anaël Delorme
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+  #quarto-document-content h1 {
+    font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+    font-weight: 500;
+    font-size: 2.3em;
+    line-height: 1.1;
+    margin-top: 0;
+  }
+
+  .objective, .process, .prerequisites {
+  background-color: #f4f4f9;
+  border-left: 6px solid #3498db;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.class[data-key="easy"] {
+  background-color: green;
+  border-radius: 5px;
+  padding: 3px;
+  display: inline-block;
+  color: white
+}
+
+.class[data-key="inter"] {
+  background-color: orange;
+  border-radius: 5px;
+  padding: 3px;
+  display: inline-block;
+  color: white
+}
+
+.class[data-key="hard"] {
+  background-color: red;
+  border-radius: 5px;
+  padding: 3px;
+  display: inline-block;
+  color: white
+}
+  
+</style>
+```
+
+
+
+
+
+
+
+## Formation Closeread {.objective}
+
+### Objectif 
+
+Créer une première dataviz en datascrollytelling sur un thème qui vous tient à coeur.
+
+### Déroulement
+
+Selon votre niveau de connaissance en quarto/R/observable, vous pourrez vous arrêter en cours de formation. Mais vous aurez à toute étape un dataviz.
+
+1. **Storyboard** : Création du déroulé narratif de votre viz, avec création des textes et récupération des images/données utiles [facile]{.class key="easy"}
+1. **Initialisation** : Création d'un document quarto et installation de closeread [facile]{.class key="easy"}
+1. **Squellette de la viz** : Création de l'introduction/conclusion et des différentes parties de la dataviz [facile]{.class key="easy"}
+1. **Scroll sur images** : Intégration d'images et de textes, avec le scroll qui fait apparaitre le texte et l'image correspondante [facile]{.class key="easy"}
+1. **Scroll sur du texte** : Intégration de textes qui sera mis en évidence selon le scroll [facile]{.class key="easy"}
+1. **Scroll sur un graphique en R** : Création de graphique qui évoluera selon le scroll [intermédiaire]{.class key="inter"}
+1. **Modification du thème** : Changement de l'aspect de la dataviz en changeant le thème [intermédiaire]{.class key="inter"}
+1. **Scroll sur des graphs ou cartes Javascript** : Création de cartes qui évoluent avec le scroll [avandé]{.class key="hard"}
+1. **Déploiement sur Github Pages** : Diffusion sur Internet avec Github Pages [avandé]{.class key="hard"}
+
+### Prérequis
+
+- Avoir accès à RStudio ou VSCode
+
+
+
+
+
+
+
+
+
+## Storyboard
+
+
+## Initialisation [facile]{.class key="easy"}
+
+## Squellette de la viz [facile]{.class key="easy"}
+
+## Scroll sur images [facile]{.class key="easy"}
+
+## Scroll sur du texte [facile]{.class key="easy"}
+
+## Scroll sur un graphique en R [intermédiaire]{.class key="inter"}
+
+## Modification du thème [intermédiaire]{.class key="inter"}
+
+## Scroll sur des graphs ou cartes Javascript [avandé]{.class key="hard"}
+
+## Déploiement sur Github Pages [avandé]{.class key="hard"}
+
+
+
+

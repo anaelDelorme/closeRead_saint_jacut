@@ -1,17 +1,20 @@
 ---
 title: Saint-Jacut-de-la-Mer 
 subtitle: "L'écrin de mon enfance"
+lightbox: true
 format:
   closeread-html:
+    code-tools: true
     cr-section:
       layout: overlay-left
+      remove-header-space: true
 ---
 
 ```{=html}
 <!-- some quick style customisation: see https://closeread.dev/guide/styling -->
 <style>
   .cr-section.overlay-left {
-    background-color: aliceblue;
+    background-color: white;
   }
 
   .cr-section.overlay-left .narrative-col .narrative {
@@ -36,13 +39,145 @@ C’est un village niché au creux des Côtes-d’Armor, une presqu’île presq
 Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauvage que l’on atteignait à pied, à marée basse, comme si on franchissait la porte d’un autre monde. Aujourd’hui encore, c’est là que je retourne, avec mes propres enfants. Comme un passage de relais, comme un hommage à ce coin de paradis où le temps suspend son vol.
 
 
-## À la découverte d’un coin de paradis breton   
+## À la découverte d’un coin de paradis breton      
 
 
-# Trésors de Saint-Jacut-de-la-Mer
+```{ojs}
+bertin = require("bertin")
+```
 
 
-:::{.cr-section}
+```{ojs}
+regs = FileAttachment("reg_francemetro_2024.json").json();
+cities = FileAttachment("cities.json").json();
+
+
+```
+
+```{ojs}
+bretagne = bertin.properties.subset({
+    geojson: regs,
+    field: "code",
+    selection:   ["53"],
+    inverse: false
+})
+
+```
+
+
+
+Les paysages de Bretagne sont d’abord les paysages d’un cap à l’extrémité occidentale de l’Eurasie, d’une avancée de terre dans l’océan Atlantique, des paysages de bout du monde. La découverte de ces paysages après de longues heures d’approche, comme leur fréquentation quotidienne à distance des centres continentaux, ne peut faire abstraction de cette position géographique sur la façade atlantique. Pour la Bretagne, la conscience d’être sur une péninsule est d’autant plus forte que le schéma est reproduit à différentes échelles, comme un emboîtement infini de caps, une déclinaison fractale du bout du monde.
+
+
+
+```{ojs}
+//| echo: false
+//| code-fold: false
+
+// Calculer l'étendue (extent) manuellement à partir de GeoJSON
+function calculateExtent(geojson) {
+    const coordinates = geojson.features.flatMap(feature => 
+        feature.geometry.coordinates.flat(Infinity)
+    );
+    const xValues = coordinates.filter((_, index) => index % 2 === 0);
+    const yValues = coordinates.filter((_, index) => index % 2 === 1);
+    return [
+        [Math.min(...xValues), Math.min(...yValues)], // Coin inférieur gauche
+        [Math.max(...xValues), Math.max(...yValues)]  // Coin supérieur droit
+    ];
+}
+
+franceExtent = calculateExtent(regs);
+bretagneExtent = calculateExtent(bretagne);
+
+// Define interpolations for extent values
+interpolateXMin = d3.interpolateNumber(franceExtent[0][0], bretagneExtent[0][0]);
+interpolateXMax = d3.interpolateNumber(franceExtent[1][0], bretagneExtent[1][0]);
+interpolateYMin = d3.interpolateNumber(franceExtent[0][1], bretagneExtent[0][1]);
+interpolateYMax = d3.interpolateNumber(franceExtent[1][1], bretagneExtent[1][1]);
+
+// Use crScrollProgress for interpolation
+progress = crProgressBlock;
+
+// Interpolate extent values
+x_min = interpolateXMin(progress);
+x_max = interpolateXMax(progress);
+y_min = interpolateYMin(progress);
+y_max = interpolateYMax(progress);
+
+
+```
+
+
+
+::::{.cr-section}
+
+
+:::{.progress-block}
+
+
+La Bretagne est une terre singulière, fief familiale d’Anaël et François, deux personnalités aussi antinomiques qu’attachantes. @cr-cartes
+
+Mais aujourd'hui, ce qui nous intéresse, ce n'est pas la Bretagne dans son ensemble, mais un département bien précis..\ @cr-cartes
+
+:::
+
+
+En avant vers les Côtes-d'Armor ! Et sa côté d'Emeraude.
+
+
+
+:::{#cr-cartes}
+```{ojs}
+map = bertin.draw({
+  params: {
+    background: "#bde1f0",
+    projection: "user",
+    extent : [[x_min , y_min], [x_max, y_max]]
+  },
+
+  layers: [
+     
+    {
+      id: "city-layer",
+      type: "bubble",
+      geojson: cities,
+      values: "size",
+      k: 10,
+      fill: "white",
+      tooltip: [ "$name" ]
+    },
+    {
+      id: "mylayerid",
+      type: "layer",
+      geojson: bretagne,
+      fill:  "#10454F"
+      
+    },
+    
+    {
+      id: "tout",
+      type: "layer",
+      geojson: regs,
+      fill: "#BDE038"
+      
+    }
+ 
+    
+  ]
+})
+```
+
+:::
+
+
+
+::::
+
+## Trésors de Saint-Jacut-de-la-Mer    
+
+
+::::{.cr-section}
 
 :::{#cr-banche}
 ![](img/banche.jpg)
@@ -80,7 +215,7 @@ Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauv
 **L’île des Ébihens** : Un archipel mystérieux, accessible seulement à marée basse, quand la mer se retire pour dévoiler son chemin secret. Là-bas, le monde change. On y trouve des plages de sable blanc, des sentiers bordés de pins et une sensation de bout du monde. C’est un lieu d’aventure et de contemplation, où l’on peut oublier le temps, bercé par le chant des vagues et le cri des mouettes. [@cr-ebihens]{pan-to="10%,10%" scale-by="1.1"}
 
 
-:::
+::::
 
 
 ## Des pépites à proximité
@@ -89,7 +224,7 @@ Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauv
 <img src="img/transition.png" class="full-width">
 ```
 
-:::{.cr-section}
+::::{.cr-section}
 
 
 Autour de Saint-Jacut-de-la-Mer, à quelques battements d’ailes de mouette, se cachent des trésors qui donnent envie de prendre la route. Des lieux chargés de récits et de beautés, où l’histoire et la nature se rencontrent pour offrir des paysages à couper le souffle. [@cr-table_pepites]
@@ -119,7 +254,7 @@ L’île de Bréhat est un jardin posé sur la mer. Sans voitures, juste des sen
 | <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Mont_St_Michel_in_the_morning.jpg" width="80"> | Mont Saint-Michel| 79 km             | 2 800 000                | [Google Maps](https://www.google.com/maps/place/Mont+Saint-Michel/@48.6359,-1.5114,15z/)              |
 :::
 
-:::
+::::
 
 
 ## Météo
@@ -210,7 +345,7 @@ theme_light()
 Le matin, à Saint-Jacut, l’air est frais mais jamais vraiment mordant. En janvier, on frôle les 5°C, une douceur glacée qui fait toute la différence quand le soleil commence à peine à pointer. \
 En mai, la température monte un peu, autour de 10°C, mais c’est encore un matin calme, parfait pour une promenade au bord de l’eau. \
 Et l’été arrive avec ses 15 à 17°C en juillet et août, offrant une belle douceur sans chaleur étouffante. \
-En novembre, la fraîcheur revient tout doucement, à 12°C, un peu de répit avant que l’hiver ne s’installe. [@cr-temperature-morning]{scale-by="1.3" pan-to="50%,-10%"}
+En novembre, la fraîcheur revient tout doucement, à 12°C, un peu de répit avant que l’hiver ne s’installe. [@cr-temperature-morning]{scale-by="1.3"}
 
 :::{#cr-temperature-morning}
 ```{r}
@@ -225,7 +360,7 @@ morning_temp_plot
 L’après-midi, le temps se réchauffe doucement. \
 En hiver, la température monte à 8-10°C, mais ça reste agréable, pas trop de vent, juste assez pour se réchauffer au soleil. \
 Le printemps, lui, offre une transition plus marquée, entre 10 et 15°C, et l’été, c’est le grand confort avec 20°C, juste ce qu’il faut pour profiter du ciel sans se brûler. \
-Puis vient l’automne, qui ramène la température à 15°C, un air plus frais mais encore doux. [@cr-temperature-evening]{scale-by="1.3" pan-to="50%,-10%"} 
+Puis vient l’automne, qui ramène la température à 15°C, un air plus frais mais encore doux. [@cr-temperature-evening]{scale-by="1.3"} 
 
 :::{#cr-temperature-evening}
 ```{r}
@@ -244,4 +379,5 @@ morning_evening_temp_plot
 \
 \
 \
-*Créé par Anaël Delorme, bien aidé par ChatGPT et Claude.ai.*
+*Créé par Anaël Delorme et François Semecurbe, bien aidés par ChatGPT et Claude.ai.*
+
