@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/maps.html</loc>
-    <lastmod>2024-11-28T16:03:01.834Z</lastmod>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/carte_closeread-main/maps.html</loc>
+    <lastmod>2024-11-29T15:05:39.448Z</lastmod>
   </url>
   <url>
-    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/about.html</loc>
-    <lastmod>2024-11-28T16:03:01.614Z</lastmod>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/carte_closeread-main/about.html</loc>
+    <lastmod>2024-11-29T15:05:39.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/carte_closeread-main/deuxieme_carte.html</loc>
+    <lastmod>2024-11-29T15:05:39.448Z</lastmod>
   </url>
   <url>
     <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/formation.html</loc>
-    <lastmod>2024-11-28T16:03:01.790Z</lastmod>
-  </url>
-  <url>
-    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/premiere_carte.html</loc>
-    <lastmod>2024-11-28T16:03:01.834Z</lastmod>
+    <lastmod>2024-11-29T15:05:39.644Z</lastmod>
   </url>
   <url>
     <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/index.html</loc>
-    <lastmod>2024-11-28T16:03:01.830Z</lastmod>
+    <lastmod>2024-11-29T15:05:39.688Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/carte_closeread-main/premiere_carte.html</loc>
+    <lastmod>2024-11-29T15:05:39.448Z</lastmod>
+  </url>
+  <url>
+    <loc>https://anaelDelorme.github.io/closeRead_saint_jacut/carte_closeread-main/troisieme_carte.html</loc>
+    <lastmod>2024-11-29T15:05:39.448Z</lastmod>
   </url>
 </urlset>
