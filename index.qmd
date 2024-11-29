@@ -26,6 +26,13 @@ format:
     backdrop-filter: blur(10px);
   }
   
+  .cr-section.overlay-left .narrative-col .narrative a {
+    background-color: #3a79aa;
+    color: #f1f1f1;
+  }
+  
+  
+  
   img.full-width {
   width: 100%;
   height: auto;
@@ -41,70 +48,110 @@ Et cet horizon… il menait toujours à l’archipel des Ébihens, ce joyau sauv
 
 ## À la découverte d’un coin de paradis breton      
 
-
 ```{ojs}
 bertin = require("bertin")
 ```
 
 
 ```{ojs}
-regs = FileAttachment("reg_francemetro_2024.json").json();
-cities = FileAttachment("cities.json").json();
-
-
+regs = FileAttachment("data/reg_francemetro_2024.json").json();
+deps = FileAttachment("data/dep_reg_53_2024.json").json();
+com = FileAttachment("data/commune22302_dep_22_2024.json").json();
 ```
+
+
+
 
 ```{ojs}
 bretagne = bertin.properties.subset({
     geojson: regs,
     field: "code",
-    selection:   ["53"],
+    selection: ["53"],
     inverse: false
 })
 
+
+dep22 = bertin.properties.subset({
+    geojson: deps,
+    field: "code",
+    selection: ["22"],
+    inverse: false
+})
+```
+
+```{ojs}
+zoom = {return { 
+            type: "Polygon",
+            coordinates:  [[[x_min,y_min],[x_min,y_max],[x_max,y_max],[x_max,y_min],[x_min,y_min]]]
+            
+          }
+        }
+        
+mer = {return { 
+            type: "Polygon",
+            coordinates:  [[[0, 6000000],[0,7500000],[1200000,7500000],[1200000,6000000],[0, 6000000]]]
+            
+          }
+        } 
 ```
 
 
 
-Les paysages de Bretagne sont d’abord les paysages d’un cap à l’extrémité occidentale de l’Eurasie, d’une avancée de terre dans l’océan Atlantique, des paysages de bout du monde. La découverte de ces paysages après de longues heures d’approche, comme leur fréquentation quotidienne à distance des centres continentaux, ne peut faire abstraction de cette position géographique sur la façade atlantique. Pour la Bretagne, la conscience d’être sur une péninsule est d’autant plus forte que le schéma est reproduit à différentes échelles, comme un emboîtement infini de caps, une déclinaison fractale du bout du monde.
+```{ojs}
+
+projection = d3.geoIdentity()
+	.reflectY(true)
+	.fitSize([width/2, width /2 ], zoom);
+
+```
+
+
+```{ojs}
+progression = crProgressBlock
+```
+
+
+
+La Bretagne, terre des anciens mystères et des horizons oubliés, se dresse telle une sentinelle à l’extrémité occidentale d’Eurasie, avançant hardiment son front de roc vers les eaux tumultueuses de l’Atlantique. Là-bas, à l’orée du monde, ses paysages s’étirent comme des murmures d’éternité.
+
+Pour qui s’aventure jusqu’à ces contrées lointaines, après de longues traversées au gré des routes sinueuses, la Bretagne révèle son secret : elle n’est pas qu’une péninsule, mais un royaume d’emboîtements infinis, une danse fractale où chaque cap en cache un autre, où chaque promontoire semble chuchoter l’histoire des siècles.
+
+Voyageur, contemple ! Ces rivages ne sont pas de simples terres, mais des fragments du Grand Tissage. Ici, la géographie elle-même raconte l’épopée d’une terre façonnée par l’océan et le vent, une frontière entre l’ici et l’ailleurs, le connu et l’infini.
 
 
 
 ```{ojs}
 //| echo: false
 //| code-fold: false
+x_min_f = d3.scaleLinear()
+  .domain((progression<=.5 ? [0, .5] : [.5,1]))
+  .range((progression<=.5 ? [99225, 118203] : [118203,306043]))
+  .clamp(true)
+  
+x_max_f = d3.scaleLinear()
+  .domain((progression<=.5 ? [0, .5] : [.5,1]))
+  .range((progression<=.5 ? [1242375, 403455] : [403455,327679]))
+  .clamp(true)
+  
+y_min_f = d3.scaleLinear()
+  .domain((progression<=.5 ? [0, .5] : [.5,1]))
+  .range((progression<=.5 ? [6049646, 6691429] : [6691429,6839888]))
+  .clamp(true)  
 
-// Calculer l'étendue (extent) manuellement à partir de GeoJSON
-function calculateExtent(geojson) {
-    const coordinates = geojson.features.flatMap(feature => 
-        feature.geometry.coordinates.flat(Infinity)
-    );
-    const xValues = coordinates.filter((_, index) => index % 2 === 0);
-    const yValues = coordinates.filter((_, index) => index % 2 === 1);
-    return [
-        [Math.min(...xValues), Math.min(...yValues)], // Coin inférieur gauche
-        [Math.max(...xValues), Math.max(...yValues)]  // Coin supérieur droit
-    ];
-}
+y_max_f = d3.scaleLinear()
+  .domain((progression<=.5 ? [0, .5] : [.5,1]))
+  .range((progression<=.5 ? [7110480, 6892032] : [6892032,6854870]))
+  .clamp(true)
 
-franceExtent = calculateExtent(regs);
-bretagneExtent = calculateExtent(bretagne);
 
-// Define interpolations for extent values
-interpolateXMin = d3.interpolateNumber(franceExtent[0][0], bretagneExtent[0][0]);
-interpolateXMax = d3.interpolateNumber(franceExtent[1][0], bretagneExtent[1][0]);
-interpolateYMin = d3.interpolateNumber(franceExtent[0][1], bretagneExtent[0][1]);
-interpolateYMax = d3.interpolateNumber(franceExtent[1][1], bretagneExtent[1][1]);
 
-// Use crScrollProgress for interpolation
-progress = crProgressBlock;
+x_min = x_min_f(progression)
+x_max = x_max_f(progression)
+y_min = y_min_f(progression)
+y_max = y_max_f(progression)
 
-// Interpolate extent values
-x_min = interpolateXMin(progress);
-x_max = interpolateXMax(progress);
-y_min = interpolateYMin(progress);
-y_max = interpolateYMax(progress);
 
+//projection.postclip(d3.geoClipRectangle(118203, 403455, 6691429, 6892032));
 
 ```
 
@@ -116,60 +163,52 @@ y_max = interpolateYMax(progress);
 :::{.progress-block}
 
 
-La Bretagne est une terre singulière, fief familiale d’Anaël et François, deux personnalités aussi antinomiques qu’attachantes. @cr-cartes
+La Bretagne est une terre singulière, fief familiale  [d’Anaël](https://www.linkedin.com/in/ana%C3%ABl-delorme-573b8858/) et  [François](https://www.linkedin.com/in/francoissemecurbe) , deux personnalités aussi antinomiques qu’attachantes. @cr-cartes
 
-Mais aujourd'hui, ce qui nous intéresse, ce n'est pas la Bretagne dans son ensemble, mais un département bien précis..\ @cr-cartes
+Mais aujourd'hui, ce qui nous intéresse, ce n'est pas la Bretagne dans son ensemble, mais un département bien précis... @cr-cartes
+
+Un département de légende, peuplé d'irréductibles Gaulois... @cr-cartes
+
+En avant vers les Côtes-d'Armor...   @cr-cartes
+
+Ou plus précisément une presqu'île... @cr-cartes
+
+A l'est du département, quasiment caché du reste du monde... @cr-cartes
+
+Fractale parmi les fractales, elle se cache pour mieux se découvrir...  @cr-cartes
+
 
 :::
 
-
-En avant vers les Côtes-d'Armor ! Et sa côté d'Emeraude.
+Bienvenue à Saint-Jacut-de-la-Mer !  @cr-cartes
 
 
 
 :::{#cr-cartes}
 ```{ojs}
-map = bertin.draw({
-  params: {
-    background: "#bde1f0",
-    projection: "user",
-    extent : [[x_min , y_min], [x_max, y_max]]
-  },
+Plot.plot({
+  projection:  projection,
+	
+	width: width/2,
+	height: width/2,
 
-  layers: [
-     
-    {
-      id: "city-layer",
-      type: "bubble",
-      geojson: cities,
-      values: "size",
-      k: 10,
-      fill: "white",
-      tooltip: [ "$name" ]
-    },
-    {
-      id: "mylayerid",
-      type: "layer",
-      geojson: bretagne,
-      fill:  "#10454F"
-      
-    },
-    
-    {
-      id: "tout",
-      type: "layer",
-      geojson: regs,
-      fill: "#BDE038"
-      
-    }
- 
+
+  marks: [
+    Plot.geo(mer, {strokeOpacity: 1, fill: '#034159', stroke: 'white'}),
+    Plot.geo(regs, {strokeOpacity: 1, fill: '#038C3E', stroke: 'white'}),
+    Plot.geo(bretagne, {strokeOpacity: 1, fill: 'white'}),
+    Plot.geo(deps, {strokeOpacity: 1,  stroke: '#034159'}),
+    Plot.geo(dep22, {strokeOpacity: 1,  stroke: '#034159', fill: 'lightgray'}),
+    Plot.geo(com, {fill: '#0CF25D', stroke: '#0CF25D', strokeWidth: 8, fillOpacity: (progression<.6 ? 0 : (progression-.6)/.4  ),
+                   strokeOpacity: (progression<.6 ? 0 : (progression-.6)/.4)}),
+    Plot.geo(bretagne, {fill: '#0CF25D', fillOpacity:  1-(progression)/.5})
     
   ]
 })
+
 ```
 
 :::
-
 
 
 ::::
@@ -241,12 +280,12 @@ L’île de Bréhat est un jardin posé sur la mer. Sans voitures, juste des sen
 
 :::{#cr-table_pepites}
 | Image                                                                                             | Nom              | Distance (km) | Nombre de touristes/an | Lien Google Maps                                                                                     |
-|---------------------------------------------------------------------------------------------------|------------------|----------------|-------------------------|-------------------------------------------------------------------------------------------------------|
+|---------------------------------------------------------------------------------------------------|------------------|----------------:|-------------------------:|-------------------------------------------------------------------------------------------------------|
 | <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Dinard_-_Promenade_du_moulinet.jpg" width="80"> | Dinard           | 21 km             | 800 000                 | [Google Maps](https://www.google.com/maps/place/Dinard/@48.6333,-2.0622,15z/)                        |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Saint-Malo_hdsr_S5IS_IMG_3994.jpg" width="80"> | Saint-Malo      | 25 km            | 1 500 000                | [Google Maps](https://www.google.com/maps/place/Saint-Malo/@48.6514,-2.0271,15z/)                    |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Saint-Malo_-_Fort_National.jpg" width="80"> | Fort National    | 25 km             | 300 000                 | [Google Maps](https://www.google.com/maps/place/Fort+National/@48.6542,-2.0233,15z/)                 |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Erquy..._%28515064250%29.jpg" width="80"> | Erquy            | 26 km             | 250 000                 | [Google Maps](https://www.google.com/maps/place/Erquy/@48.6383,-2.4656,15z/)                         |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Fort-LaLatte-byRundvald.jpg?uselang=fr" width="80"> | Fort La Latte    | 31             | 200000                 | [Google Maps](https://www.google.com/maps/place/Fort+La+Latte/@48.6519,-2.3033,15z/)                  |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Fort-LaLatte-byRundvald.jpg?uselang=fr" width="80"> | Fort La Latte    | 31 km             | 200 000                 | [Google Maps](https://www.google.com/maps/place/Fort+La+Latte/@48.6519,-2.3033,15z/)                  |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Cap_Frehel_Lighthouse.jpg" width="80"> | Cap Fréhel       | 34 km          | 400 000                 | [Google Maps](https://www.google.com/maps/place/Cap+Fr%C3%A9hel/@48.6849,-2.3197,15z/)                |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Place_des_Merciers_%28Dinan%29.jpg" width="80"> | Dinan            | 36 km             | 600 000                 | [Google Maps](https://www.google.com/maps/place/Dinan/@48.4552,-2.0489,15z/)                         |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Cancale_20171011_14.jpg/640px-Cancale_20171011_14.jpg" width="80"> | Cancale          | 46 km            | 500 000                 | [Google Maps](https://www.google.com/maps/place/Cancale/@48.6769,-1.8517,15z/)                       |
@@ -272,6 +311,7 @@ L’île de Bréhat est un jardin posé sur la mer. Sans voitures, juste des sen
 library(tidyverse)
 library(lubridate)
 library(scales)
+library(jsonlite)
 
 # Fonction pour charger et nettoyer les données
 load_weather_data <- function(year) {
@@ -289,6 +329,10 @@ load_weather_data <- function(year) {
 }
 
 all_years_data <- map_dfr(2009:2024, load_weather_data)
+
+# ojs_define(all_years_data_ojs = all_years_data)
+
+
 
 ```
 
@@ -308,33 +352,6 @@ data_select <- all_years_data %>%
 title_morning <- paste0("Températures du matin à Saint-Jacut-de-la-Mer en ",annee_choisie)
 title_evening <- paste0("Températures du matin et du soir à Saint-Jacut-de-la-Mer en ",annee_choisie)
 
-# Graphiques des températures
-
-blank_plot <- data_select %>%
-  ggplot(aes(x = DATE, y = TEMPERATURE_MORNING_C)) +
-  labs(title = title_morning,
-       x = "Date", y = "Température (°C)") +
-    ylim(0, 25) +
-  theme_light()
-
-morning_temp_plot <- data_select %>%
-  ggplot(aes(x = DATE, y = TEMPERATURE_MORNING_C)) +
-  geom_smooth(method = "loess", color = "#6874ED", se = FALSE, span=0.1, size = 1.1) +
-  labs(title = title_morning,
-       x = "Date", y = "Température (°C)") +
-    ylim(0, 25) +
-  theme_light()
-
-
-morning_evening_temp_plot <- data_select %>%
-  ggplot(aes(x = DATE, y = TEMPERATURE_NOON_C)) +
-  geom_smooth(method = "loess", color = "#87EF4D", se = FALSE, span=0.1, size = 1.1) +
-  geom_smooth(aes(y = TEMPERATURE_MORNING_C), method = "loess", color = "#6874ED", se = FALSE, span = 0.1, size = 1.1) +
-  labs(title = title_evening,
-       x = "Date", y = "Température (°C)") +
-    ylim(0, 25) +
-theme_light()
-
 
 ```
 
@@ -345,39 +362,211 @@ theme_light()
 Le matin, à Saint-Jacut, l’air est frais mais jamais vraiment mordant. En janvier, on frôle les 5°C, une douceur glacée qui fait toute la différence quand le soleil commence à peine à pointer. \
 En mai, la température monte un peu, autour de 10°C, mais c’est encore un matin calme, parfait pour une promenade au bord de l’eau. \
 Et l’été arrive avec ses 15 à 17°C en juillet et août, offrant une belle douceur sans chaleur étouffante. \
-En novembre, la fraîcheur revient tout doucement, à 12°C, un peu de répit avant que l’hiver ne s’installe. [@cr-temperature-morning]{scale-by="1.3"}
+En novembre, la fraîcheur revient tout doucement, à 12°C, un peu de répit avant que l’hiver ne s’installe. @cr-temperature-morning
 
-:::{#cr-temperature-morning}
+:::{#cr-temperature-blank}
+
 ```{r}
 #| label: morning_temp_plot
 #| warning: false
 #| message: false
-morning_temp_plot
+#| fig-width: 12
+#| fig-height: 8
+# Graphiques des températures
+
+data_select %>%
+  ggplot(aes(x = DATE, y = TEMPERATURE_MORNING_C)) +
+  labs(title = title_morning,
+       x = "Date", y = "Température (°C)") +
+    ylim(0, 25) +
+  theme_light()
+
+```
+
+:::
+
+:::{#cr-temperature-morning}
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-width: 12
+#| fig-height: 8
+data_select %>%
+  ggplot(aes(x = DATE, y = TEMPERATURE_MORNING_C)) +
+  geom_smooth(method = "loess", color = "#6874ED", se = FALSE, span=0.1, size = 1.1) +
+  labs(title = title_morning,
+       x = "Date", y = "Température (°C)") +
+    ylim(0, 25) +
+  theme_light()
+```
+
+:::
+
+:::{#cr-temperature-evening}
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-width: 12
+#| fig-height: 8
+data_select %>%
+  ggplot(aes(x = DATE, y = TEMPERATURE_NOON_C)) +
+  geom_smooth(method = "loess", color = "#87EF4D", se = FALSE, span=0.1, size = 1.1) +
+  geom_smooth(aes(y = TEMPERATURE_MORNING_C), method = "loess", color = "#6874ED", se = FALSE, span = 0.1, size = 1.1) +
+  labs(title = title_evening,
+       x = "Date", y = "Température (°C)") +
+    ylim(0, 25) +
+theme_light()
+
 ```
 :::
 
 
 L’après-midi, le temps se réchauffe doucement. \
-En hiver, la température monte à 8-10°C, mais ça reste agréable, pas trop de vent, juste assez pour se réchauffer au soleil. \
+En hiver, la température monte à 10°C, ça reste agréable, pas trop de vent, juste assez pour se réchauffer au soleil. \
 Le printemps, lui, offre une transition plus marquée, entre 10 et 15°C, et l’été, c’est le grand confort avec 20°C, juste ce qu’il faut pour profiter du ciel sans se brûler. \
-Puis vient l’automne, qui ramène la température à 15°C, un air plus frais mais encore doux. [@cr-temperature-evening]{scale-by="1.3"} 
-
-:::{#cr-temperature-evening}
-```{r}
-#| label: morning_evening_temp_plot
-#| warning: false
-#| message: false
-
-morning_evening_temp_plot
-```
-:::
+Puis vient l’automne, qui ramène la température à 15°C, un air plus frais mais encore doux. @cr-temperature-evening
 
 ::::
 
 
+### Et dans le temps
 
+La Bretagne et ses légendes… Parmi elles, il y a celle d’une pluie incessante, comme si le ciel breton n’avait jamais appris à se reposer. On imagine souvent Saint-Jacut sous une bruine perpétuelle, les habitants avançant dans un décor où le soleil ne perce qu’en souvenir. Mais que disent les chiffres ? Car entre les fantasmes et la réalité, le ciel a bien des nuances à offrir.
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 12
+#| fig-height: 8
+data_select_pluie <- all_years_data %>% 
+  select(DATE, PRECIP_TOTAL_DAY_MM) %>% 
+  mutate(mois = month(DATE), annee = year(DATE)) %>% 
+  filter(annee < 2024) %>% 
+  group_by(annee, mois) %>% 
+  summarise(precipitation_cm_mois = sum(PRECIP_TOTAL_DAY_MM, na.rm = TRUE)/10,
+            jour_pluie = sum(ifelse(PRECIP_TOTAL_DAY_MM > 1, 1, 0))) %>% 
+  ungroup() %>% 
+  mutate(date = ymd(paste0(annee,ifelse(mois<10,paste0('0',mois),mois),"01")))
+
+
+title_pluie <- paste0("Pluie à Saint-Jacut-de-la-Mer entre 2009 et 2024")
+```
+
+
+
+
+::::{.cr-section}
+
+
+:::{#cr-pluie-blank}
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 12
+#| fig-height: 8
+# Graphiques des températures
+ggplot(data_select_pluie, aes(x = date)) + 
+  scale_y_continuous( name = "Précipitation (cm)", 
+                      sec.axis = sec_axis(~., name = "Jours de pluie"),
+                      limits = c(0, NA)) + 
+  labs( title = "Précipitation et Jours de Pluie", x = "Date", y = "Précipitation (cm)" ) + 
+  ylim(0, 30) +
+  theme_light()
+```
+
+:::
+
+Devant nous, un graphique prêt à se dévoiler. Sur l’axe des abscisses, les années s’écoulent, de 2010 à aujourd’hui, et sur les deux axes verticaux, les précipitations en centimètres à gauche et le nombre de jours de pluie à droite. @cr-pluie-blank
+
+
+:::{#cr-pluie-jour}
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 12
+#| fig-height: 8
+
+# Graphiques des températures
+ggplot(data_select_pluie, aes(x = date)) + 
+  geom_smooth(aes(y = jour_pluie), method = "loess", color = "#F20505", size = 1, se = FALSE) + 
+  scale_y_continuous( name = "Précipitation (cm)", 
+                      sec.axis = sec_axis(~., name = "Jours de pluie"),
+                      limits = c(0, NA)) + 
+  labs( title = "Précipitation et Jours de Pluie", x = "Date" ) + 
+    ylim(0, 30) +
+  theme_light()
+```
+
+:::
+
+Regardez cette ligne rouge… Elle nous raconte une vérité connue : en Bretagne, il pleut souvent. Chaque jour ou presque, le ciel dépose ses gouttelettes sur les toits de Saint-Jacut. Si l’on compare à d’autres régions, on voit combien cette régularité est unique : à Perpignan, il pleut en moyenne 55 jours par an, soit moins de deux mois ! À Lyon, on atteint environ 95 jours de pluie annuels, presque un jour sur trois. Biarritz, avec ses influences océaniques, dépasse les 130 jours, mais Saint-Jacut, fidèle à sa réputation, flirte avec les 180 jours de pluie par an. Voilà un ciel breton bien généreux, pourrait-on dire. @cr-pluie-jour
+
+:::{#cr-pluie-quantite}
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 12
+#| fig-height: 8
+
+# Graphiques des températures
+ggplot(data_select_pluie, aes(x = date)) + 
+  geom_area(aes(y = precipitation_cm_mois), fill = "#99D0F2", alpha = 0.7) + 
+  geom_smooth(aes(y = jour_pluie), method = "loess", color = "#F20505", size = 1, se = FALSE) + 
+  scale_y_continuous( name = "Précipitation (cm)", 
+                      sec.axis = sec_axis(~., name = "Jours de pluie"),
+                      limits = c(0, NA)) + 
+  labs( title = "Précipitation et Jours de Pluie", x = "Date" ) + 
+      ylim(0, 30) +
+
+  theme_light()
+```
+
+:::
+
+Maintenant, laissez votre regard glisser sur cette étendue bleue… Elle nous montre les précipitations en volume, ces eaux qui arrosent la terre et nourrissent les sols. Et là, les chiffres impressionnent. Saint-Jacut reçoit en moyenne entre 1 200 mm de pluie par an, ce qui la place derrière Biarritz, bien au-dessus de Lyon, avec ses 850 mm, et à des années-lumière de Perpignan, où l’on peine à atteindre 500 mm. Oui, il pleut souvent ici, mais rarement en trombes : ce sont des pluies régulières, modérées, qui forgent ce paysage unique. @cr-pluie-quantite
+
+:::{#cr-pluie-tendance}
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 12
+#| fig-height: 8
+
+# Graphiques des températures
+ggplot(data_select_pluie, aes(x = date)) + 
+  geom_area(aes(y = precipitation_cm_mois), fill = "#99D0F2", alpha = 0.7) + 
+  geom_smooth(aes(y = precipitation_cm_mois), method = "loess", fill = "#99D0F2", color = "#1B70A6", alpha = 0.3, size = 1) + 
+  geom_smooth(aes(y = jour_pluie), method = "loess", color = "#F20505", size = 1, se = FALSE) + 
+  scale_y_continuous( name = "Précipitation (cm)", 
+                      sec.axis = sec_axis(~., name = "Jours de pluie"),
+                      limits = c(0, NA)) + 
+  labs( title = "Précipitation et Jours de Pluie", x = "Date" ) + 
+      ylim(0, 30) +
+
+  theme_light()
+```
+
+:::
+
+Enfin, voici cette ligne bleue qui descend doucement. Elle porte une vérité troublante : les précipitations diminuent au fil des années. Moins d’eau, moins de vie… Cela n’échappe à personne. Les terres bretonnes, si longtemps fertiles, commencent à souffrir. Les rivières, qui serpentent jusqu’à la mer, s’appauvrissent. Et pour la conchyliculture, qui dépend de l’eau douce pour équilibrer les estuaires, cette baisse est un coup dur. @cr-pluie-tendance
+
+::::
+
+Alors que faire, face à ce ciel qui se dérobe ? Faut-il s’habituer à une Bretagne plus sèche, plus fragile ? Les sols, l’agriculture, et même la conchyliculture ne peuvent se passer de cette eau précieuse. Peut-être est-il temps de regarder plus sérieusement ces courbes et d’écouter leur message, car derrière ces chiffres, c’est une Bretagne en mutation qui se dessine… 
+ 
 \
 \
 \
-*Créé par Anaël Delorme et François Semecurbe, bien aidés par ChatGPT et Claude.ai.*
+*Créé par [Anaël Delorme](https://www.linkedin.com/in/ana%C3%ABl-delorme-573b8858/) et [François Semecurbe](https://www.linkedin.com/in/francoissemecurbe), bien aidés par ChatGPT et Claude.ai.*
 
