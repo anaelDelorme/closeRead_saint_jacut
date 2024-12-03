@@ -7,6 +7,8 @@ website:
     left:
       - href: index.qmd
         text: Saint-Jacut-de-la-Mer
+      - href: index_en.qmd
+        text: En anglais
       - href: formation.qmd
         text: Formation
 
