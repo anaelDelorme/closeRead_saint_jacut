@@ -224,10 +224,10 @@ Plot.plot({
 ![](img/banche.jpg)
 :::
 
-**La Banche** : The lively heart of Saint-Jacut, with its fisherman's houses and small alleys. You can feel the village's soul here. [@cr-banche]{pan-to="10%,-10%" scale-by="1.0"}
+**La Banche** : The lively heart of Saint-Jacut, with its fisherman's houses and small alleys. You can feel the village's soul here. [@cr-banche]{pan-to="10%,-10%" scale-by="2.0"}
 
 :::{#cr-port}
-![](img/port.jpg)
+![](img/port.jpg){width=20%}
 :::
 
 **Le Port** : A peaceful haven where leisure boats and shellfish boats gently sway. The ideal starting point for a maritime escape.[@cr-port]{pan-to="10%,10%" scale-by="1.2"}
@@ -281,7 +281,7 @@ L'Île de Bréhat is a garden set on the sea. Without cars, just flowered paths,
 
 
 :::{#cr-table_pepites}
-| Image                                                                                             | Name              | Distance (km) | Numbre of tourists/year | Google Maps Link                                                                                    |
+| Image                                                                                             | Name              | Distance (km) | Number of tourists/year | Google Maps Link                                                                                    |
 |---------------------------------------------------------------------------------------------------|------------------|----------------:|-------------------------:|-------------------------------------------------------------------------------------------------------|
 | <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Dinard_-_Promenade_du_moulinet.jpg" width="80"> | Dinard           | 21 km             | 800 000                 | [Google Maps](https://www.google.com/maps/place/Dinard/@48.6333,-2.0622,15z/)                        |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Saint-Malo_hdsr_S5IS_IMG_3994.jpg" width="80"> | Saint-Malo      | 25 km            | 1 500 000                | [Google Maps](https://www.google.com/maps/place/Saint-Malo/@48.6514,-2.0271,15z/)                    |

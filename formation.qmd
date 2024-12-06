@@ -57,6 +57,34 @@ h2 {
   display: inline-block;
   color: white
 }
+
+pre code {
+    font-family: "Fira Code", monospace;
+    background-color: #f3f3f3;
+    color: #383a6b;
+    font-weight: bold; 
+    padding: 5px 10px; /* Espacement interne */
+    border: solid 2px #383a6b;
+    border-radius: 8px; /* Bordure arrondie */
+    display: block; /* Utiliser block pour mieux gérer la largeur */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    overflow-x: auto; /* Activer le défilement horizontal si nécessaire */
+    white-space: pre-wrap; /* Préserver les espaces et permettre le wrapping */
+    max-width: 100%; /* Empêcher le dépassement de la largeur du conteneur parent */
+}
+
+p code {
+    font-family: "Fira Code", monospace;
+    background-color: #f3f3f3;
+    color: #383a6b;
+    font-weight: bold; 
+    padding: 5px 10px; /* Espacement interne */
+    border: solid 2px #383a6b;
+    border-radius: 8px; /* Bordure arrondie */
+    display: inline-block; /* Affichage inline-block */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
   
 </style>
 ```
@@ -75,7 +103,7 @@ Créer une première dataviz en datascrollytelling sur un thème qui vous tient 
 
 ### Déroulement
 
-Selon votre niveau de connaissance en quarto/R/observable, vous pourrez vous arrêter en cours de formation. Mais vous aurez à toute étape un dataviz.
+Selon votre niveau de connaissance en quarto/R/observable, vous pourrez vous arrêter en cours de formation. Mais vous aurez à toute étape une dataviz.
 
 1. **Storyboard** : Création du déroulé narratif de votre viz, avec création des textes et récupération des images/données utiles [facile]{.class key="easy"}
 1. **Initialisation** : Création d'un document quarto et installation de closeread [facile]{.class key="easy"}
@@ -92,21 +120,194 @@ Selon votre niveau de connaissance en quarto/R/observable, vous pourrez vous arr
 - Avoir accès à RStudio ou VSCode
 
 
+## Storyboard - réfléchir avant de plonger
+
+Avant de vous lancer dans la création de votre dataviz et de votre datascrollytelling dans Quarto, prenez le temps de réfléchir à l'organisation globale de votre projet. Un **storyboard** est un outil clé pour structurer votre récit et anticiper les étapes nécessaires à sa réalisation.
+
+- **Définissez un plan clair** : Identifiez les messages que vous voulez transmettre et dans quel ordre. Une narration bien pensée guidera vos lecteurs efficacement.    
+
+- **Préparez les éléments nécessaires** : Rassemblez les données, les textes, les images, et les illustrations qui enrichiront votre présentation.
+
+- **Pensez à l’interaction** : Repérez les points où vous voulez mettre l'accent, zoomer sur des éléments importants ou afficher des détails spécifiques.
+
+- **Visualisez vos transitions** : Comment passer d'une idée à l'autre ? Ces étapes doivent être fluides pour garder l’attention de votre audience.
+
+Un storyboard vous permettra de garder une vue d’ensemble tout en anticipant les défis techniques et narratifs. Cette préparation est essentielle pour maximiser l’impact de votre datascrollytelling !
 
 
+::: {.callout-tip title="Liens vers la documentation utile"}
 
+- [Site Quarto](https://quarto.org/)
 
+- [Bases de markdown](https://quarto.org/docs/authoring/markdown-basics.html)
 
+- [Site closeread](https://closeread.dev/)
 
-
-## Storyboard
-
+:::
 
 ## Initialisation [facile]{.class key="easy"}
 
-## Squellette de la viz [facile]{.class key="easy"}
+**CloseRead** est une extension conçue pour fonctionner avec **Quarto.** Avant de commencer, assurez-vous que votre environnement de travail est prêt :
+
+1. Ouvrez RStudio : Lancez RStudio, l’environnement idéal pour travailler avec Quarto.
+
+1. Créez un projet dédié : Il est recommandé de créer un nouveau projet pour organiser vos fichiers. Cela facilitera la gestion des ressources et des dépendances.
+
+1. Créez un document Quarto : Générez un premier fichier .qmd (Quarto Markdown), qui servira de base à votre projet de datascrollytelling.
+Pour ce faire, utilisez l’option Fichier > Nouveau fichier > Quarto Document dans RStudio.
+![](img/formation/new_quarto.png)
+Puis remplissez les différents paramètres (décocher l'éditeur visuel)
+![](img/formation/new_quarto_2.png)
+
+
+1. Installez l’extension CloseRead : À la racine de votre projet (là où se trouve votre fichier .qmd), installez l’extension CloseRead. Cela permettra d’ajouter les fonctionnalités nécessaires à votre projet. Cela se passe dans le terminal à droite de la console.
+![](img/formation/install_closeread.png)
+
+
+```
+quarto add qmd-lab/closeread
+```
+
+:::{.callout-warning}
+Si vous êtes sur Cerise, il n'est pas possible d'installer l'extension. Pour contourner cette difficulté, récupérer le fichier _extensions.zip que vous trouverez sur CERISE/04-Espace-Echanges/Ateliers/Closeread et Téléchargez-le à la racine de votre projet. Le fichier sera automatiquement décompressé et l'extension sera active.
+
+:::
+
+Une fois ces étapes terminées, vous serez prêt à explorer les possibilités offertes par CloseRead pour enrichir vos visualisations et votre storytelling.
+
+## Squelette de la viz [facile]{.class key="easy"}
+
+Vous pouvez commencer à créer un première squelette de dataviz : 
+
+1. Paramétrage de l'entête YAML
+
+Il faut indiquer que le format est closeread-html
+
+```
+---
+title: Ma dataviz
+Author: Moi
+format: closeread-html
+---
+```
+
+1. Ajoutez votre texte d'introduction
+
+2. Ajoutez vos différents titres
+
+:::{.callout-tip}
+Un titre de niveau 1 est précédé d'un `#`, un titre de niveau 2 de deux `##`, etc...
+:::
+
+3. Vérifiez que tout fonctionne
+
+En cliquant sur le bouton `Rendu`, le quarto va générer une page web au format html.
+
+![](img/formation/rendu.png)
+
+:::{.callout-tip}
+En lançant le `Rendu` il vous sera demandé de sauvegarder le fichier .qmd au préalable
+:::
+
+
+Vous pouvez consulter le fichier d'exemple ici : [1-squelette](./example_formation/1-squelette.qmd){target="_blank"}
+
 
 ## Scroll sur images [facile]{.class key="easy"}
+
+### Etape 1 - chargement des textes et des images
+
+Pour comprendre le fonctionnement, très simple, de closeread, ajoutez des images et du texte dans une de vos parties.
+
+1. créez un répertoire `img` dans votre projet
+
+1. téléchargez vos photos
+
+1. dans votre .qmd ajoutez les photos et les textes en les alternant
+
+:::{.callout-tip}
+Une photo s'ajoute très simplement avec le code `![](./img/ma_photo.png)`
+:::
+
+Vous pouvez tester un `rendu` pour vérifier que les images et le texte s'affichent correctement.
+
+### Etape 2 - ajout d'une section closeread
+
+Vous pouvez passer à l'animation de votre page avec closeread. Le principe est de faire défiler les textes par dessus les images, avec les images qui vont changer selon le niveau de scroll.
+
+Vous devez indiquer à votre document .qmd que vous souhaitez ajouter une section closeread. Englobez votre texte et vos images par la balise ouvrante `::::{.cr-section}` et la balise fermante `::::`.
+
+Voici mon code : 
+```
+# Les grandes énigmes des données invisibles
+
+::::{.cr-section}
+
+![](./img/img1.webp)
+
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? 
+
+![](./img/img2.webp)
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. 
+
+![](./img/img3.webp)
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. 
+
+::::
+
+```
+
+Vous pouvez tester un `rendu` pour vérifier que les images et le texte s'affichent dans une section closeread. 
+Vous noterez que tout défile à gauche. En effet nous n'avons pas spécifié les éléments à mettre en défilement et les éléments à mettre en arrière plan.
+
+
+### Etape 3 - choix des éléments de défilement et d'arrière plan
+
+Dans notre exemple, les textes sont en défilement et les images viennent en arrière plan les unes après les autres.
+
+L'élément qui ne bouge pas (un `sticky` en closeread) est encadré par une balise préfixé par `#cr-`. Par exemple, la balise ouvrante est `:::{#cr-monImage1}` et la fermante est `:::`.
+
+L'élement qui bouge (un trigger) est suivi de l'appel de ce sticky sous la forme `@cr-monImage1`.
+
+Voici le code final avec 3 images :
+
+```
+::::{.cr-section}
+
+:::{#cr-image1}
+![](./img/img1.webp)
+:::
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1
+
+:::{#cr-image2}
+![](./img/img2.webp)
+:::
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. @cr-image2
+
+:::{#cr-image3}
+![](./img/img3.webp)
+:::
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. @cr-image3
+
+::::
+
+```
+Vous pouvez tester un `rendu` pour vérifier que le texte scrolle correctement et que l'image s'affiche bien.
+
+
+Vous pouvez consulter le fichier d'exemple ici : [2-scroll_image](./example_formation/2-scroll_image.qmd){target="_blank"}
+
+## Eléments de focus [facile]{.class key="easy"}
 
 ## Scroll sur du texte [facile]{.class key="easy"}
 

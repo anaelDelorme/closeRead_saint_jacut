@@ -94,12 +94,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Saint-Jacut-de-la-Mer</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./formation.html" aria-current="page"> 
-<span class="menu-text">Formation</span></a>
+    <a class="nav-link" href="./index_en.html"> 
+<span class="menu-text">En anglais</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./premiere_carte.html"> 
-<span class="menu-text">Carte</span></a>
+    <a class="nav-link active" href="./formation.html" aria-current="page"> 
+<span class="menu-text">Formation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -123,10 +123,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#déroulement" id="toc-déroulement" class="nav-link" data-scroll-target="#déroulement">Déroulement</a></li>
   <li><a href="#prérequis" id="toc-prérequis" class="nav-link" data-scroll-target="#prérequis">Prérequis</a></li>
   </ul></li>
-  <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard">Storyboard</a></li>
+  <li><a href="#storyboard---réfléchir-avant-de-plonger" id="toc-storyboard---réfléchir-avant-de-plonger" class="nav-link" data-scroll-target="#storyboard---réfléchir-avant-de-plonger">Storyboard - réfléchir avant de plonger</a></li>
   <li><a href="#initialisation-facile" id="toc-initialisation-facile" class="nav-link" data-scroll-target="#initialisation-facile">Initialisation <span class="class" data-key="easy">facile</span></a></li>
-  <li><a href="#squellette-de-la-viz-facile" id="toc-squellette-de-la-viz-facile" class="nav-link" data-scroll-target="#squellette-de-la-viz-facile">Squellette de la viz <span class="class" data-key="easy">facile</span></a></li>
-  <li><a href="#scroll-sur-images-facile" id="toc-scroll-sur-images-facile" class="nav-link" data-scroll-target="#scroll-sur-images-facile">Scroll sur images <span class="class" data-key="easy">facile</span></a></li>
+  <li><a href="#squelette-de-la-viz-facile" id="toc-squelette-de-la-viz-facile" class="nav-link" data-scroll-target="#squelette-de-la-viz-facile">Squelette de la viz <span class="class" data-key="easy">facile</span></a></li>
+  <li><a href="#scroll-sur-images-facile" id="toc-scroll-sur-images-facile" class="nav-link" data-scroll-target="#scroll-sur-images-facile">Scroll sur images <span class="class" data-key="easy">facile</span></a>
+  <ul class="collapse">
+  <li><a href="#etape-1---chargement-des-textes-et-des-images" id="toc-etape-1---chargement-des-textes-et-des-images" class="nav-link" data-scroll-target="#etape-1---chargement-des-textes-et-des-images">Etape 1 - chargement des textes et des images</a></li>
+  <li><a href="#etape-2---ajout-dune-section-closeread" id="toc-etape-2---ajout-dune-section-closeread" class="nav-link" data-scroll-target="#etape-2---ajout-dune-section-closeread">Etape 2 - ajout d’une section closeread</a></li>
+  <li><a href="#etape-3---choix-des-éléments-de-défilement-et-darrière-plan" id="toc-etape-3---choix-des-éléments-de-défilement-et-darrière-plan" class="nav-link" data-scroll-target="#etape-3---choix-des-éléments-de-défilement-et-darrière-plan">Etape 3 - choix des éléments de défilement et d’arrière plan</a></li>
+  </ul></li>
+  <li><a href="#eléments-de-focus-facile" id="toc-eléments-de-focus-facile" class="nav-link" data-scroll-target="#eléments-de-focus-facile">Eléments de focus <span class="class" data-key="easy">facile</span></a></li>
   <li><a href="#scroll-sur-du-texte-facile" id="toc-scroll-sur-du-texte-facile" class="nav-link" data-scroll-target="#scroll-sur-du-texte-facile">Scroll sur du texte <span class="class" data-key="easy">facile</span></a></li>
   <li><a href="#scroll-sur-un-graphique-en-r-intermédiaire" id="toc-scroll-sur-un-graphique-en-r-intermédiaire" class="nav-link" data-scroll-target="#scroll-sur-un-graphique-en-r-intermédiaire">Scroll sur un graphique en R <span class="class" data-key="inter">intermédiaire</span></a></li>
   <li><a href="#modification-du-thème-intermédiaire" id="toc-modification-du-thème-intermédiaire" class="nav-link" data-scroll-target="#modification-du-thème-intermédiaire">Modification du thème <span class="class" data-key="inter">intermédiaire</span></a></li>
@@ -212,6 +218,34 @@ h2 {
   display: inline-block;
   color: white
 }
+
+pre code {
+    font-family: "Fira Code", monospace;
+    background-color: #f3f3f3;
+    color: #383a6b;
+    font-weight: bold; 
+    padding: 5px 10px; /* Espacement interne */
+    border: solid 2px #383a6b;
+    border-radius: 8px; /* Bordure arrondie */
+    display: block; /* Utiliser block pour mieux gérer la largeur */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    overflow-x: auto; /* Activer le défilement horizontal si nécessaire */
+    white-space: pre-wrap; /* Préserver les espaces et permettre le wrapping */
+    max-width: 100%; /* Empêcher le dépassement de la largeur du conteneur parent */
+}
+
+p code {
+    font-family: "Fira Code", monospace;
+    background-color: #f3f3f3;
+    color: #383a6b;
+    font-weight: bold; 
+    padding: 5px 10px; /* Espacement interne */
+    border: solid 2px #383a6b;
+    border-radius: 8px; /* Bordure arrondie */
+    display: inline-block; /* Affichage inline-block */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
   
 </style>
 <section id="formation-closeread" class="level2 objective">
@@ -222,7 +256,7 @@ h2 {
 </section>
 <section id="déroulement" class="level3">
 <h3 class="anchored" data-anchor-id="déroulement">Déroulement</h3>
-<p>Selon votre niveau de connaissance en quarto/R/observable, vous pourrez vous arrêter en cours de formation. Mais vous aurez à toute étape un dataviz.</p>
+<p>Selon votre niveau de connaissance en quarto/R/observable, vous pourrez vous arrêter en cours de formation. Mais vous aurez à toute étape une dataviz.</p>
 <ol type="1">
 <li><strong>Storyboard</strong> : Création du déroulé narratif de votre viz, avec création des textes et récupération des images/données utiles <span class="class" data-key="easy">facile</span></li>
 <li><strong>Initialisation</strong> : Création d’un document quarto et installation de closeread <span class="class" data-key="easy">facile</span></li>
@@ -242,17 +276,197 @@ h2 {
 </ul>
 </section>
 </section>
-<section id="storyboard" class="level2">
-<h2 class="anchored" data-anchor-id="storyboard">Storyboard</h2>
+<section id="storyboard---réfléchir-avant-de-plonger" class="level2">
+<h2 class="anchored" data-anchor-id="storyboard---réfléchir-avant-de-plonger">Storyboard - réfléchir avant de plonger</h2>
+<p>Avant de vous lancer dans la création de votre dataviz et de votre datascrollytelling dans Quarto, prenez le temps de réfléchir à l’organisation globale de votre projet. Un <strong>storyboard</strong> est un outil clé pour structurer votre récit et anticiper les étapes nécessaires à sa réalisation.</p>
+<ul>
+<li><p><strong>Définissez un plan clair</strong> : Identifiez les messages que vous voulez transmettre et dans quel ordre. Une narration bien pensée guidera vos lecteurs efficacement.</p></li>
+<li><p><strong>Préparez les éléments nécessaires</strong> : Rassemblez les données, les textes, les images, et les illustrations qui enrichiront votre présentation.</p></li>
+<li><p><strong>Pensez à l’interaction</strong> : Repérez les points où vous voulez mettre l’accent, zoomer sur des éléments importants ou afficher des détails spécifiques.</p></li>
+<li><p><strong>Visualisez vos transitions</strong> : Comment passer d’une idée à l’autre ? Ces étapes doivent être fluides pour garder l’attention de votre audience.</p></li>
+</ul>
+<p>Un storyboard vous permettra de garder une vue d’ensemble tout en anticipant les défis techniques et narratifs. Cette préparation est essentielle pour maximiser l’impact de votre datascrollytelling !</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Liens vers la documentation utile">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Liens vers la documentation utile
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><a href="https://quarto.org/">Site Quarto</a></p></li>
+<li><p><a href="https://quarto.org/docs/authoring/markdown-basics.html">Bases de markdown</a></p></li>
+<li><p><a href="https://closeread.dev/">Site closeread</a></p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="initialisation-facile" class="level2">
 <h2 class="anchored" data-anchor-id="initialisation-facile">Initialisation <span class="class" data-key="easy">facile</span></h2>
+<p><strong>CloseRead</strong> est une extension conçue pour fonctionner avec <strong>Quarto.</strong> Avant de commencer, assurez-vous que votre environnement de travail est prêt :</p>
+<ol type="1">
+<li><p>Ouvrez RStudio : Lancez RStudio, l’environnement idéal pour travailler avec Quarto.</p></li>
+<li><p>Créez un projet dédié : Il est recommandé de créer un nouveau projet pour organiser vos fichiers. Cela facilitera la gestion des ressources et des dépendances.</p></li>
+<li><p>Créez un document Quarto : Générez un premier fichier .qmd (Quarto Markdown), qui servira de base à votre projet de datascrollytelling. Pour ce faire, utilisez l’option Fichier &gt; Nouveau fichier &gt; Quarto Document dans RStudio. <img src="img/formation/new_quarto.png" class="img-fluid"> Puis remplissez les différents paramètres (décocher l’éditeur visuel) <img src="img/formation/new_quarto_2.png" class="img-fluid"></p></li>
+<li><p>Installez l’extension CloseRead : À la racine de votre projet (là où se trouve votre fichier .qmd), installez l’extension CloseRead. Cela permettra d’ajouter les fonctionnalités nécessaires à votre projet. Cela se passe dans le terminal à droite de la console. <img src="img/formation/install_closeread.png" class="img-fluid"></p></li>
+</ol>
+<pre><code>quarto add qmd-lab/closeread</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous êtes sur Cerise, il n’est pas possible d’installer l’extension. Pour contourner cette difficulté, récupérer le fichier _extensions.zip que vous trouverez sur CERISE/04-Espace-Echanges/Ateliers/Closeread et Téléchargez-le à la racine de votre projet. Le fichier sera automatiquement décompressé et l’extension sera active.</p>
+</div>
+</div>
+<p>Une fois ces étapes terminées, vous serez prêt à explorer les possibilités offertes par CloseRead pour enrichir vos visualisations et votre storytelling.</p>
 </section>
-<section id="squellette-de-la-viz-facile" class="level2">
-<h2 class="anchored" data-anchor-id="squellette-de-la-viz-facile">Squellette de la viz <span class="class" data-key="easy">facile</span></h2>
+<section id="squelette-de-la-viz-facile" class="level2">
+<h2 class="anchored" data-anchor-id="squelette-de-la-viz-facile">Squelette de la viz <span class="class" data-key="easy">facile</span></h2>
+<p>Vous pouvez commencer à créer un première squelette de dataviz :</p>
+<ol type="1">
+<li>Paramétrage de l’entête YAML</li>
+</ol>
+<p>Il faut indiquer que le format est closeread-html</p>
+<pre><code>---
+title: Ma dataviz
+Author: Moi
+format: closeread-html
+---</code></pre>
+<ol type="1">
+<li><p>Ajoutez votre texte d’introduction</p></li>
+<li><p>Ajoutez vos différents titres</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un titre de niveau 1 est précédé d’un <code>#</code>, un titre de niveau 2 de deux <code>##</code>, etc…</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Vérifiez que tout fonctionne</li>
+</ol>
+<p>En cliquant sur le bouton <code>Rendu</code>, le quarto va générer une page web au format html.</p>
+<p><img src="img/formation/rendu.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En lançant le <code>Rendu</code> il vous sera demandé de sauvegarder le fichier .qmd au préalable</p>
+</div>
+</div>
+<p>Vous pouvez consulter le fichier d’exemple ici : <a href="./example_formation/1-squelette.html" target="_blank">1-squelette</a></p>
 </section>
 <section id="scroll-sur-images-facile" class="level2">
 <h2 class="anchored" data-anchor-id="scroll-sur-images-facile">Scroll sur images <span class="class" data-key="easy">facile</span></h2>
+<section id="etape-1---chargement-des-textes-et-des-images" class="level3">
+<h3 class="anchored" data-anchor-id="etape-1---chargement-des-textes-et-des-images">Etape 1 - chargement des textes et des images</h3>
+<p>Pour comprendre le fonctionnement, très simple, de closeread, ajoutez des images et du texte dans une de vos parties.</p>
+<ol type="1">
+<li><p>créez un répertoire <code>img</code> dans votre projet</p></li>
+<li><p>téléchargez vos photos</p></li>
+<li><p>dans votre .qmd ajoutez les photos et les textes en les alternant</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Une photo s’ajoute très simplement avec le code <code>![](./img/ma_photo.png)</code></p>
+</div>
+</div>
+<p>Vous pouvez tester un <code>rendu</code> pour vérifier que les images et le texte s’affichent correctement.</p>
+</section>
+<section id="etape-2---ajout-dune-section-closeread" class="level3">
+<h3 class="anchored" data-anchor-id="etape-2---ajout-dune-section-closeread">Etape 2 - ajout d’une section closeread</h3>
+<p>Vous pouvez passer à l’animation de votre page avec closeread. Le principe est de faire défiler les textes par dessus les images, avec les images qui vont changer selon le niveau de scroll.</p>
+<p>Vous devez indiquer à votre document .qmd que vous souhaitez ajouter une section closeread. Englobez votre texte et vos images par la balise ouvrante <code>::::{.cr-section}</code> et la balise fermante <code>::::</code>.</p>
+<p>Voici mon code :</p>
+<pre><code># Les grandes énigmes des données invisibles
+
+::::{.cr-section}
+
+![](./img/img1.webp)
+
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? 
+
+![](./img/img2.webp)
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. 
+
+![](./img/img3.webp)
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. 
+
+::::
+</code></pre>
+<p>Vous pouvez tester un <code>rendu</code> pour vérifier que les images et le texte s’affichent dans une section closeread. Vous noterez que tout défile à gauche. En effet nous n’avons pas spécifié les éléments à mettre en défilement et les éléments à mettre en arrière plan.</p>
+</section>
+<section id="etape-3---choix-des-éléments-de-défilement-et-darrière-plan" class="level3">
+<h3 class="anchored" data-anchor-id="etape-3---choix-des-éléments-de-défilement-et-darrière-plan">Etape 3 - choix des éléments de défilement et d’arrière plan</h3>
+<p>Dans notre exemple, les textes sont en défilement et les images viennent en arrière plan les unes après les autres.</p>
+<p>L’élément qui ne bouge pas (un <code>sticky</code> en closeread) est encadré par une balise préfixé par <code>#cr-</code>. Par exemple, la balise ouvrante est <code>:::{#cr-monImage1}</code> et la fermante est <code>:::</code>.</p>
+<p>L’élement qui bouge (un trigger) est suivi de l’appel de ce sticky sous la forme <code>@cr-monImage1</code>.</p>
+<p>Voici le code final avec 3 images :</p>
+<pre><code>::::{.cr-section}
+
+:::{#cr-image1}
+![](./img/img1.webp)
+:::
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1
+
+:::{#cr-image2}
+![](./img/img2.webp)
+:::
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. @cr-image2
+
+:::{#cr-image3}
+![](./img/img3.webp)
+:::
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. @cr-image3
+
+::::
+</code></pre>
+<p>Vous pouvez tester un <code>rendu</code> pour vérifier que le texte scrolle correctement et que l’image s’affiche bien.</p>
+<p>Vous pouvez consulter le fichier d’exemple ici : <a href="./example_formation/2-scroll_image.html" target="_blank">2-scroll_image</a></p>
+</section>
+</section>
+<section id="eléments-de-focus-facile" class="level2">
+<h2 class="anchored" data-anchor-id="eléments-de-focus-facile">Eléments de focus <span class="class" data-key="easy">facile</span></h2>
 </section>
 <section id="scroll-sur-du-texte-facile" class="level2">
 <h2 class="anchored" data-anchor-id="scroll-sur-du-texte-facile">Scroll sur du texte <span class="class" data-key="easy">facile</span></h2>

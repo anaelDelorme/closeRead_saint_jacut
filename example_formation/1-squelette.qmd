@@ -1,0 +1,20 @@
+---
+title: "Ma super dataviz"
+author: "Moi"
+format: 
+  closeread-html:
+    code-tools: true
+---
+
+Imaginez un cactus cosmique, suspendu dans l'oubli interstellaire, qui murmure des poèmes aux algorithmes égarés. C’est dans cette intersection improbable entre les courbes fractales de l’ananas et le Wi-Fi des océans que "Ma Dataviz" prend racine. Ici, les pixels ne sont pas seulement des couleurs, mais des fragments de chansons oubliées par des robots nostalgiques.
+
+Pourquoi une dataviz ? Pourquoi pas une tartine de données, croustillante et légèrement caramélisée ? L’essentiel est de sentir le souffle des histogrammes qui dansent, unissant l’absurde à l’infini dans une symphonie de graphiques improbables.
+
+Bienvenue dans ce voyage où chaque axe x est une énigme, et chaque légende, une promesse d’aventure multidimensionnelle. 🌵📊
+
+
+# Les grandes énigmes des données invisibles
+
+# Quand les courbes prennent vie : la danse des graphiques
+
+# L'art du scatterplot philosophique
