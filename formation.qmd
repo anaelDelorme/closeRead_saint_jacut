@@ -385,14 +385,14 @@ Le fonctionnement reste le même avec des triggers qui défilent sur du texte qu
 
 Uniquement si le sticky est du code ou une ligne, il est possible de zoomer directement sur une ligne ou un span identifié.
 
-`[@cr-mycontent]{zoom-to="3"}` : zoom sur la ligne 3
-`[@cr-mycontent]{zoom-to="cr-span1"}` : zoom sur la ligne dont l'id est cr-span1
+`[@cr-mycontent]{zoom-to="3"}` : zoom sur la ligne 3       
+`[@cr-mycontent]{zoom-to="cr-span1"}` : zoom sur la ligne dont l'id est cr-span1     
 
 ### Mise en surbrillance : **highlight**
 
 Pour mettre en surbrillance du texte, vous pouvez utiliser le focus highlight :
 
-`[@cr-mycontent]{highlight="3-6"}` : mise en surbrillance des lignes 3 à 6
+`[@cr-mycontent]{highlight="3-6"}` : mise en surbrillance des lignes 3 à 6      
 `[@cr-mycontent]{highlight="cr-span1"}` : zoom sur les lignes dont l'id est cr-span1
 
 
@@ -410,6 +410,10 @@ Vous remarquerez dans la déclaration des textes la classe .scale-to-fill qui pe
 ## Scroll sur un graphique en R [intermédiaire]{.class key="inter"}
 
 Dans le datascrollytelling, l’utilisation de graphiques dynamiques constitue un puissant moyen de capter l’attention du lecteur et de transmettre des informations complexes de manière progressive. L’objectif est de synchroniser le texte défilant avec des visualisations interactives pour que les bonnes explications apparaissent au moment où les données pertinentes sont mises en avant. CloseRead facilite cette synchronisation en combinant des graphiques ggplot en "stickies" et des triggers en texte.
+
+::: {.callout-tip}
+Si vous n'avez pas envie de faire du ggplot, vous pouvez créer des graphiques dans un autre outil (datawrapper par exemple) et les exporter au format image. Ensuite il ne reste plus qu'à scroller ou zoomer comment pour les images.
+:::
 
 1. Créez le graphique complet en ggplot - écrivez les texte
 
@@ -440,11 +444,11 @@ data <- data.frame(
 
 # Graphique avec un geom par courbe et axes fixes
 ggplot(data, aes(x = année, y = population, color = espèce)) +
-  geom_line(data = subset(data, espèce == "Plumifloron Azuré")) +  # Courbe pour Plumifloron Azuré
-  geom_line(data = subset(data, espèce == "Taurillon Rubicond")) +   # Points pour Taurillon Rubicond
-  geom_line(data = subset(data, espèce == "Luminéon Écarlate")) +    # Ligne en escalier pour lLuminéon Écarlate
-  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) +    # Fixation de l'axe des X
-  scale_y_continuous(limits = c(0, 175)) +                          # Fixation de l'axe des Y
+  geom_line(data = subset(data, espèce == "Plumifloron Azuré")) +  
+  geom_line(data = subset(data, espèce == "Taurillon Rubicond")) +   
+  geom_line(data = subset(data, espèce == "Luminéon Écarlate")) +   
+  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) + 
+  scale_y_continuous(limits = c(0, 175)) +                          
   labs(
     title = "Évolution des populations animales (2010-2019)",
     x = "Année",
@@ -457,20 +461,21 @@ ggplot(data, aes(x = année, y = population, color = espèce)) +
     legend.position.inside = c(.2, 0.9)) 
 ```
 
-1. Créez la section closeRead
+2. Créez la section closeRead
 
 Vous créez une section closeRead où vous mettez dedans : 
  
-- des stickies correspondant à vos graphiques
+- des stickies correspondant à vos graphiques (donc des stickies qui englobent chacun un chunk R)
 - des textes pour les triggers
 
 Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un texte par espèce.
-Nous avons donc également 3 stickies : un premier graphique vide sans aucun geom_line, puis on ajoute un geom_line dans chacun des autres stickies correspondant à chacun des textes en triggers.
+Nous avons donc également 4 stickies : un premier stocky qui comprend un chunk avec un graphique vide sans aucun geom_line, puis pour chacun des 3 autres stickies on ajoute à chaque fois un geom_line.
+Il ne reste plus qu'à faire coïncider les stickies et les triggers.
 
 L'exemple [5-scroll-graph-ggplot.qmd]("./example_formation/5-scroll-graph-ggplot.qmd") vous montrera l'implémentation.
 
 ::: {.callout-tip}
-Nous avons choisi un affichage des courbes en scrollant avec la souris. Vous pouvez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !
+Nous avons choisi que le scroll permet d'afficher progressivement chacune des courbes. Vous pourriez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !
 :::
 
 
