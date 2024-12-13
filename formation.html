@@ -581,12 +581,14 @@ Tip
 <section id="zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to" class="level3">
 <h3 class="anchored" data-anchor-id="zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to">Zoom sur une ligne ou un élément spécifique : <strong>zoom-to</strong></h3>
 <p>Uniquement si le sticky est du code ou une ligne, il est possible de zoomer directement sur une ligne ou un span identifié.</p>
-<p><code>[@cr-mycontent]{zoom-to="3"}</code> : zoom sur la ligne 3 <code>[@cr-mycontent]{zoom-to="cr-span1"}</code> : zoom sur la ligne dont l’id est cr-span1</p>
+<p><code>[@cr-mycontent]{zoom-to="3"}</code> : zoom sur la ligne 3<br>
+<code>[@cr-mycontent]{zoom-to="cr-span1"}</code> : zoom sur la ligne dont l’id est cr-span1</p>
 </section>
 <section id="mise-en-surbrillance-highlight" class="level3">
 <h3 class="anchored" data-anchor-id="mise-en-surbrillance-highlight">Mise en surbrillance : <strong>highlight</strong></h3>
 <p>Pour mettre en surbrillance du texte, vous pouvez utiliser le focus highlight :</p>
-<p><code>[@cr-mycontent]{highlight="3-6"}</code> : mise en surbrillance des lignes 3 à 6 <code>[@cr-mycontent]{highlight="cr-span1"}</code> : zoom sur les lignes dont l’id est cr-span1</p>
+<p><code>[@cr-mycontent]{highlight="3-6"}</code> : mise en surbrillance des lignes 3 à 6<br>
+<code>[@cr-mycontent]{highlight="cr-span1"}</code> : zoom sur les lignes dont l’id est cr-span1</p>
 </section>
 <section id="cas-particulier-de-code" class="level3">
 <h3 class="anchored" data-anchor-id="cas-particulier-de-code">Cas particulier de code</h3>
@@ -610,6 +612,19 @@ Tip
 <section id="scroll-sur-un-graphique-en-r-intermédiaire" class="level2">
 <h2 class="anchored" data-anchor-id="scroll-sur-un-graphique-en-r-intermédiaire">Scroll sur un graphique en R <span class="class" data-key="inter">intermédiaire</span></h2>
 <p>Dans le datascrollytelling, l’utilisation de graphiques dynamiques constitue un puissant moyen de capter l’attention du lecteur et de transmettre des informations complexes de manière progressive. L’objectif est de synchroniser le texte défilant avec des visualisations interactives pour que les bonnes explications apparaissent au moment où les données pertinentes sont mises en avant. CloseRead facilite cette synchronisation en combinant des graphiques ggplot en “stickies” et des triggers en texte.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous n’avez pas envie de faire du ggplot, vous pouvez créer des graphiques dans un autre outil (datawrapper par exemple) et les exporter au format image. Ensuite il ne reste plus qu’à scroller ou zoomer comment pour les images.</p>
+</div>
+</div>
 <ol type="1">
 <li>Créez le graphique complet en ggplot - écrivez les texte</li>
 </ol>
@@ -633,11 +648,11 @@ Tip
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Graphique avec un geom par courbe et axes fixes</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> année, <span class="at">y =</span> population, <span class="at">color =</span> espèce)) <span class="sc">+</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Plumifloron Azuré"</span>)) <span class="sc">+</span>  <span class="co"># Courbe pour Plumifloron Azuré</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Taurillon Rubicond"</span>)) <span class="sc">+</span>   <span class="co"># Points pour Taurillon Rubicond</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Luminéon Écarlate"</span>)) <span class="sc">+</span>    <span class="co"># Ligne en escalier pour lLuminéon Écarlate</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">2019</span>), <span class="at">breaks =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2019</span>) <span class="sc">+</span>    <span class="co"># Fixation de l'axe des X</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">175</span>)) <span class="sc">+</span>                          <span class="co"># Fixation de l'axe des Y</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Plumifloron Azuré"</span>)) <span class="sc">+</span>  </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Taurillon Rubicond"</span>)) <span class="sc">+</span>   </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Luminéon Écarlate"</span>)) <span class="sc">+</span>   </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">2019</span>), <span class="at">breaks =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2019</span>) <span class="sc">+</span> </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">175</span>)) <span class="sc">+</span>                          </span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Évolution des populations animales (2010-2019)"</span>,</span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Année"</span>,</span>
@@ -649,15 +664,15 @@ Tip
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"inside"</span>,</span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position.inside =</span> <span class="fu">c</span>(.<span class="dv">2</span>, <span class="fl">0.9</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol type="1">
+<ol start="2" type="1">
 <li>Créez la section closeRead</li>
 </ol>
 <p>Vous créez une section closeRead où vous mettez dedans :</p>
 <ul>
-<li>des stickies correspondant à vos graphiques</li>
+<li>des stickies correspondant à vos graphiques (donc des stickies qui englobent chacun un chunk R)</li>
 <li>des textes pour les triggers</li>
 </ul>
-<p>Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un texte par espèce. Nous avons donc également 3 stickies : un premier graphique vide sans aucun geom_line, puis on ajoute un geom_line dans chacun des autres stickies correspondant à chacun des textes en triggers.</p>
+<p>Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un texte par espèce. Nous avons donc également 4 stickies : un premier stocky qui comprend un chunk avec un graphique vide sans aucun geom_line, puis pour chacun des 3 autres stickies on ajoute à chaque fois un geom_line. Il ne reste plus qu’à faire coïncider les stickies et les triggers.</p>
 <p>L’exemple <a href="&quot;./example_formation/5-scroll-graph-ggplot.qmd&quot;">5-scroll-graph-ggplot.qmd</a> vous montrera l’implémentation.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -669,7 +684,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nous avons choisi un affichage des courbes en scrollant avec la souris. Vous pouvez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !</p>
+<p>Nous avons choisi que le scroll permet d’afficher progressivement chacune des courbes. Vous pourriez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
