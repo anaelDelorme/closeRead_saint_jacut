@@ -472,7 +472,7 @@ Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un tex
 Nous avons donc également 4 stickies : un premier stocky qui comprend un chunk avec un graphique vide sans aucun geom_line, puis pour chacun des 3 autres stickies on ajoute à chaque fois un geom_line.
 Il ne reste plus qu'à faire coïncider les stickies et les triggers.
 
-L'exemple [5-scroll-graph-ggplot.qmd]("./example_formation/5-scroll-graph-ggplot.qmd") vous montrera l'implémentation.
+L'exemple [5-scroll-graph-ggplot.qmd](./example_formation/5-scroll-graph-ggplot.qmd) vous montrera l'implémentation.
 
 ::: {.callout-tip}
 Nous avons choisi que le scroll permet d'afficher progressivement chacune des courbes. Vous pourriez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !
