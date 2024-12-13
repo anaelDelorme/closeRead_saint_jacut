@@ -1,0 +1,17 @@
+{
+  "hash": "9a1233dcd03930c7217dfdcb063572c2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Ma super dataviz\"\nauthor: \"Moi\"\nformat: closeread-html\n---\n\n::: {.cell}\n\n:::\n\n\n\n::::{.cr-section}\n\n\nAu fil du temps, différentes populations animales connaissent des évolutions singulières, influencées par leur environnement, leur régime alimentaire et leurs interactions avec d'autres espèces.\nDans ce graphique, nous allons observer trois espèces fictives et fascinantes : le Plumifloron Azuré, le Taurillon Rubicond, et le Luminéon Écarlate, chacune ayant une dynamique de population unique entre 2010 et 2019. @cr-graph_vide\n\n**Le Plumifloron Azuré, symbole de résilience et de croissance.**\nCette créature aux plumes irisées, que l'on trouve dans les forêts mystiques, a vu sa population croître régulièrement. Grâce à une abondance de ressources alimentaires et à l'absence de prédateurs majeurs, le Plumifloron Azuré est devenu un exemple d'adaptation réussie. Sa courbe reflète une montée en puissance constante au cours de la décennie. @cr-graph_1\n\n**Le Taurillon Rubicond, un survivant des plaines austères.**\nPartant d’une population modeste de seulement 20 individus en 2010, cette espèce robuste a dû surmonter des défis écologiques considérables. Connu pour sa capacité à trouver des nutriments dans des sols arides, le Taurillon Rubicond montre une trajectoire plus hésitante, marquée par des fluctuations importantes. Chaque point de cette courbe raconte l’histoire de sa lutte pour la survie. @cr-graph_2\n\n**Le Luminéon Écarlate, une étoile montante des lagons féeriques.**\nLe Luminéon Écarlate, petit poisson lumineux des eaux cristallines, a vu sa population croître par paliers, suivant des cycles reproductifs bien définis. Sa courbe, en forme d'escalier, traduit des moments d'explosion démographique suivis de périodes plus stables. Une espèce qui brille, au sens propre comme au figuré, dans cet écosystème fragile. @cr-graph_fin\n\n:::{#cr-graph_vide}\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](5-scroll-graph-ggplot_files/figure-html/unnamed-chunk-1-1.png){width=1152}\n:::\n:::\n\n\n:::\n\n:::{#cr-graph_1}\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](5-scroll-graph-ggplot_files/figure-html/unnamed-chunk-2-1.png){width=1152}\n:::\n:::\n\n\n:::\n\n\n:::{#cr-graph_2}\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](5-scroll-graph-ggplot_files/figure-html/unnamed-chunk-3-1.png){width=1152}\n:::\n:::\n\n\n:::\n\n\n:::{#cr-graph_fin}\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](5-scroll-graph-ggplot_files/figure-html/unnamed-chunk-4-1.png){width=1152}\n:::\n:::\n\n\n:::\n\n\n\n::::",
+    "supporting": [
+      "5-scroll-graph-ggplot_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

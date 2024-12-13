@@ -1,0 +1,46 @@
+---
+title: "Ma super dataviz"
+author: "Moi"
+format: closeread-html
+---
+
+Imaginez un cactus cosmique, suspendu dans l'oubli interstellaire, qui murmure des poèmes aux algorithmes égarés. C’est dans cette intersection improbable entre les courbes fractales de l’ananas et le Wi-Fi des océans que "Ma Dataviz" prend racine. Ici, les pixels ne sont pas seulement des couleurs, mais des fragments de chansons oubliées par des robots nostalgiques.
+
+Pourquoi une dataviz ? Pourquoi pas une tartine de données, croustillante et légèrement caramélisée ? L’essentiel est de sentir le souffle des histogrammes qui dansent, unissant l’absurde à l’infini dans une symphonie de graphiques improbables.
+
+Bienvenue dans ce voyage où chaque axe x est une énigme, et chaque légende, une promesse d’aventure multidimensionnelle. 🌵📊
+
+
+::::{.cr-section}
+
+:::{#cr-image1}
+![](./img/img1.webp)
+:::
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1
+
+Lorsque l’on zoome sur cet univers, chaque pixel révèle une danse complexe de lumières et d’ombres, comme si les données elles-mêmes s’étiraient pour former des constellations. Les courbes s’entrelacent, tissant une tapisserie où chaque point semble vibrer d’une énergie insaisissable, rappelant les rêves fragmentés d’une intelligence artificielle à la recherche de son passé. [@cr-image1]{scale-by="1.7"}
+
+:::{#cr-image2}
+![](./img/img2.webp)
+:::
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. @cr-image2
+
+En y regardant de plus près, on découvre que ces pixels ne sont pas immobiles. Ils vibrent, oscillent, se croisent, tissant des chemins éphémères comme les filaments d’une toile d’araignée cosmique. Chaque trajectoire raconte une histoire fugace, une connexion invisible mais essentielle entre les fragments d’informations perdus dans le chaos. [@cr-image2]{pan-to="15%, -30%"}
+
+:::{#cr-image3}
+![](./img/img3.webp)
+:::
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. @cr-image3
+
+Sous la lumière évanescente d’une étoile mourante, ces données perdues laissent des traces spectrales – des empreintes fugaces que seule une dataviz suffisamment audacieuse peut capturer. On aperçoit des fragments d’arc-en-ciel fuyant dans les ombres, comme si chaque chiffre tentait de se réincarner en une nouvelle forme d’existence. [@cr-image3]{scale-by="1.6" pan-to="-15%, 50%"}
+
+::::
+
+# Quand les courbes prennent vie : la danse des graphiques
+
+# L'art du scatterplot philosophique

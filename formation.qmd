@@ -233,9 +233,9 @@ Vous pouvez tester un `rendu` pour vérifier que les images et le texte s'affich
 
 ### Etape 2 - ajout d'une section closeread
 
-Vous pouvez passer à l'animation de votre page avec closeread. Le principe est de faire défiler les textes par dessus les images, avec les images qui vont changer selon le niveau de scroll.
+Vous pouvez passer à l'animation de votre page avec closeread. Le principe est de faire défiler les textes au dessus des images, avec les images qui vont changer selon le niveau de scroll.
 
-Vous devez indiquer à votre document .qmd que vous souhaitez ajouter une section closeread. Englobez votre texte et vos images par la balise ouvrante `::::{.cr-section}` et la balise fermante `::::`.
+Vous devez indiquer à votre document quarto que vous souhaitez ajouter une section closeread. Englobez votre texte et vos images par la balise ouvrante de section CloseRead `::::{.cr-section}` et la balise fermante `::::`.
 
 Voici mon code : 
 ```
@@ -277,15 +277,15 @@ L'élement qui bouge (un trigger) est suivi de l'appel de ce sticky sous la form
 Voici le code final avec 3 images :
 
 ```
-::::{.cr-section}
+::::{.cr-section}           <!--- Début d'une section CloseRead --->
 
-:::{#cr-image1}
+:::{#cr-image1}             <!--- Un sticky (l'image de fond fixe) --->
 ![](./img/img1.webp)
-:::
+:::                         <!--- Fin du sticky  --->
 **L'énigme flottante des données invisibles**    
-Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1   ## appel du texte qui vient défiler sur le sticky @cr-image1
 
-:::{#cr-image2}
+:::{#cr-image2}                <!--- Un autre sticky (l'image de fond change) --->
 ![](./img/img2.webp)
 :::
 
@@ -299,7 +299,7 @@ Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire
 **L'éclipse des données perdues**     
 Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. @cr-image3
 
-::::
+::::             <!--- Fin de ma section closeread --->
 
 ```
 Vous pouvez tester un `rendu` pour vérifier que le texte scrolle correctement et que l'image s'affiche bien.
@@ -307,17 +307,182 @@ Vous pouvez tester un `rendu` pour vérifier que le texte scrolle correctement e
 
 Vous pouvez consulter le fichier d'exemple ici : [2-scroll_image](./example_formation/2-scroll_image.qmd){target="_blank"}
 
-## Eléments de focus [facile]{.class key="easy"}
+## Eléments de focus pour une image [facile]{.class key="easy"}
 
-## Scroll sur du texte [facile]{.class key="easy"}
+Les effets de focus permettent de diriger l'attention du lecteur sur certains aspects spécifiques de vos stickies. En reprenant l'exemple précédent, les effets de focus permettraient de diriger l'attention du lecteur sur une partie des images qui sont en stickies.
+
+Pour utiliser un élément de focus, vous modifierez l'appel dans votre trigger. A la place de `Mon texte.... @cr-monSticky`, vous mettrez `Mon texte.... [@cr-monSticky]{type_focus="valeur_du_focus}"`.
+
+En closeRead, il existe 2 effets de focus sur une image : 
+
+### Mise à l'échelle : **scale-by** 
+
+Vous pouvez ajuster la taille d’un sticky pour attirer l'attention ou donner un effet visuel.
+
+`[@cr-mycontent]{scale-by="1.5"}`
+
+Dans cet exemple, l'élément correspondant sera agrandi de 50 %.
+
+
+### Déplacement : **pan-to**
+
+Pour centrer une partie précise d’un élément (souvent une image), vous pouvez utiliser l'attribut pan-to. Ce dernier accepte des unités relatives (%) ou absolues (pixels).
+
+`[@cr-mycontent]{pan-to="25%,-50%"}` : l’élément sera déplacé de 25 % de sa largeur vers la droite et de 50 % de sa hauteur vers le haut.
+`[@cr-mycontent]{pan-to="-30px, 30px"}` : l’élément sera déplacé de 30 px vers la gauche et de 30 px vers le bas.
+
+### Combinaison d'effets
+
+Vous pouvez combinez les effets en les enchainant dans la déclaration.
+
+`[@cr-mycontent]{scale-by="1.5" pan-to="25%,-50%"}` : l’élément sera agrandi de 50% et déplacé de 25 % de sa largeur vers la droite et de 50 % de sa hauteur vers le haut.
+
+### Exemple
+
+Vous pouvez adapter votre code précédent pour ajouter des effets de déplacements et de zoom.
+
+```
+::::{.cr-section}           <!--- Début d'une section CloseRead --->
+
+:::{#cr-image1}             <!--- Un sticky (l'image de fond fixe) --->
+![](./img/img1.webp)
+:::                         <!--- Fin du sticky  --->
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1   ## appel du texte qui vient défiler sur le sticky @cr-image1
+
+:::{#cr-image2}                <!--- Un autre sticky (l'image de fond change) --->
+![](./img/img2.webp)
+:::
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. @cr-image2
+
+:::{#cr-image3}
+![](./img/img3.webp)
+:::
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. @cr-image3
+
+::::             <!--- Fin de ma section closeread --->
+
+```
+
+Vous pouvez consulter le fichier d'exemple ici : [3-scroll_image_with_focus](./example_formation/3-scroll_image_with_focus.qmd){target="_blank"}
+
+
+## Scroll sur du texte [intermédiaire]{.class key="inter"}
+
+:::{.callout-tip}
+Les effets sur les textes fonctionnent bien surtout sur des textes courts et en ligne comme les poèmes, ainsi que pour les lignes de code. 
+:::
+
+Pour l'instant nous avons vu le seul cas de figure où le sticky est une image. Il est possible d'avoir d'autres stickies comme du texte, ou du code.
+
+Le fonctionnement reste le même avec des triggers qui défilent sur du texte qui reste en fond de page. Des éléments de focus sont spécifiques aux textes
+
+### Zoom sur une ligne ou un élément spécifique : **zoom-to**
+
+Uniquement si le sticky est du code ou une ligne, il est possible de zoomer directement sur une ligne ou un span identifié.
+
+`[@cr-mycontent]{zoom-to="3"}` : zoom sur la ligne 3
+`[@cr-mycontent]{zoom-to="cr-span1"}` : zoom sur la ligne dont l'id est cr-span1
+
+### Mise en surbrillance : **highlight**
+
+Pour mettre en surbrillance du texte, vous pouvez utiliser le focus highlight :
+
+`[@cr-mycontent]{highlight="3-6"}` : mise en surbrillance des lignes 3 à 6
+`[@cr-mycontent]{highlight="cr-span1"}` : zoom sur les lignes dont l'id est cr-span1
+
+
+### Cas particulier de code
+
+Vous pouvez facilement zoomer ou mettre en surbrillance des lignes de code comme du texte normal ! C'est très puissant pour un support de formation en R ou Python.
+
+Vous pouvez consulter le fichier d'exemple ici : [4-scroll-text-with-focus](./example_formation/4-scroll-text-with-focus.qmd){target="_blank"}
+
+
+:::{.callout-tip}
+Vous remarquerez dans la déclaration des textes la classe .scale-to-fill qui permet de mettre à l'échelle le sticky pour qu'elle remplisse la fenêtre de visualisation sans distorsion ni recadrage.
+:::
 
 ## Scroll sur un graphique en R [intermédiaire]{.class key="inter"}
 
+Dans le datascrollytelling, l’utilisation de graphiques dynamiques constitue un puissant moyen de capter l’attention du lecteur et de transmettre des informations complexes de manière progressive. L’objectif est de synchroniser le texte défilant avec des visualisations interactives pour que les bonnes explications apparaissent au moment où les données pertinentes sont mises en avant. CloseRead facilite cette synchronisation en combinant des graphiques ggplot en "stickies" et des triggers en texte.
+
+1. Créez le graphique complet en ggplot - écrivez les texte
+
+Pour commencer vous devez créer votre graphique complet avec toutes les courbes. 
+Pensez à définir les axes en fixant le min et le max : les axes ne bougeront pas quelque soient les données à afficher.
+De même intégrez la légende dans le graphique pour éviter que la taille de la légende fasse bouger la largeur du graphique.
+Rédiger par ailleurs les textes que vous souhaitez afficher.
+
+Voilà un exemple du code ggpglot :
+
+```{r}
+#| eval: false
+#| echo: true
+# Chargement de ggplot2
+library(ggplot2)
+
+# Création des données simulées
+set.seed(42)
+data <- data.frame(
+  année = rep(2010:2019, 3),
+  population = c(
+    100 + cumsum(rnorm(10, mean = 5, sd = 3)),  # Plumifloron Azuré
+    40 + cumsum(rnorm(10, mean = -2, sd = 4)), # Taurillon Rubicond
+    80 + cumsum(rnorm(10, mean = 3, sd = 2))    # Luminéon Écarlate
+  ),
+  espèce = rep(c("Plumifloron Azuré", "Taurillon Rubicond", "Luminéon Écarlate"), each = 10)
+)
+
+# Graphique avec un geom par courbe et axes fixes
+ggplot(data, aes(x = année, y = population, color = espèce)) +
+  geom_line(data = subset(data, espèce == "Plumifloron Azuré")) +  # Courbe pour Plumifloron Azuré
+  geom_line(data = subset(data, espèce == "Taurillon Rubicond")) +   # Points pour Taurillon Rubicond
+  geom_line(data = subset(data, espèce == "Luminéon Écarlate")) +    # Ligne en escalier pour lLuminéon Écarlate
+  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) +    # Fixation de l'axe des X
+  scale_y_continuous(limits = c(0, 175)) +                          # Fixation de l'axe des Y
+  labs(
+    title = "Évolution des populations animales (2010-2019)",
+    x = "Année",
+    y = "Population",
+    color = "Espèces"
+  ) +
+  theme_minimal()+
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.2, 0.9)) 
+```
+
+1. Créez la section closeRead
+
+Vous créez une section closeRead où vous mettez dedans : 
+ 
+- des stickies correspondant à vos graphiques
+- des textes pour les triggers
+
+Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un texte par espèce.
+Nous avons donc également 3 stickies : un premier graphique vide sans aucun geom_line, puis on ajoute un geom_line dans chacun des autres stickies correspondant à chacun des textes en triggers.
+
+L'exemple [5-scroll-graph-ggplot.qmd]("./example_formation/5-scroll-graph-ggplot.qmd") vous montrera l'implémentation.
+
+::: {.callout-tip}
+Nous avons choisi un affichage des courbes en scrollant avec la souris. Vous pouvez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !
+:::
+
+
+::: {.callout-tip}
+Vous pouvez jouer sur la taille du graphique affiché directement dans les options de quarto: fig-width et fig-height à définir dans les options du chunk.
+:::
+
 ## Modification du thème [intermédiaire]{.class key="inter"}
 
-## Scroll sur des graphs ou cartes Javascript [avandé]{.class key="hard"}
+## Scroll sur des graphs ou cartes Javascript [avancé]{.class key="hard"}
 
-## Déploiement sur Github Pages [avandé]{.class key="hard"}
+## Déploiement sur Github Pages [avancé]{.class key="hard"}
 
 
 

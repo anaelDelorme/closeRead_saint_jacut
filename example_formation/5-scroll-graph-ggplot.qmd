@@ -1,0 +1,165 @@
+---
+title: "Ma super dataviz"
+author: "Moi"
+format: closeread-html
+---
+
+```{r setup}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+
+library(ggplot2)
+
+# Création des données simulées
+set.seed(42)
+data <- data.frame(
+  année = rep(2010:2019, 3),
+  population = c(
+    100 + cumsum(rnorm(10, mean = 5, sd = 3)),  # Plumifloron Azuré
+    40 + cumsum(rnorm(10, mean = -2, sd = 4)), # Taurillon Rubicond
+    80 + cumsum(rnorm(10, mean = 3, sd = 2))    # Luminéon Écarlate
+  ),
+  espèce = rep(c("Plumifloron Azuré", "Taurillon Rubicond", "Luminéon Écarlate"), each = 10)
+)
+```
+
+::::{.cr-section}
+
+
+Au fil du temps, différentes populations animales connaissent des évolutions singulières, influencées par leur environnement, leur régime alimentaire et leurs interactions avec d'autres espèces.
+Dans ce graphique, nous allons observer trois espèces fictives et fascinantes : le Plumifloron Azuré, le Taurillon Rubicond, et le Luminéon Écarlate, chacune ayant une dynamique de population unique entre 2010 et 2019. @cr-graph_vide
+
+**Le Plumifloron Azuré, symbole de résilience et de croissance.**
+Cette créature aux plumes irisées, que l'on trouve dans les forêts mystiques, a vu sa population croître régulièrement. Grâce à une abondance de ressources alimentaires et à l'absence de prédateurs majeurs, le Plumifloron Azuré est devenu un exemple d'adaptation réussie. Sa courbe reflète une montée en puissance constante au cours de la décennie. @cr-graph_1
+
+**Le Taurillon Rubicond, un survivant des plaines austères.**
+Partant d’une population modeste de seulement 20 individus en 2010, cette espèce robuste a dû surmonter des défis écologiques considérables. Connu pour sa capacité à trouver des nutriments dans des sols arides, le Taurillon Rubicond montre une trajectoire plus hésitante, marquée par des fluctuations importantes. Chaque point de cette courbe raconte l’histoire de sa lutte pour la survie. @cr-graph_2
+
+**Le Luminéon Écarlate, une étoile montante des lagons féeriques.**
+Le Luminéon Écarlate, petit poisson lumineux des eaux cristallines, a vu sa population croître par paliers, suivant des cycles reproductifs bien définis. Sa courbe, en forme d'escalier, traduit des moments d'explosion démographique suivis de périodes plus stables. Une espèce qui brille, au sens propre comme au figuré, dans cet écosystème fragile. @cr-graph_fin
+
+:::{#cr-graph_vide}
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 8
+
+
+# Graphique avec un geom par courbe et axes fixes
+ggplot(data, aes(x = année, y = population, color = espèce)) +
+  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) +    # Fixation de l'axe des X
+  scale_y_continuous(limits = c(0, 175)) +                          # Fixation de l'axe des Y
+  labs(
+    title = "Évolution des populations animales (2010-2019)",
+    x = "Année",
+    y = "Population",
+    color = "Espèces"
+  ) +
+  theme_minimal()+
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.2, 0.9)) 
+```
+:::
+
+:::{#cr-graph_1}
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 8
+
+
+# Graphique avec un geom par courbe et axes fixes
+ggplot(data, aes(x = année, y = population, color = espèce)) +
+  geom_line(data = subset(data, espèce == "Plumifloron Azuré")) +  # Courbe pour Plumifloron Azuré
+  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) +    # Fixation de l'axe des X
+  scale_y_continuous(limits = c(0, 175)) +                          # Fixation de l'axe des Y
+  labs(
+    title = "Évolution des populations animales (2010-2019)",
+    x = "Année",
+    y = "Population",
+    color = "Espèces"
+  ) +
+  theme_minimal()+
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.2, 0.9)) 
+```
+:::
+
+
+:::{#cr-graph_2}
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 8
+
+
+# Graphique avec un geom par courbe et axes fixes
+ggplot(data, aes(x = année, y = population, color = espèce)) +
+  geom_line(data = subset(data, espèce == "Plumifloron Azuré")) +  # Courbe pour Plumifloron Azuré
+  geom_line(data = subset(data, espèce == "Taurillon Rubicond")) +   # Points pour Taurillon Rubicond
+  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) +    # Fixation de l'axe des X
+  scale_y_continuous(limits = c(0, 175)) +                          # Fixation de l'axe des Y
+  labs(
+    title = "Évolution des populations animales (2010-2019)",
+    x = "Année",
+    y = "Population",
+    color = "Espèces"
+  ) +
+  theme_minimal()+
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.2, 0.9)) 
+```
+:::
+
+
+:::{#cr-graph_fin}
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 8
+
+
+# Graphique avec un geom par courbe et axes fixes
+ggplot(data, aes(x = année, y = population, color = espèce)) +
+  geom_line(data = subset(data, espèce == "Plumifloron Azuré")) +  # Courbe pour Plumifloron Azuré
+  geom_line(data = subset(data, espèce == "Taurillon Rubicond")) +   # Points pour Taurillon Rubicond
+  geom_line(data = subset(data, espèce == "Luminéon Écarlate")) +    # Ligne en escalier pour lLuminéon Écarlate
+  scale_x_continuous(limits = c(2010, 2019), breaks = 2010:2019) +    # Fixation de l'axe des X
+  scale_y_continuous(limits = c(0, 175)) +                          # Fixation de l'axe des Y
+  labs(
+    title = "Évolution des populations animales (2010-2019)",
+    x = "Année",
+    y = "Population",
+    color = "Espèces"
+  ) +
+  theme_minimal()+
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(.2, 0.9)) 
+```
+:::
+
+
+
+::::
