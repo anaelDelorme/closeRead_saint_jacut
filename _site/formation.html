@@ -74,9 +74,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
-<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
-<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,11 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta cr-debug-mode="false">
-<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -148,12 +143,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#formation-closeread" id="toc-formation-closeread" class="nav-link active" data-scroll-target="#formation-closeread">Formation Closeread</a>
+  <ul class="collapse">
+  <li><a href="#objectif" id="toc-objectif" class="nav-link" data-scroll-target="#objectif">Objectif</a></li>
+  <li><a href="#déroulement" id="toc-déroulement" class="nav-link" data-scroll-target="#déroulement">Déroulement</a></li>
+  <li><a href="#prérequis" id="toc-prérequis" class="nav-link" data-scroll-target="#prérequis">Prérequis</a></li>
+  </ul></li>
+  <li><a href="#storyboard---réfléchir-avant-de-plonger" id="toc-storyboard---réfléchir-avant-de-plonger" class="nav-link" data-scroll-target="#storyboard---réfléchir-avant-de-plonger">Storyboard - réfléchir avant de plonger</a></li>
+  <li><a href="#initialisation-facile" id="toc-initialisation-facile" class="nav-link" data-scroll-target="#initialisation-facile">Initialisation <span class="class" data-key="easy">facile</span></a></li>
+  <li><a href="#squelette-de-la-viz-facile" id="toc-squelette-de-la-viz-facile" class="nav-link" data-scroll-target="#squelette-de-la-viz-facile">Squelette de la viz <span class="class" data-key="easy">facile</span></a></li>
+  <li><a href="#scroll-sur-images-facile" id="toc-scroll-sur-images-facile" class="nav-link" data-scroll-target="#scroll-sur-images-facile">Scroll sur images <span class="class" data-key="easy">facile</span></a>
+  <ul class="collapse">
+  <li><a href="#etape-1---chargement-des-textes-et-des-images" id="toc-etape-1---chargement-des-textes-et-des-images" class="nav-link" data-scroll-target="#etape-1---chargement-des-textes-et-des-images">Etape 1 - chargement des textes et des images</a></li>
+  <li><a href="#etape-2---ajout-dune-section-closeread" id="toc-etape-2---ajout-dune-section-closeread" class="nav-link" data-scroll-target="#etape-2---ajout-dune-section-closeread">Etape 2 - ajout d’une section closeread</a></li>
+  <li><a href="#etape-3---choix-des-éléments-de-défilement-et-darrière-plan" id="toc-etape-3---choix-des-éléments-de-défilement-et-darrière-plan" class="nav-link" data-scroll-target="#etape-3---choix-des-éléments-de-défilement-et-darrière-plan">Etape 3 - choix des éléments de défilement et d’arrière plan</a></li>
+  </ul></li>
+  <li><a href="#eléments-de-focus-pour-une-image-facile" id="toc-eléments-de-focus-pour-une-image-facile" class="nav-link" data-scroll-target="#eléments-de-focus-pour-une-image-facile">Eléments de focus pour une image <span class="class" data-key="easy">facile</span></a>
+  <ul class="collapse">
+  <li><a href="#mise-à-léchelle-scale-by" id="toc-mise-à-léchelle-scale-by" class="nav-link" data-scroll-target="#mise-à-léchelle-scale-by">Mise à l’échelle : <strong>scale-by</strong></a></li>
+  <li><a href="#déplacement-pan-to" id="toc-déplacement-pan-to" class="nav-link" data-scroll-target="#déplacement-pan-to">Déplacement : <strong>pan-to</strong></a></li>
+  <li><a href="#combinaison-deffets" id="toc-combinaison-deffets" class="nav-link" data-scroll-target="#combinaison-deffets">Combinaison d’effets</a></li>
+  <li><a href="#exemple" id="toc-exemple" class="nav-link" data-scroll-target="#exemple">Exemple</a></li>
+  </ul></li>
+  <li><a href="#scroll-sur-du-texte-intermédiaire" id="toc-scroll-sur-du-texte-intermédiaire" class="nav-link" data-scroll-target="#scroll-sur-du-texte-intermédiaire">Scroll sur du texte <span class="class" data-key="inter">intermédiaire</span></a>
+  <ul class="collapse">
+  <li><a href="#zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to" id="toc-zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to" class="nav-link" data-scroll-target="#zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to">Zoom sur une ligne ou un élément spécifique : <strong>zoom-to</strong></a></li>
+  <li><a href="#mise-en-surbrillance-highlight" id="toc-mise-en-surbrillance-highlight" class="nav-link" data-scroll-target="#mise-en-surbrillance-highlight">Mise en surbrillance : <strong>highlight</strong></a></li>
+  <li><a href="#cas-particulier-de-code" id="toc-cas-particulier-de-code" class="nav-link" data-scroll-target="#cas-particulier-de-code">Cas particulier de code</a></li>
+  </ul></li>
+  <li><a href="#scroll-sur-un-graphique-en-r-intermédiaire" id="toc-scroll-sur-un-graphique-en-r-intermédiaire" class="nav-link" data-scroll-target="#scroll-sur-un-graphique-en-r-intermédiaire">Scroll sur un graphique en R <span class="class" data-key="inter">intermédiaire</span></a></li>
+  <li><a href="#modification-du-thème-intermédiaire" id="toc-modification-du-thème-intermédiaire" class="nav-link" data-scroll-target="#modification-du-thème-intermédiaire">Modification du thème <span class="class" data-key="inter">intermédiaire</span></a>
+  <ul class="collapse">
+  <li><a href="#thèmes-quarto" id="toc-thèmes-quarto" class="nav-link" data-scroll-target="#thèmes-quarto">Thèmes quarto</a></li>
+  <li><a href="#mise-en-page-des-éléments-textuels" id="toc-mise-en-page-des-éléments-textuels" class="nav-link" data-scroll-target="#mise-en-page-des-éléments-textuels">Mise en page des éléments textuels</a></li>
+  <li><a href="#layouts-closeread" id="toc-layouts-closeread" class="nav-link" data-scroll-target="#layouts-closeread">Layouts CloseRead</a></li>
+  <li><a href="#thèmes-et-mise-en-page-closeread" id="toc-thèmes-et-mise-en-page-closeread" class="nav-link" data-scroll-target="#thèmes-et-mise-en-page-closeread">Thèmes et mise en page CloseRead</a></li>
+  <li><a href="#mise-en-page-closeread-en-css" id="toc-mise-en-page-closeread-en-css" class="nav-link" data-scroll-target="#mise-en-page-closeread-en-css">Mise en page CloseRead en CSS</a></li>
+  </ul></li>
+  <li><a href="#scroll-sur-des-graphs-ou-cartes-javascript-avancé" id="toc-scroll-sur-des-graphs-ou-cartes-javascript-avancé" class="nav-link" data-scroll-target="#scroll-sur-des-graphs-ou-cartes-javascript-avancé">Scroll sur des graphs ou cartes Javascript <span class="class" data-key="hard">avancé</span></a></li>
+  <li><a href="#déploiement-sur-github-pages-avancé" id="toc-déploiement-sur-github-pages-avancé" class="nav-link" data-scroll-target="#déploiement-sur-github-pages-avancé">Déploiement sur Github Pages <span class="class" data-key="hard">avancé</span></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -162,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -547,12 +588,14 @@ Tip
 <section id="zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to" class="level3">
 <h3 class="anchored" data-anchor-id="zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to">Zoom sur une ligne ou un élément spécifique : <strong>zoom-to</strong></h3>
 <p>Uniquement si le sticky est du code ou une ligne, il est possible de zoomer directement sur une ligne ou un span identifié.</p>
-<p><code>[@cr-mycontent]{zoom-to="3"}</code> : zoom sur la ligne 3 <code>[@cr-mycontent]{zoom-to="cr-span1"}</code> : zoom sur la ligne dont l’id est cr-span1</p>
+<p><code>[@cr-mycontent]{zoom-to="3"}</code> : zoom sur la ligne 3<br>
+<code>[@cr-mycontent]{zoom-to="cr-span1"}</code> : zoom sur la ligne dont l’id est cr-span1</p>
 </section>
 <section id="mise-en-surbrillance-highlight" class="level3">
 <h3 class="anchored" data-anchor-id="mise-en-surbrillance-highlight">Mise en surbrillance : <strong>highlight</strong></h3>
 <p>Pour mettre en surbrillance du texte, vous pouvez utiliser le focus highlight :</p>
-<p><code>[@cr-mycontent]{highlight="3-6"}</code> : mise en surbrillance des lignes 3 à 6 <code>[@cr-mycontent]{highlight="cr-span1"}</code> : zoom sur les lignes dont l’id est cr-span1</p>
+<p><code>[@cr-mycontent]{highlight="3-6"}</code> : mise en surbrillance des lignes 3 à 6<br>
+<code>[@cr-mycontent]{highlight="cr-span1"}</code> : zoom sur les lignes dont l’id est cr-span1</p>
 </section>
 <section id="cas-particulier-de-code" class="level3">
 <h3 class="anchored" data-anchor-id="cas-particulier-de-code">Cas particulier de code</h3>
@@ -576,10 +619,31 @@ Tip
 <section id="scroll-sur-un-graphique-en-r-intermédiaire" class="level2">
 <h2 class="anchored" data-anchor-id="scroll-sur-un-graphique-en-r-intermédiaire">Scroll sur un graphique en R <span class="class" data-key="inter">intermédiaire</span></h2>
 <p>Dans le datascrollytelling, l’utilisation de graphiques dynamiques constitue un puissant moyen de capter l’attention du lecteur et de transmettre des informations complexes de manière progressive. L’objectif est de synchroniser le texte défilant avec des visualisations interactives pour que les bonnes explications apparaissent au moment où les données pertinentes sont mises en avant. CloseRead facilite cette synchronisation en combinant des graphiques ggplot en “stickies” et des triggers en texte.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous n’avez pas envie de faire du ggplot, vous pouvez créer des graphiques dans un autre outil (datawrapper par exemple) et les exporter au format image. Ensuite il ne reste plus qu’à scroller ou zoomer comment pour les images.</p>
+</div>
+</div>
 <ol type="1">
 <li>Créez le graphique complet en ggplot - écrivez les texte</li>
 </ol>
-<p>Pour commencer vous devez créer votre graphique complet avec toutes les courbes. Pensez à définir les axes en fixant le min et le max : les axes ne bougeront pas quelque soient les données à afficher. De même intégrez la légende dans le graphique pour éviter que la taille de la légende fasse bouger la largeur du graphique. Rédiger par ailleurs les textes que vous souhaitez afficher.</p>
+<p>Pour commencer vous devez créer votre graphique complet avec toutes les courbes. Pour que le scroll fasse apparaitre proprement les courbes il faut au préalable :</p>
+<ul>
+<li>Pensez à définir les axes en fixant le min et le max : les axes ne bougeront pas quelque soient les données à afficher.<br>
+</li>
+<li>Fixez la couleur des courbes pour qu’elles soient identiques quelque soit le scroll. Par exemple en faisant un <code>scale_color_manual(values = couleurs_especes)</code>.<br>
+</li>
+<li>Intégrez la légende dans le graphique pour éviter que la taille de la légende fasse bouger la largeur du graphique.</li>
+</ul>
+<p>Rédigez par ailleurs les textes que vous souhaitez afficher.</p>
 <p>Voilà un exemple du code ggpglot :</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargement de ggplot2</span></span>
@@ -594,37 +658,58 @@ Tip
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">40</span> <span class="sc">+</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">4</span>)), <span class="co"># Taurillon Rubicond</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">80</span> <span class="sc">+</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="dv">2</span>))    <span class="co"># Luminéon Écarlate</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  espèce <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Plumifloron Azuré"</span>, <span class="st">"Taurillon Rubicond"</span>, <span class="st">"Luminéon Écarlate"</span>), <span class="at">each =</span> <span class="dv">10</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Graphique avec un geom par courbe et axes fixes</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> année, <span class="at">y =</span> population, <span class="at">color =</span> espèce)) <span class="sc">+</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Plumifloron Azuré"</span>)) <span class="sc">+</span>  <span class="co"># Courbe pour Plumifloron Azuré</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Taurillon Rubicond"</span>)) <span class="sc">+</span>   <span class="co"># Points pour Taurillon Rubicond</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Luminéon Écarlate"</span>)) <span class="sc">+</span>    <span class="co"># Ligne en escalier pour lLuminéon Écarlate</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">2019</span>), <span class="at">breaks =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2019</span>) <span class="sc">+</span>    <span class="co"># Fixation de l'axe des X</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">175</span>)) <span class="sc">+</span>                          <span class="co"># Fixation de l'axe des Y</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Évolution des populations animales (2010-2019)"</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Année"</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population"</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Espèces"</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"inside"</span>,</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position.inside =</span> <span class="fu">c</span>(.<span class="dv">2</span>, <span class="fl">0.9</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  espèce <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Plumifloron Azuré"</span>, </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"Taurillon Rubicond"</span>, </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"Luminéon Écarlate"</span>), <span class="at">each =</span> <span class="dv">10</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># On fixe les couleurs</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>couleurs_especes <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Plumifloron Azuré"</span> <span class="ot">=</span> <span class="st">"#1E90FF"</span>,     </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Taurillon Rubicond"</span> <span class="ot">=</span> <span class="st">"#FF4500"</span>,    </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Luminéon Écarlate"</span> <span class="ot">=</span> <span class="st">"#32CD32"</span>     </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Graphique avec un geom par courbe et axes fixes</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> année, <span class="at">y =</span> population, <span class="at">color =</span> espèce)) <span class="sc">+</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Plumifloron Azuré"</span>)) <span class="sc">+</span>  </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Taurillon Rubicond"</span>)) <span class="sc">+</span>   </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, espèce <span class="sc">==</span> <span class="st">"Luminéon Écarlate"</span>)) <span class="sc">+</span>   </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">2019</span>), <span class="at">breaks =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2019</span>) <span class="sc">+</span> </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">175</span>)) <span class="sc">+</span>    </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> couleurs_especes) <span class="sc">+</span>  </span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Évolution des populations animales (2010-2019)"</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Année"</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population"</span>,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Espèces"</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">2</span>, <span class="fl">0.9</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol type="1">
+<ol start="2" type="1">
 <li>Créez la section closeRead</li>
 </ol>
 <p>Vous créez une section closeRead où vous mettez dedans :</p>
 <ul>
-<li>des stickies correspondant à vos graphiques</li>
+<li>des stickies correspondant à vos graphiques (donc des stickies qui englobent chacun un chunk R)</li>
 <li>des textes pour les triggers</li>
 </ul>
-<p>Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un texte par espèce. Nous avons donc également 3 stickies : un premier graphique vide sans aucun geom_line, puis on ajoute un geom_line dans chacun des autres stickies correspondant à chacun des textes en triggers.</p>
-<p>L’exemple <a href="&quot;./example_formation/5-scroll-graph-ggplot.qmd&quot;">5-scroll-graph-ggplot.qmd</a> vous montrera l’implémentation.</p>
+<p>Dans notre exemple, nous avons 4 textes : un texte de présentation, puis un texte par espèce. Nous avons donc également 4 stickies : un premier stocky qui comprend un chunk avec un graphique vide sans aucun geom_line, puis pour chacun des 3 autres stickies on ajoute à chaque fois un geom_line. Il ne reste plus qu’à faire coïncider les stickies et les triggers.</p>
+<p>L’exemple <a href="./example_formation/5-scroll-graph-ggplot.html">5-scroll-graph-ggplot.qmd</a> vous montrera l’implémentation.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nous avons choisi que le scroll permet d’afficher progressivement chacune des courbes. Vous pourriez aussi jouer sur la taille des courbes ou leurs couleurs. Le principe reste le même !</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -641,12 +726,150 @@ Tip
 </section>
 <section id="modification-du-thème-intermédiaire" class="level2">
 <h2 class="anchored" data-anchor-id="modification-du-thème-intermédiaire">Modification du thème <span class="class" data-key="inter">intermédiaire</span></h2>
+<p>Une datavisualisation efficace combine clarté des données et esthétique soignée. Pour cela, Quarto et CloseRead offrent des outils complémentaires : le premier permet une gestion globale du thème et la mise en page des éléments textuels, tandis que le second fournit des options pour personnaliser et enrichir la présentation dynamique.</p>
+<section id="thèmes-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="thèmes-quarto">Thèmes quarto</h3>
+<p>Par défaut, quarto propose 25 thèmes de rendu <a href="https://quarto.org/docs/output-formats/html-themes.html">Voir HTML Theming dans la doc quarto</a>.</p>
+<p>Dans l’entête yaml du document quarto, tentez simplement de paramétrer le thème. Par exemple, reprenez votre entente et mettez :</p>
+<pre><code>---
+title: "Ma super dataviz"
+author: "Moi"
+format: 
+  closeread-html:
+    theme: cyborg
+---</code></pre>
+<p>Il est possible de venir surcharger le thème en changeant la taille de la police, la couleur de fond, ect… Par exemple :</p>
+<pre><code>---
+title: "Ma super dataviz"
+author: "Moi"
+format: 
+  closeread-html:
+    theme: cyborg
+    backgroundcolor: darkslateblue
+    fontsize: 1.4em
+---</code></pre>
+<p>Vous constaterez que seules les parties hors section closeRead sont impactées. C’est déjà un bon début.</p>
 </section>
-<section id="scroll-sur-des-graphs-ou-cartes-javascript-avandé" class="level2">
-<h2 class="anchored" data-anchor-id="scroll-sur-des-graphs-ou-cartes-javascript-avandé">Scroll sur des graphs ou cartes Javascript <span class="class" data-key="hard">avandé</span></h2>
+<section id="mise-en-page-des-éléments-textuels" class="level3">
+<h3 class="anchored" data-anchor-id="mise-en-page-des-éléments-textuels">Mise en page des éléments textuels</h3>
+<p>Quarto permet le formatage classique de markdown :</p>
+<ul>
+<li><p>Police : <code>*italics*, **bold**, ***bold italics***</code></p></li>
+<li><p>Titres : <code># Header 1, ## Header 2, ### Header 3...</code></p></li>
+<li><p>Listes : <code>* unordered list     + sub-item 1     + sub-item 2         - sub-sub-item 1</code></p></li>
+</ul>
+<p>Quarto permet également de créer des blocs avec des mises en forme spécifiques. Pour cela il faut créer une section et lui dire quel style appliqué selon les 5 possibilités : <code>note</code>, <code>tip</code>, <code>warning</code>, <code>caution</code>, and <code>important</code>. Par exemple :</p>
+<pre><code>:::{.callout-note}
+Ceci est une note !
+:::
+
+:::{.callout-tip}
+Et là une astuce
+:::
+
+:::{.callout-warning title="Attention attention"}
+Maintenant un bloc d'attention avec un titre
+:::
+</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ces blocs ne semblent pas bien fonctionner dans le texte qui défile en Closeread.</p>
+</div>
+</div>
 </section>
-<section id="déploiement-sur-github-pages-avandé" class="level2">
-<h2 class="anchored" data-anchor-id="déploiement-sur-github-pages-avandé">Déploiement sur Github Pages <span class="class" data-key="hard">avandé</span></h2>
+<section id="layouts-closeread" class="level3">
+<h3 class="anchored" data-anchor-id="layouts-closeread">Layouts CloseRead</h3>
+<p>Par défaut le défilement se fait à gauche avec l’image/texte/graphique qui reste à droite. En closeread on dit que le layout est “sidebar-left”. Pour le changer on peut soit le définir pour toute la page, soit pour une section en particulier.</p>
+<p>Si vous voulez le changer pour toute la page, vous l’indiquez dans le yaml en entête :</p>
+<pre><code>---
+title: "Ma super dataviz"
+author: "Moi"
+format: 
+  closeread-html:
+    theme: cyborg
+    backgroundcolor: darkslateblue
+    fontsize: 1.4em
+    cr-section:
+      layout: "overlay-center"
+---</code></pre>
+<p>Pour le définir juste sur une section, vous devez l’indiquer à la création de la section :</p>
+<pre><code>:::{.cr-section layout="overlay-center"}
+
+
+//// le contenu de la section ici...
+
+:::</code></pre>
+<p>Les options de layout sont</p>
+<ul>
+<li>sidebar-left (par défaut)</li>
+<li>sidebar-right</li>
+<li>overlay-left</li>
+<li>overlay-center</li>
+<li>overlay-right</li>
+</ul>
+</section>
+<section id="thèmes-et-mise-en-page-closeread" class="level3">
+<h3 class="anchored" data-anchor-id="thèmes-et-mise-en-page-closeread">Thèmes et mise en page CloseRead</h3>
+<p>Les aspects de rendu spécifiques de Closeread se paramètrent dans l’entête dans la clé cr-style. Par exemple :</p>
+<pre><code>---
+title: "Ma super dataviz"
+author: "Moi"
+format: 
+  closeread-html:
+    theme: cyborg
+    backgroundcolor: darkslateblue
+    fontsize: 1.4em
+    cr-section:
+      layout: "overlay-center"
+    cr-style:
+      narrative-background-color-sidebar: darkslateblue
+      narrative-text-color-sidebar: white
+      section-background-color: darkslateblue
+      narrative-background-color-overlay: violet
+      narrative-text-color-overlay: black
+---</code></pre>
+<p>Dans cet exemple, j’ai passé tout le fond en violet aussi bien pour la partie de gauche où le texte scrolle que pour la partie centrale. Pour le texte qui vient se mettre par dessus l’image, j’ai mis une couleur violette et un texte en noir. Les autres options sont disponibles sur le <a href="https://closeread.dev/guide/styling.html">site de documentation CloseRead</a>.</p>
+</section>
+<section id="mise-en-page-closeread-en-css" class="level3">
+<h3 class="anchored" data-anchor-id="mise-en-page-closeread-en-css">Mise en page CloseRead en CSS</h3>
+<p>Pour aller plus loin dans la mise en page, vous pouvez définir des éléments de feuilles de style dans votre document quarto. Par exemple, créez un chunk de type ```{=html} :</p>
+<pre><code>&lt;!-- some quick style customisation: see https://closeread.dev/guide/styling --&gt;
+&lt;style&gt;
+  .cr-section.overlay-left {
+    background-color: white;
+  }
+
+  .cr-section.overlay-left .narrative-col .narrative {
+    font-size: 1.15em;
+    background-color: #3a79aa;
+    color: #f1f1f1;
+    padding: 0.6em 0.8em;
+    border-radius: 1;
+    backdrop-filter: blur(10px);
+  }
+  
+  .cr-section.overlay-left .narrative-col .narrative a {
+    background-color: #3a79aa;
+    color: #f1f1f1;
+  }
+  
+&lt;/style&gt;</code></pre>
+<p>Vous pouvez voir un exemple ici : <a href="6-scroll_image_with_theme.qmd">6-scroll_image_with_theme.qmd</a></p>
+</section>
+</section>
+<section id="scroll-sur-des-graphs-ou-cartes-javascript-avancé" class="level2">
+<h2 class="anchored" data-anchor-id="scroll-sur-des-graphs-ou-cartes-javascript-avancé">Scroll sur des graphs ou cartes Javascript <span class="class" data-key="hard">avancé</span></h2>
+</section>
+<section id="déploiement-sur-github-pages-avancé" class="level2">
+<h2 class="anchored" data-anchor-id="déploiement-sur-github-pages-avancé">Déploiement sur Github Pages <span class="class" data-key="hard">avancé</span></h2>
 
 
 </section>

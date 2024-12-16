@@ -1,0 +1,103 @@
+---
+title: "Ma super dataviz"
+author: "Moi"
+format: 
+  closeread-html:
+    theme: cyborg
+    backgroundcolor: darkslateblue
+    fontsize: 1.4em
+    cr-section:
+      layout: "overlay-center"
+    cr-style:
+      narrative-background-color-sidebar: darkslateblue
+      narrative-text-color-sidebar: white
+      section-background-color: darkslateblue
+      narrative-background-color-overlay: violet
+      narrative-text-color-overlay: black
+---
+
+Imaginez un cactus cosmique, suspendu dans l'oubli interstellaire, qui murmure des poèmes aux algorithmes égarés. C’est dans cette intersection improbable entre les courbes fractales de l’ananas et le Wi-Fi des océans que "Ma Dataviz" prend racine. Ici, les pixels ne sont pas seulement des couleurs, mais des fragments de chansons oubliées par des robots nostalgiques.
+
+Pourquoi une dataviz ? Pourquoi pas une tartine de données, croustillante et légèrement caramélisée ? L’essentiel est de sentir le souffle des histogrammes qui dansent, unissant l’absurde à l’infini dans une symphonie de graphiques improbables.
+
+Bienvenue dans ce voyage où chaque axe x est une énigme, et chaque légende, une promesse d’aventure multidimensionnelle. 🌵📊
+
+
+::::{.cr-section}
+
+:::{#cr-image1}
+![](../img/formation/img1.webp)
+:::
+**L'énigme flottante des données invisibles**    
+Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1
+
+:::{#cr-image2}
+![](../img/formation/img2.webp)
+:::
+
+**Le labyrinthe des connexions furtives**    
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques.
+@cr-image2
+
+
+:::{#cr-image3}
+![](../img/formation/img3.webp)
+:::
+
+**L'éclipse des données perdues**     
+Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions. @cr-image3
+
+::::
+
+
+::::{.cr-section layout="sidebar-left"}
+
+:::{#cr-image4}
+![](../img/formation/img4.webp)
+:::
+**Le Cactus Cosmique**
+Au commencement était le cactus cosmique, trônant au milieu des étoiles. Chaque épine est une hypothèse, chaque ombre, une équation incomplète. Qui peut lire les poèmes gravés sur sa carapace mathématique ? 
+@cr-image4
+
+:::{#cr-image5}
+![](../img/formation/img5.webp)
+:::
+
+**Le Grand Labyrinthe des Constellations**
+Un scatterplot, mais pas comme les autres : ici, les points se transforment en étoiles filantes. Les lignes se croisent, murmurant des vérités anciennes oubliées par les statisticiens modernes.
+@cr-image5
+
+
+:::{#cr-image6}
+![](../img/formation/img6.webp)
+:::
+
+**L’Axe Infinitoïde**
+Les axes, fatigués d’être linéaires, se sont rebellés pour former des spirales infinies. Les orbes lumineuses suivent des trajectoires qui défient la raison, comme autant de pensées errantes dans l’abîme des probabilités. @cr-image6
+
+::::
+
+
+# L'art du scatterplot philosophique
+
+
+Il y a des lieux où les équations dansent, où les pixels chantent des sonates absconses, et où les axes x et y se contorsionnent dans une quête existentielle. Bienvenue dans l’univers du scatterplot philosophique, un territoire où le sens se perd et se réinvente à chaque tournant fractal. Voici trois visions illustrant cette odyssée graphique :
+
+
+
+
+# Quand les courbes prennent vie : la danse des graphiques
+
+:::{.callout-note}
+Ceci est une note !
+:::
+
+:::{.callout-tip}
+Et là une astuce
+:::
+
+:::{.callout-warning title="Attention attention"}
+Maintenant un bloc d'attention avec un titre
+:::
+
+
