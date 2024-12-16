@@ -193,6 +193,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#scroll-sur-des-graphs-ou-cartes-javascript-avancé" id="toc-scroll-sur-des-graphs-ou-cartes-javascript-avancé" class="nav-link" data-scroll-target="#scroll-sur-des-graphs-ou-cartes-javascript-avancé">Scroll sur des graphs ou cartes Javascript <span class="class" data-key="hard">avancé</span></a>
   <ul class="collapse">
   <li><a href="#base-des-blocs-ojs" id="toc-base-des-blocs-ojs" class="nav-link" data-scroll-target="#base-des-blocs-ojs">Base des blocs ojs</a></li>
+  <li><a href="#intéraction-ojs-et-closeread" id="toc-intéraction-ojs-et-closeread" class="nav-link" data-scroll-target="#intéraction-ojs-et-closeread">Intéraction ojs et closeread</a></li>
+  <li><a href="#scroll-dans-un-progress-block" id="toc-scroll-dans-un-progress-block" class="nav-link" data-scroll-target="#scroll-dans-un-progress-block">Scroll dans un progress-block</a></li>
   <li><a href="#cartes" id="toc-cartes" class="nav-link" data-scroll-target="#cartes">Cartes</a></li>
   </ul></li>
   <li><a href="#déploiement-sur-github-pages-avancé" id="toc-déploiement-sur-github-pages-avancé" class="nav-link" data-scroll-target="#déploiement-sur-github-pages-avancé">Déploiement sur Github Pages <span class="class" data-key="hard">avancé</span></a></li>
@@ -878,103 +880,24 @@ format:
 <h3 class="anchored" data-anchor-id="base-des-blocs-ojs">Base des blocs ojs</h3>
 <p>Nativement Quarto d’intégrer des chunks ojs de la même manière que des chunks r ou python. Pour obtenir le rendu d’un chunk ojs il faut lancer le rendu de la page complète (le run du seul chunk ne suffit pas).</p>
 <p>Voici un exemple très simple en utilisant un plot Observable <a href="https://observablehq.com/plot/">Voir Observable plot</a> :</p>
-<pre><code>```{ojs}
-//| echo: false
-
-gistemp = FileAttachment("gistemp.csv").csv({typed: true})
-
-Plot.plot({
-  y: {
-    grid: true,
-    tickFormat: "+f",
-    label: "↑ Surface temperature anomaly (°C)"
-  },
-  color: {
-    scheme: "BuRd",
-    legend: true
-  },
-  marks: [
-    Plot.ruleY([0]),
-    Plot.dot(gistemp, {x: "Date", y: "Anomaly", stroke: "Anomaly"})
-  ]
-})
-</code></pre>
-<pre><code>
-:::{callout-tip}
-Par défaut le code {ojs} est affiché. Pour l'enlever il faut ajouter le paramètre `//| echo: false` ou mettre dans l'entête yaml :
-execute:     
-   echo: false
-:::
-
-En savoir sur le [site de documentation Quarto](https://quarto.org/docs/interactive/ojs/)
-
-### Intéraction ojs et closeread
-
-Quand on regarde le graphique généré sur les anomalies de température depuis 1860, on pourrait avoir envie de parler de trois périodes et d'afficher les données selon ces trois périodes. Pour cela closeread propose une variable qui s'incrémente au fur à mesure du scroll. Il s'agit de crTriggerIndex. 
-
-Le premier texte qui scrolle correspond à crTriggerIndex == 0, puis on passe à 1, puis 2, etc...
-
-:::callout-warning
-Le crTriggerIndex est pour tout le document, pas par cr-section. Attention si on ajoute une cr-section avant celle que l'on a configuré il faudra changer les crTriggerIndex de la section.
-:::
-
-Sachant cela il est possible de mettre à jour le graphique pour prendre en compte ce crTriggerIndex pour réduire les données aux dates précisées. 
-
-Comme on l'a vu précédemment, il fut mettre dans une section closeread comme cela : 
-</code></pre>
-<div class="cr-section">
-<p>Le premier texte à afficher sur le graphique vide <span class="citation" data-cites="cr-plot">@cr-plot</span></p>
-<p>Le second texte à afficher <span class="citation" data-cites="cr-plot">@cr-plot</span></p>
-<p>Le troisième <span class="citation" data-cites="cr-plot">@cr-plot</span></p>
-<p>Le dernier <span class="citation" data-cites="cr-plot">@cr-plot</span></p>
-<div id="cr-plot">
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="682" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 681;"><span id="cb16-682"><a href="#cb16-682" aria-hidden="true" tabindex="-1"></a>gistemp <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"gistemp.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb16-683"><a href="#cb16-683" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-684"><a href="#cb16-684" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createPlot</span>(data<span class="op">,</span> startYear<span class="op">,</span> endYear) {</span>
-<span id="cb16-685"><a href="#cb16-685" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb16-686"><a href="#cb16-686" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb16-687"><a href="#cb16-687" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"1880-01-01"</span>)<span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2016-12-01"</span>)]<span class="op">,</span> </span>
-<span id="cb16-688"><a href="#cb16-688" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"Date →"</span></span>
-<span id="cb16-689"><a href="#cb16-689" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb16-690"><a href="#cb16-690" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb16-691"><a href="#cb16-691" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.4</span>]<span class="op">,</span> </span>
-<span id="cb16-692"><a href="#cb16-692" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb16-693"><a href="#cb16-693" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tickFormat</span><span class="op">:</span> <span class="st">"+f"</span><span class="op">,</span></span>
-<span id="cb16-694"><a href="#cb16-694" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Surface temperature anomaly (°C)"</span></span>
-<span id="cb16-695"><a href="#cb16-695" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb16-696"><a href="#cb16-696" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb16-697"><a href="#cb16-697" aria-hidden="true" tabindex="-1"></a>      <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span></span>
-<span id="cb16-698"><a href="#cb16-698" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb16-699"><a href="#cb16-699" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb16-700"><a href="#cb16-700" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb16-701"><a href="#cb16-701" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb16-702"><a href="#cb16-702" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(</span>
-<span id="cb16-703"><a href="#cb16-703" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> {</span>
-<span id="cb16-704"><a href="#cb16-704" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> year <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(d<span class="op">.</span><span class="at">Date</span>)<span class="op">.</span><span class="fu">getFullYear</span>()<span class="op">;</span></span>
-<span id="cb16-705"><a href="#cb16-705" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> year <span class="op">&gt;=</span> startYear <span class="op">&amp;&amp;</span> year <span class="op">&lt;</span> endYear<span class="op">;</span></span>
-<span id="cb16-706"><a href="#cb16-706" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span> </span>
-<span id="cb16-707"><a href="#cb16-707" aria-hidden="true" tabindex="-1"></a>        {<span class="dt">x</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Anomaly"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Anomaly"</span>}</span>
-<span id="cb16-708"><a href="#cb16-708" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb16-709"><a href="#cb16-709" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
-<span id="cb16-710"><a href="#cb16-710" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">900</span>)</span>
-<span id="cb16-711"><a href="#cb16-711" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb16-712"><a href="#cb16-712" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-713"><a href="#cb16-713" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-714"><a href="#cb16-714" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> {</span>
-<span id="cb16-715"><a href="#cb16-715" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">0</span>) {</span>
-<span id="cb16-716"><a href="#cb16-716" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
-<span id="cb16-717"><a href="#cb16-717" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb16-718"><a href="#cb16-718" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">1</span>) {</span>
-<span id="cb16-719"><a href="#cb16-719" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1930</span>)<span class="op">;</span></span>
-<span id="cb16-720"><a href="#cb16-720" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">2</span>) {</span>
-<span id="cb16-721"><a href="#cb16-721" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1980</span>)<span class="op">;</span></span>
-<span id="cb16-722"><a href="#cb16-722" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">3</span>) {</span>
-<span id="cb16-723"><a href="#cb16-723" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>)<span class="op">;</span></span>
-<span id="cb16-724"><a href="#cb16-724" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb16-725"><a href="#cb16-725" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>)<span class="op">;</span> </span>
-<span id="cb16-726"><a href="#cb16-726" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb16-727"><a href="#cb16-727" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-eval="false">
+<div class="sourceCode cell-code" id="cb14" data-startfrom="682" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 681;"><span id="cb14-682"><a href="#cb14-682" aria-hidden="true" tabindex="-1"></a>gistemp <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"gistemp.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb14-683"><a href="#cb14-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-684"><a href="#cb14-684" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb14-685"><a href="#cb14-685" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb14-686"><a href="#cb14-686" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb14-687"><a href="#cb14-687" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tickFormat</span><span class="op">:</span> <span class="st">"+f"</span><span class="op">,</span></span>
+<span id="cb14-688"><a href="#cb14-688" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Surface temperature anomaly (°C)"</span></span>
+<span id="cb14-689"><a href="#cb14-689" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb14-690"><a href="#cb14-690" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb14-691"><a href="#cb14-691" aria-hidden="true" tabindex="-1"></a>    <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span></span>
+<span id="cb14-692"><a href="#cb14-692" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb14-693"><a href="#cb14-693" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb14-694"><a href="#cb14-694" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb14-695"><a href="#cb14-695" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb14-696"><a href="#cb14-696" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(gistemp<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Anomaly"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Anomaly"</span>})</span>
+<span id="cb14-697"><a href="#cb14-697" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb14-698"><a href="#cb14-698" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -984,80 +907,94 @@ Comme on l'a vu précédemment, il fut mettre dans une section closeread comme c
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
+<div id="ojs-cell-1-2" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 </div>
+<div class="{callout-tip}">
+<p>Par défaut le code {ojs} est affiché. Pour l’enlever il faut ajouter le paramètre <code>//| echo: false</code> ou mettre dans l’entête yaml : execute:<br>
+echo: false</p>
+</div>
+<p>En savoir sur le <a href="https://quarto.org/docs/interactive/ojs/">site de documentation Quarto</a></p>
+</section>
+<section id="intéraction-ojs-et-closeread" class="level3">
+<h3 class="anchored" data-anchor-id="intéraction-ojs-et-closeread">Intéraction ojs et closeread</h3>
+<p>Quand on regarde le graphique généré sur les anomalies de température depuis 1860, on pourrait avoir envie de parler de trois périodes et d’afficher les données selon ces trois périodes. Pour cela closeread propose une variable qui s’incrémente au fur à mesure du scroll. Il s’agit de crTriggerIndex.</p>
+<p>Le premier texte qui scrolle correspond à crTriggerIndex == 0, puis on passe à 1, puis 2, etc…</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
 </div>
-<pre><code>
-:::callout-tip
-Pour plus de fluidité, la variable crTriggerProgress est un nombre compris entre 0 et 1 représentant la progression des scrolls dans l'ensemble du document.
-:::
+<div class="callout-body-container callout-body">
+<p>Le crTriggerIndex est pour tout le document, pas par cr-section. Attention si on ajoute une cr-section avant celle que l’on a configuré il faudra changer les crTriggerIndex de la section.</p>
+</div>
+</div>
+<p>Sachant cela il est possible de mettre à jour le graphique pour prendre en compte ce crTriggerIndex pour réduire les données aux dates précisées.</p>
+<p>Comme on l’a vu précédemment, il fut mettre dans une section closeread comme cela :</p>
+<pre><code>::::{.cr-section}
 
+Le premier texte à afficher sur le graphique vide @cr-plot
 
-### Scroll dans un progress-block
+Le second texte à afficher @cr-plot
 
-Il est possible de gérer le scroll uniquement pour une section closeread grâce au progress-block. En mettant le texte qui défile dans un progress-block, on peut jouer sur la variable crProgressBlock qui sera de 0 à 1 mais juste pour le bloc. 
+Le troisième @cr-plot
 
-Un exemple de mise en place :
+Le dernier @cr-plot
 </code></pre>
-<div class="cr-section">
-<div class="progress-block">
-<p>text1 <span class="citation" data-cites="cr-plot3">@cr-plot3</span></p>
-<p>text2 <span class="citation" data-cites="cr-plot3">@cr-plot3</span></p>
-<p>text3 <span class="citation" data-cites="cr-plot3">@cr-plot3</span></p>
-<p>text4 <span class="citation" data-cites="cr-plot3">@cr-plot3</span></p>
-<p>text5 <span class="citation" data-cites="cr-plot3">@cr-plot3</span></p>
-<p>text6 <span class="citation" data-cites="cr-plot3">@cr-plot3</span></p>
-</div>
-<div id="cr-plot3">
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="742" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 741;"><span id="cb18-742"><a href="#cb18-742" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createPlotDynamic</span>(data<span class="op">,</span> progress) {</span>
-<span id="cb18-743"><a href="#cb18-743" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> startYear <span class="op">=</span> <span class="dv">1880</span><span class="op">;</span> </span>
-<span id="cb18-744"><a href="#cb18-744" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> endYear <span class="op">=</span> <span class="dv">2024</span><span class="op">;</span> </span>
-<span id="cb18-745"><a href="#cb18-745" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-746"><a href="#cb18-746" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> dynamicYear <span class="op">=</span> startYear <span class="op">+</span> (endYear <span class="op">-</span> startYear) <span class="op">*</span> progress<span class="op">;</span></span>
-<span id="cb18-747"><a href="#cb18-747" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-748"><a href="#cb18-748" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb18-749"><a href="#cb18-749" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb18-750"><a href="#cb18-750" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"1880-01-01"</span>)<span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2016-12-01"</span>)]<span class="op">,</span> </span>
-<span id="cb18-751"><a href="#cb18-751" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"Date →"</span></span>
-<span id="cb18-752"><a href="#cb18-752" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb18-753"><a href="#cb18-753" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb18-754"><a href="#cb18-754" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.4</span>]<span class="op">,</span> </span>
-<span id="cb18-755"><a href="#cb18-755" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb18-756"><a href="#cb18-756" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tickFormat</span><span class="op">:</span> <span class="st">"+f"</span><span class="op">,</span></span>
-<span id="cb18-757"><a href="#cb18-757" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Surface temperature anomaly (°C)"</span></span>
-<span id="cb18-758"><a href="#cb18-758" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb18-759"><a href="#cb18-759" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb18-760"><a href="#cb18-760" aria-hidden="true" tabindex="-1"></a>      <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span></span>
-<span id="cb18-761"><a href="#cb18-761" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb18-762"><a href="#cb18-762" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb18-763"><a href="#cb18-763" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb18-764"><a href="#cb18-764" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb18-765"><a href="#cb18-765" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(</span>
-<span id="cb18-766"><a href="#cb18-766" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> {</span>
-<span id="cb18-767"><a href="#cb18-767" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> year <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(d<span class="op">.</span><span class="at">Date</span>)<span class="op">.</span><span class="fu">getFullYear</span>()<span class="op">;</span></span>
-<span id="cb18-768"><a href="#cb18-768" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> year <span class="op">&lt;=</span> dynamicYear<span class="op">;</span> </span>
-<span id="cb18-769"><a href="#cb18-769" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span> </span>
-<span id="cb18-770"><a href="#cb18-770" aria-hidden="true" tabindex="-1"></a>        {<span class="dt">x</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Anomaly"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Anomaly"</span>}</span>
-<span id="cb18-771"><a href="#cb18-771" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb18-772"><a href="#cb18-772" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
-<span id="cb18-773"><a href="#cb18-773" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">900</span>)</span>
-<span id="cb18-774"><a href="#cb18-774" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb18-775"><a href="#cb18-775" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-776"><a href="#cb18-776" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-777"><a href="#cb18-777" aria-hidden="true" tabindex="-1"></a>chartDynamic <span class="op">=</span> <span class="fu">createPlotDynamic</span>(gistemp<span class="op">,</span> crProgressBlock)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-eval="false">
+<div class="sourceCode cell-code" id="cb16" data-startfrom="741" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 740;"><span id="cb16-741"><a href="#cb16-741" aria-hidden="true" tabindex="-1"></a>gistemp <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"gistemp.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb16-742"><a href="#cb16-742" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-743"><a href="#cb16-743" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createPlot</span>(data<span class="op">,</span> startYear<span class="op">,</span> endYear) {</span>
+<span id="cb16-744"><a href="#cb16-744" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb16-745"><a href="#cb16-745" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb16-746"><a href="#cb16-746" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"1880-01-01"</span>)<span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2016-12-01"</span>)]<span class="op">,</span> </span>
+<span id="cb16-747"><a href="#cb16-747" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"Date →"</span></span>
+<span id="cb16-748"><a href="#cb16-748" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb16-749"><a href="#cb16-749" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb16-750"><a href="#cb16-750" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.4</span>]<span class="op">,</span> </span>
+<span id="cb16-751"><a href="#cb16-751" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb16-752"><a href="#cb16-752" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tickFormat</span><span class="op">:</span> <span class="st">"+f"</span><span class="op">,</span></span>
+<span id="cb16-753"><a href="#cb16-753" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Surface temperature anomaly (°C)"</span></span>
+<span id="cb16-754"><a href="#cb16-754" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb16-755"><a href="#cb16-755" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb16-756"><a href="#cb16-756" aria-hidden="true" tabindex="-1"></a>      <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span></span>
+<span id="cb16-757"><a href="#cb16-757" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb16-758"><a href="#cb16-758" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb16-759"><a href="#cb16-759" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb16-760"><a href="#cb16-760" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb16-761"><a href="#cb16-761" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(</span>
+<span id="cb16-762"><a href="#cb16-762" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb16-763"><a href="#cb16-763" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> year <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(d<span class="op">.</span><span class="at">Date</span>)<span class="op">.</span><span class="fu">getFullYear</span>()<span class="op">;</span></span>
+<span id="cb16-764"><a href="#cb16-764" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> year <span class="op">&gt;=</span> startYear <span class="op">&amp;&amp;</span> year <span class="op">&lt;</span> endYear<span class="op">;</span></span>
+<span id="cb16-765"><a href="#cb16-765" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span> </span>
+<span id="cb16-766"><a href="#cb16-766" aria-hidden="true" tabindex="-1"></a>        {<span class="dt">x</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Anomaly"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Anomaly"</span>}</span>
+<span id="cb16-767"><a href="#cb16-767" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb16-768"><a href="#cb16-768" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb16-769"><a href="#cb16-769" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">900</span>)</span>
+<span id="cb16-770"><a href="#cb16-770" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb16-771"><a href="#cb16-771" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-772"><a href="#cb16-772" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-773"><a href="#cb16-773" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> {</span>
+<span id="cb16-774"><a href="#cb16-774" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">0</span>) {</span>
+<span id="cb16-775"><a href="#cb16-775" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb16-776"><a href="#cb16-776" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-777"><a href="#cb16-777" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">1</span>) {</span>
+<span id="cb16-778"><a href="#cb16-778" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1930</span>)<span class="op">;</span></span>
+<span id="cb16-779"><a href="#cb16-779" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">2</span>) {</span>
+<span id="cb16-780"><a href="#cb16-780" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1980</span>)<span class="op">;</span></span>
+<span id="cb16-781"><a href="#cb16-781" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">3</span>) {</span>
+<span id="cb16-782"><a href="#cb16-782" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>)<span class="op">;</span></span>
+<span id="cb16-783"><a href="#cb16-783" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb16-784"><a href="#cb16-784" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>)<span class="op">;</span> </span>
+<span id="cb16-785"><a href="#cb16-785" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-786"><a href="#cb16-786" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -1072,10 +1009,99 @@ Un exemple de mise en place :
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
 </div>
 </div>
 </div>
-<p>```</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour plus de fluidité, la variable crTriggerProgress est un nombre compris entre 0 et 1 représentant la progression des scrolls dans l’ensemble du document.</p>
+</div>
+</div>
+</section>
+<section id="scroll-dans-un-progress-block" class="level3">
+<h3 class="anchored" data-anchor-id="scroll-dans-un-progress-block">Scroll dans un progress-block</h3>
+<p>Il est possible de gérer le scroll uniquement pour une section closeread grâce au progress-block. En mettant le texte qui défile dans un progress-block, on peut jouer sur la variable crProgressBlock qui sera de 0 à 1 mais juste pour le bloc.</p>
+<p>Un exemple de mise en place :</p>
+<pre><code>::::{.cr-section}
+
+:::{.progress-block}
+text1 @cr-plot3
+
+text2 @cr-plot3
+
+text3 @cr-plot3
+
+text4 @cr-plot3
+
+text5 @cr-plot3
+
+text6 @cr-plot3
+:::</code></pre>
+<div class="cell" data-eval="false">
+<div class="sourceCode cell-code" id="cb18" data-startfrom="824" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 823;"><span id="cb18-824"><a href="#cb18-824" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createPlotDynamic</span>(data<span class="op">,</span> progress) {</span>
+<span id="cb18-825"><a href="#cb18-825" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> startYear <span class="op">=</span> <span class="dv">1880</span><span class="op">;</span> </span>
+<span id="cb18-826"><a href="#cb18-826" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> endYear <span class="op">=</span> <span class="dv">2024</span><span class="op">;</span> </span>
+<span id="cb18-827"><a href="#cb18-827" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-828"><a href="#cb18-828" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> dynamicYear <span class="op">=</span> startYear <span class="op">+</span> (endYear <span class="op">-</span> startYear) <span class="op">*</span> progress<span class="op">;</span></span>
+<span id="cb18-829"><a href="#cb18-829" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-830"><a href="#cb18-830" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb18-831"><a href="#cb18-831" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb18-832"><a href="#cb18-832" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"1880-01-01"</span>)<span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2016-12-01"</span>)]<span class="op">,</span> </span>
+<span id="cb18-833"><a href="#cb18-833" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"Date →"</span></span>
+<span id="cb18-834"><a href="#cb18-834" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb18-835"><a href="#cb18-835" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb18-836"><a href="#cb18-836" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.4</span>]<span class="op">,</span> </span>
+<span id="cb18-837"><a href="#cb18-837" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb18-838"><a href="#cb18-838" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tickFormat</span><span class="op">:</span> <span class="st">"+f"</span><span class="op">,</span></span>
+<span id="cb18-839"><a href="#cb18-839" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Surface temperature anomaly (°C)"</span></span>
+<span id="cb18-840"><a href="#cb18-840" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb18-841"><a href="#cb18-841" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb18-842"><a href="#cb18-842" aria-hidden="true" tabindex="-1"></a>      <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span></span>
+<span id="cb18-843"><a href="#cb18-843" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb18-844"><a href="#cb18-844" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb18-845"><a href="#cb18-845" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb18-846"><a href="#cb18-846" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb18-847"><a href="#cb18-847" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(</span>
+<span id="cb18-848"><a href="#cb18-848" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb18-849"><a href="#cb18-849" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> year <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(d<span class="op">.</span><span class="at">Date</span>)<span class="op">.</span><span class="fu">getFullYear</span>()<span class="op">;</span></span>
+<span id="cb18-850"><a href="#cb18-850" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> year <span class="op">&lt;=</span> dynamicYear<span class="op">;</span> </span>
+<span id="cb18-851"><a href="#cb18-851" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span> </span>
+<span id="cb18-852"><a href="#cb18-852" aria-hidden="true" tabindex="-1"></a>        {<span class="dt">x</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Anomaly"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Anomaly"</span>}</span>
+<span id="cb18-853"><a href="#cb18-853" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb18-854"><a href="#cb18-854" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb18-855"><a href="#cb18-855" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">900</span>)</span>
+<span id="cb18-856"><a href="#cb18-856" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb18-857"><a href="#cb18-857" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-858"><a href="#cb18-858" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-859"><a href="#cb18-859" aria-hidden="true" tabindex="-1"></a>chartDynamic <span class="op">=</span> <span class="fu">createPlotDynamic</span>(gistemp<span class="op">,</span> crProgressBlock)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
 <p>Vous pouvez consulter le fichier d’exemple ici : <a href="./example_formation/7-scroll-observable.html" target="_blank">7-scroll-observable</a></p>
 </section>
 <section id="cartes" class="level3">
@@ -1093,7 +1119,7 @@ Un exemple de mise en place :
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuZ2lzdGVtcCA9IEZpbGVBdHRhY2htZW50KFwiZ2lzdGVtcC5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pXG5cbmZ1bmN0aW9uIGNyZWF0ZVBsb3QoZGF0YSwgc3RhcnRZZWFyLCBlbmRZZWFyKSB7XG4gIHJldHVybiBQbG90LnBsb3Qoe1xuICAgIHg6IHtcbiAgICAgIGRvbWFpbjogW25ldyBEYXRlKFwiMTg4MC0wMS0wMVwiKSwgbmV3IERhdGUoXCIyMDE2LTEyLTAxXCIpXSwgXG4gICAgICBsYWJlbDogXCJEYXRlIOKGklwiXG4gICAgfSxcbiAgICB5OiB7XG4gICAgICBkb21haW46IFstMC44LCAxLjRdLCBcbiAgICAgIGdyaWQ6IHRydWUsXG4gICAgICB0aWNrRm9ybWF0OiBcIitmXCIsXG4gICAgICBsYWJlbDogXCLihpEgU3VyZmFjZSB0ZW1wZXJhdHVyZSBhbm9tYWx5ICjCsEMpXCJcbiAgICB9LFxuICAgIGNvbG9yOiB7XG4gICAgICBzY2hlbWU6IFwiQnVSZFwiLFxuICAgICAgbGVnZW5kOiB0cnVlXG4gICAgfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5ydWxlWShbMF0pLFxuICAgICAgUGxvdC5kb3QoXG4gICAgICAgIGRhdGEuZmlsdGVyKGQgPT4ge1xuICAgICAgICAgIGNvbnN0IHllYXIgPSBuZXcgRGF0ZShkLkRhdGUpLmdldEZ1bGxZZWFyKCk7XG4gICAgICAgICAgcmV0dXJuIHllYXIgPj0gc3RhcnRZZWFyICYmIHllYXIgPCBlbmRZZWFyO1xuICAgICAgICB9KSwgXG4gICAgICAgIHt4OiBcIkRhdGVcIiwgeTogXCJBbm9tYWx5XCIsIHN0cm9rZTogXCJBbm9tYWx5XCJ9XG4gICAgICApXG4gICAgXSxcbiAgICB3aWR0aDogTWF0aC5tYXgod2lkdGgsIDkwMClcbiAgfSk7XG59XG5cbmNoYXJ0ID0ge1xuICBpZiAoY3JUcmlnZ2VySW5kZXggPT0gMCkge1xuICAgIHJldHVybiBjcmVhdGVQbG90KGdpc3RlbXAsIDAsIDApO1xuICB9XG4gICAgZWxzZSBpZiAoY3JUcmlnZ2VySW5kZXggPT0gMSkge1xuICAgIHJldHVybiBjcmVhdGVQbG90KGdpc3RlbXAsIDAsIDE5MzApO1xuICB9IGVsc2UgaWYgKGNyVHJpZ2dlckluZGV4ID09IDIpIHtcbiAgICByZXR1cm4gY3JlYXRlUGxvdChnaXN0ZW1wLCAwLCAxOTgwKTtcbiAgfSBlbHNlIGlmIChjclRyaWdnZXJJbmRleCA9PSAzKSB7XG4gICAgcmV0dXJuIGNyZWF0ZVBsb3QoZ2lzdGVtcCwgMCwgSW5maW5pdHkpO1xuICB9IGVsc2Uge1xuICAgIHJldHVybiBjcmVhdGVQbG90KGdpc3RlbXAsIDAsIEluZmluaXR5KTsgXG4gIH1cbn1cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG5cbmZ1bmN0aW9uIGNyZWF0ZVBsb3REeW5hbWljKGRhdGEsIHByb2dyZXNzKSB7XG4gIGNvbnN0IHN0YXJ0WWVhciA9IDE4ODA7IFxuICBjb25zdCBlbmRZZWFyID0gMjAyNDsgXG5cbiAgY29uc3QgZHluYW1pY1llYXIgPSBzdGFydFllYXIgKyAoZW5kWWVhciAtIHN0YXJ0WWVhcikgKiBwcm9ncmVzcztcblxuICByZXR1cm4gUGxvdC5wbG90KHtcbiAgICB4OiB7XG4gICAgICBkb21haW46IFtuZXcgRGF0ZShcIjE4ODAtMDEtMDFcIiksIG5ldyBEYXRlKFwiMjAxNi0xMi0wMVwiKV0sIFxuICAgICAgbGFiZWw6IFwiRGF0ZSDihpJcIlxuICAgIH0sXG4gICAgeToge1xuICAgICAgZG9tYWluOiBbLTAuOCwgMS40XSwgXG4gICAgICBncmlkOiB0cnVlLFxuICAgICAgdGlja0Zvcm1hdDogXCIrZlwiLFxuICAgICAgbGFiZWw6IFwi4oaRIFN1cmZhY2UgdGVtcGVyYXR1cmUgYW5vbWFseSAowrBDKVwiXG4gICAgfSxcbiAgICBjb2xvcjoge1xuICAgICAgc2NoZW1lOiBcIkJ1UmRcIixcbiAgICAgIGxlZ2VuZDogdHJ1ZVxuICAgIH0sXG4gICAgbWFya3M6IFtcbiAgICAgIFBsb3QucnVsZVkoWzBdKSxcbiAgICAgIFBsb3QuZG90KFxuICAgICAgICBkYXRhLmZpbHRlcihkID0+IHtcbiAgICAgICAgICBjb25zdCB5ZWFyID0gbmV3IERhdGUoZC5EYXRlKS5nZXRGdWxsWWVhcigpO1xuICAgICAgICAgIHJldHVybiB5ZWFyIDw9IGR5bmFtaWNZZWFyOyBcbiAgICAgICAgfSksIFxuICAgICAgICB7eDogXCJEYXRlXCIsIHk6IFwiQW5vbWFseVwiLCBzdHJva2U6IFwiQW5vbWFseVwifVxuICAgICAgKVxuICAgIF0sXG4gICAgd2lkdGg6IE1hdGgubWF4KHdpZHRoLCA5MDApXG4gIH0pO1xufVxuXG5jaGFydER5bmFtaWMgPSBjcmVhdGVQbG90RHluYW1pYyhnaXN0ZW1wLCBjclByb2dyZXNzQmxvY2spO1xuXG4ifV19
+eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
