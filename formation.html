@@ -1113,6 +1113,75 @@ text6 @cr-plot3
 </section>
 <section id="déploiement-sur-github-pages-avancé" class="level2">
 <h2 class="anchored" data-anchor-id="déploiement-sur-github-pages-avancé">Déploiement sur Github Pages <span class="class" data-key="hard">avancé</span></h2>
+<p>Créer une dataviz c’est bien. La rendre accessible à tous sur Internet c’est mieux !</p>
+<p>Nous proposons quelques astuces pour un déploiement sur Github Pages <a href="https://quarto.org/docs/publishing/github-pages.html#overview">Doc sur quarto dans Github Pages</a> :</p>
+<ul>
+<li><p>Prérequis : avoir ou créer un compte Github</p></li>
+<li><p>Créer un répertoire public sur Github et y déposer votre dataviz</p></li>
+<li><p>Gérer le Freezing Computations en créant un fichier <code>_quarto.yml</code> qui contient :</p></li>
+</ul>
+<pre><code>execute:
+  freeze: auto</code></pre>
+<ul>
+<li><p>Recréer totalement votre site en lançant la commande <code>quarto render</code></p></li>
+<li><p>Créer une brance gh-pages en tapant dans un terminal :</p></li>
+</ul>
+<pre><code>git checkout --orphan gh-pages
+git reset --hard # make sure all changes are committed before running this!
+git commit --allow-empty -m "Initialising gh-pages branch"
+git push origin gh-pages</code></pre>
+<ul>
+<li><p>Dans Github, aller sur le répertoire de la dataviz et dans l’onglet Settings. Aller dans la section Pages et l’activer en choisissant la branche gh-pages <img src="./img/formation/gh-pages.png" class="img-fluid"></p></li>
+<li><p>Créer un fichier <code>.gitignore</code> à la racine de votre projet et y mettre :</p></li>
+</ul>
+<pre><code>/.quarto/
+/_site/</code></pre>
+<ul>
+<li><p>Dans le terminal, taper <code>quarto publish gh-pages</code></p></li>
+<li><p>Ajouter un fichier <code>publish.yml</code> dans le répertoire <code>.github/workflows/</code> (répertoire à créer). VOici le contenu de ce fichier</p></li>
+</ul>
+<pre><code>on:
+  push:
+    branches: master
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        
+      - name: Set up system dependencies 
+        run: | 
+          sudo apt-get update 
+          sudo apt-get install -y libproj-dev gdal-bin
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2.0'
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+</code></pre>
+<p>Maintenant à chaque push de votre banche master, votre site de dataviz sera publié à l’adresse <code>http:\\votreIdGitub.githu.io\votreRepo</code>.</p>
+<p>Pour vérifier que tout fonctionne parfaitement, consulter les résultats des actions dans l’onglet Actions de github.</p>
 
 
 </section>
