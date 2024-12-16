@@ -675,9 +675,9 @@ Nativement Quarto d'intégrer des chunks ojs de la même manière que des chunks
 
 Voici un exemple très simple en utilisant un plot Observable [Voir Observable plot](https://observablehq.com/plot/) :
 
-```
+
 ```{ojs}
-//| echo: false
+//| eval: false
 
 gistemp = FileAttachment("gistemp.csv").csv({typed: true})
 
@@ -698,7 +698,7 @@ Plot.plot({
 })
 
 ```
-```
+
 
 :::{callout-tip}
 Par défaut le code {ojs} est affiché. Pour l'enlever il faut ajouter le paramètre `//| echo: false` ou mettre dans l'entête yaml :
@@ -733,10 +733,10 @@ Le troisième @cr-plot
 
 Le dernier @cr-plot
 
+```
 
-:::{#cr-plot}
 ```{ojs}
-//| echo: false
+//| eval: false
 
 gistemp = FileAttachment("gistemp.csv").csv({typed: true})
 
@@ -786,12 +786,7 @@ chart = {
 }
 
 ```
-:::
 
-
-::::
-
-```
 
 :::callout-tip
 Pour plus de fluidité, la variable crTriggerProgress est un nombre compris entre 0 et 1 représentant la progression des scrolls dans l'ensemble du document.
@@ -820,11 +815,10 @@ text5 @cr-plot3
 
 text6 @cr-plot3
 :::
+```
 
-
-:::{#cr-plot3}
 ```{ojs}
-//| echo: false
+//| eval: false
 
 
 function createPlotDynamic(data, progress) {
@@ -865,11 +859,8 @@ function createPlotDynamic(data, progress) {
 chartDynamic = createPlotDynamic(gistemp, crProgressBlock);
 
 ```
-:::
 
 
-::::
-```
 
 Vous pouvez consulter le fichier d'exemple ici : [7-scroll-observable](./example_formation/7-scroll-observable.qmd){target="_blank"}
 
