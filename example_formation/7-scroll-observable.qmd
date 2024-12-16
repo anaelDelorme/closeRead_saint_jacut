@@ -1,0 +1,229 @@
+---
+title: "Formation CloseRead"
+author: Anaël Delorme
+format: 
+  closeread-html:
+    theme: cyborg
+    backgroundcolor: darkslateblue
+    fontsize: 1.4em
+    cr-section:
+      layout: "overlay-center"
+    cr-style:
+      section-background-color: white
+      narrative-background-color-overlay: darkslateblue
+      narrative-text-color-overlay: white
+
+---
+
+
+::::{.cr-section}
+
+Voici la grande scène du temps. Les dates défilent, l'axe des anomalies attend patiemment que la Terre se manifeste. Sous vos yeux, bientôt, des points. Petits, ronds, innocents — mais ensemble, ils racontent une histoire. Une histoire où le bleu pâlit, où le rouge s'allume, et où l'équilibre se fissure. @cr-plot
+
+Dans l'aube des mesures, la Terre murmure encore en bleu. Les températures tanguent comme un souffle hésitant, oscillant entre frissons et accalmies. L'anomalie joue à cache-cache sous zéro, discrète et polie, comme une promesse non encore rompue. 1860 à 1930 — l'âge des glaces hésitantes, avant le feu. @cr-plot
+
+Le calme se brise. Le bleu s'efface, d'abord doucement, comme un hiver fatigué qui n'ose plus revenir. Les années défilent et le rouge pointe son nez, timide puis audacieux. C'est un prélude, une symphonie brûlante qui monte crescendo. 1930 à 1980 — la Terre fronce les sourcils et le silence devient alarme. @cr-plot
+
+Le rouge danse désormais sans pudeur. Chaque point est un cri, une étincelle. L'anomalie s'envole, comme un dragon libéré de ses chaînes, léchant les sommets de +1°C et plus. Le bleu ? Parti. La ligne grise à zéro n'est qu'un souvenir. De 1980 à 2016 — le feu a conquis le graphique et la planète transpire. @cr-plot
+
+
+:::{#cr-plot}
+```{ojs}
+//| echo: false
+
+gistemp = FileAttachment("gistemp.csv").csv({typed: true})
+
+function createPlot(data, startYear, endYear) {
+  return Plot.plot({
+    x: {
+      domain: [new Date("1880-01-01"), new Date("2016-12-01")], 
+      label: "Date →"
+    },
+    y: {
+      domain: [-0.8, 1.4], 
+      grid: true,
+      tickFormat: "+f",
+      label: "↑ Surface temperature anomaly (°C)"
+    },
+    color: {
+      scheme: "BuRd",
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.dot(
+        data.filter(d => {
+          const year = new Date(d.Date).getFullYear();
+          return year >= startYear && year < endYear;
+        }), 
+        {x: "Date", y: "Anomaly", stroke: "Anomaly"}
+      )
+    ],
+    width: Math.max(width, 900)
+  });
+}
+
+chart = {
+  if (crTriggerIndex == 0) {
+    return createPlot(gistemp, 0, 0);
+  }
+    else if (crTriggerIndex == 1) {
+    return createPlot(gistemp, 0, 1930);
+  } else if (crTriggerIndex == 2) {
+    return createPlot(gistemp, 0, 1980);
+  } else if (crTriggerIndex == 3) {
+    return createPlot(gistemp, 0, Infinity);
+  } else {
+    return createPlot(gistemp, 0, Infinity); 
+  }
+}
+
+```
+:::
+
+
+::::
+
+
+
+
+## Deuxième exemple
+
+::::{.cr-section}
+
+:::{.progress-block}
+Ah, messieurs-dames, voici le théâtre du temps ! À ma gauche, les années : alignées comme à la parade. À ma droite, l’axe des anomalies : il monte, il descend, mais il reste droit — c’est son boulot. Et au milieu ? Rien… pour l’instant. C’est comme un spectacle sans acteurs, un gâteau sans cerise, un ciel sans étoiles… Bref, patience ! Car bientôt, des points vont surgir : petits, ronds, charmants… Et pourtant, ils vont vous en dire, des choses. Des bleus ? Des rouges ? Attention, ça va tanguer ! @cr-plot2
+
+Dans le coin bleu de la scène, la Terre frissonne. Elle grelotte, elle gigote, elle joue à la marelle sous zéro. Un coup je monte, un coup je descends ! “Vous avez froid ?” “Non, j’hésite !” Les températures font du yoyo, et l’anomalie, elle, s’amuse à cache-cache. C’est le siècle où l’on disait : “Il fait froid, mais c’est normal !” 1860 à 1930, mesdames et messieurs, le temps où le bleu dominait… Parce que le rouge n’avait pas encore pris son billet. @cr-plot2
+
+Et là, c’est le drame… Enfin presque. Le bleu commence à pâlir. Il pâlit tellement qu’on dirait qu’il s’excuse : “Je reviendrai plus tard !” Mais on sait bien qu’il ment. Pendant ce temps, le rouge arrive à petits pas, en catimini : “C’est moi ? Vous m’attendiez ?” Pas encore, mais il s’installe quand même. 1930-1980, c’est comme une pièce où le décor change lentement : le froid plie bagage et la chaleur commence à hausser le ton. Pas fort, pas encore. Mais assez pour dire : “Je suis là.” @cr-plot2
+
+Alors là, plus de doute : le rouge est en roue libre ! Il monte, il danse, il saute… Il a même mis ses chaussures de gala ! Le bleu ? Parti. Disparu. Il a laissé la place à l’anomalie qui s’envole, qui grimpe… Elle monte tellement haut qu’elle doit avoir le vertige. +1°C ? “Et si on allait voir plus haut ?” La ligne zéro ? Un vieux souvenir. On transpire, la Terre transpire, et le graphique, lui, rougit. On dirait qu’il a honte, ce pauvre graphique. Mais ce n’est pas lui, hein. C’est nous. @cr-plot2
+:::
+
+
+:::{#cr-plot2}
+```{ojs}
+//| echo: false
+
+function createPlot2(data, startYear, endYear) {
+  return Plot.plot({
+    x: {
+      domain: [new Date("1880-01-01"), new Date("2016-12-01")], 
+      label: "Date →"
+    },
+    y: {
+      domain: [-0.8, 1.4], 
+      grid: true,
+      tickFormat: "+f",
+      label: "↑ Surface temperature anomaly (°C)"
+    },
+    color: {
+      scheme: "BuRd",
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.dot(
+        data.filter(d => {
+          const year = new Date(d.Date).getFullYear();
+          return year >= startYear && year < endYear;
+        }), 
+        {x: "Date", y: "Anomaly", stroke: "Anomaly"}
+      )
+    ],
+    width: Math.max(width, 900)
+  });
+}
+
+chart2 = {
+  if (crProgressBlock  < 1/4 ) {
+    return createPlot2(gistemp, 0, 0);
+  } else if (crProgressBlock >= 1/4 & crProgressBlock < 1/2) {
+    return createPlot2(gistemp, 0, 1930);
+  } else if (crProgressBlock >= 1/2 & crProgressBlock < 3/4) {
+    return createPlot2(gistemp, 0, 1980);
+  } else if (crProgressBlock >= 3/4) {
+    return createPlot2(gistemp, 0, Infinity);
+  } else {
+    return createPlot2(gistemp, 0, Infinity);
+  }
+}
+
+```
+:::
+
+
+::::
+
+
+
+
+## Troisième exemple
+
+::::{.cr-section}
+
+:::{.progress-block}
+Nous assistons ici à une transformation progressive, celle d’une trajectoire météorologique qui s’adapte, évolue et se réinvente dans un contexte de réchauffement durable. Il ne s’agit pas de subir, mais de comprendre cette trajectoire pour mieux l’accompagner. @cr-plot3
+
+Chaque point sur ce graphique est une donnée, mais surtout un potentiel. Une anomalie ? Non, une innovation climatique, témoin de notre capacité collective à faire face aux défis de demain, dès aujourd’hui. @cr-plot3
+
+Nous ne devons pas voir l’anomalie comme un problème, mais comme un signal. Un signal fort, qui invite à la responsabilité climatique dans une logique de dépassement des cadres traditionnels de la stabilité thermométrique. @cr-plot3
+
+De 1880 à 2016, l’histoire de la Terre se réinvente. Le bleu, puis le rouge. Une progression inéluctable mais surtout une invitation à l’action commune. L’horizon n’est pas une fatalité, il est une ambition, un objectif, un horizon climatique partagé. @cr-plot3
+
+Nous le savons, les systèmes climatiques ne s’arrêtent pas, ils se transforment. Chaque point ici est un jalon dans ce que nous pourrions appeler une transition thermique globale, génératrice d’innovations et de nouvelles solidarités. @cr-plot3
+
+Ces courbes ne mentent pas. Elles révèlent. Elles montrent ce qui était, ce qui est, et ce qui pourrait être. L’anomalie devient un levier de compréhension pour bâtir, ensemble, une planète plus résiliente, plus performante, et climatiquement agile. @cr-plot3
+:::
+
+
+:::{#cr-plot3}
+```{ojs}
+//| echo: false
+
+
+function createPlotDynamic(data, progress) {
+  const startYear = 1880; 
+  const endYear = 2024; 
+
+  const dynamicYear = startYear + (endYear - startYear) * progress;
+
+  return Plot.plot({
+    x: {
+      domain: [new Date("1880-01-01"), new Date("2016-12-01")], 
+      label: "Date →"
+    },
+    y: {
+      domain: [-0.8, 1.4], 
+      grid: true,
+      tickFormat: "+f",
+      label: "↑ Surface temperature anomaly (°C)"
+    },
+    color: {
+      scheme: "BuRd",
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.dot(
+        data.filter(d => {
+          const year = new Date(d.Date).getFullYear();
+          return year <= dynamicYear; 
+        }), 
+        {x: "Date", y: "Anomaly", stroke: "Anomaly"}
+      )
+    ],
+    width: Math.max(width, 900)
+  });
+}
+
+chartDynamic = createPlotDynamic(gistemp, crProgressBlock);
+
+```
+:::
+
+
+::::
+
+

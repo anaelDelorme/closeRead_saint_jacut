@@ -1,6 +1,5 @@
 ---
 title: "Formation CloseRead"
-image: gabbert.png
 author: Anaël Delorme
 format:
   html:
@@ -666,6 +665,223 @@ Par exemple, créez un chunk de type ```{=html} :
 Vous pouvez voir un exemple ici : [6-scroll_image_with_theme.qmd](./example_formation/6-scroll_image_with_theme.qmd)
 
 ## Scroll sur des graphs ou cartes Javascript [avancé]{.class key="hard"}
+
+Quarto permet d'intéger des chunks Observable Javascript - OJS, permettant de faire du javascript directement en quarto. Pour rappel Javascript est  un langage de programmation principalement utilisé pour créer des interactions dynamiques et des fonctionnalités interactives sur les sites web. 
+Closeread rentre en intéraction avec ces blocs ojs en les rendant dynamiques lors d'un scroll.
+
+### Base des blocs ojs
+
+Nativement Quarto d'intégrer des chunks ojs de la même manière que des chunks r ou python. Pour obtenir le rendu d'un chunk ojs il faut lancer le rendu de la page complète (le run du seul chunk ne suffit pas).
+
+Voici un exemple très simple en utilisant un plot Observable [Voir Observable plot](https://observablehq.com/plot/) :
+
+```
+```{ojs}
+//| echo: false
+
+gistemp = FileAttachment("gistemp.csv").csv({typed: true})
+
+Plot.plot({
+  y: {
+    grid: true,
+    tickFormat: "+f",
+    label: "↑ Surface temperature anomaly (°C)"
+  },
+  color: {
+    scheme: "BuRd",
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0]),
+    Plot.dot(gistemp, {x: "Date", y: "Anomaly", stroke: "Anomaly"})
+  ]
+})
+
+```
+```
+
+:::{callout-tip}
+Par défaut le code {ojs} est affiché. Pour l'enlever il faut ajouter le paramètre `//| echo: false` ou mettre dans l'entête yaml :
+execute:     
+   echo: false
+:::
+
+En savoir sur le [site de documentation Quarto](https://quarto.org/docs/interactive/ojs/)
+
+### Intéraction ojs et closeread
+
+Quand on regarde le graphique généré sur les anomalies de température depuis 1860, on pourrait avoir envie de parler de trois périodes et d'afficher les données selon ces trois périodes. Pour cela closeread propose une variable qui s'incrémente au fur à mesure du scroll. Il s'agit de crTriggerIndex. 
+
+Le premier texte qui scrolle correspond à crTriggerIndex == 0, puis on passe à 1, puis 2, etc...
+
+:::callout-warning
+Le crTriggerIndex est pour tout le document, pas par cr-section. Attention si on ajoute une cr-section avant celle que l'on a configuré il faudra changer les crTriggerIndex de la section.
+:::
+
+Sachant cela il est possible de mettre à jour le graphique pour prendre en compte ce crTriggerIndex pour réduire les données aux dates précisées. 
+
+Comme on l'a vu précédemment, il fut mettre dans une section closeread comme cela : 
+
+```
+::::{.cr-section}
+
+Le premier texte à afficher sur le graphique vide @cr-plot
+
+Le second texte à afficher @cr-plot
+
+Le troisième @cr-plot
+
+Le dernier @cr-plot
+
+
+:::{#cr-plot}
+```{ojs}
+//| echo: false
+
+gistemp = FileAttachment("gistemp.csv").csv({typed: true})
+
+function createPlot(data, startYear, endYear) {
+  return Plot.plot({
+    x: {
+      domain: [new Date("1880-01-01"), new Date("2016-12-01")], 
+      label: "Date →"
+    },
+    y: {
+      domain: [-0.8, 1.4], 
+      grid: true,
+      tickFormat: "+f",
+      label: "↑ Surface temperature anomaly (°C)"
+    },
+    color: {
+      scheme: "BuRd",
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.dot(
+        data.filter(d => {
+          const year = new Date(d.Date).getFullYear();
+          return year >= startYear && year < endYear;
+        }), 
+        {x: "Date", y: "Anomaly", stroke: "Anomaly"}
+      )
+    ],
+    width: Math.max(width, 900)
+  });
+}
+
+chart = {
+  if (crTriggerIndex == 0) {
+    return createPlot(gistemp, 0, 0);
+  }
+    else if (crTriggerIndex == 1) {
+    return createPlot(gistemp, 0, 1930);
+  } else if (crTriggerIndex == 2) {
+    return createPlot(gistemp, 0, 1980);
+  } else if (crTriggerIndex == 3) {
+    return createPlot(gistemp, 0, Infinity);
+  } else {
+    return createPlot(gistemp, 0, Infinity); 
+  }
+}
+
+```
+:::
+
+
+::::
+
+```
+
+:::callout-tip
+Pour plus de fluidité, la variable crTriggerProgress est un nombre compris entre 0 et 1 représentant la progression des scrolls dans l'ensemble du document.
+:::
+
+
+### Scroll dans un progress-block
+
+Il est possible de gérer le scroll uniquement pour une section closeread grâce au progress-block. En mettant le texte qui défile dans un progress-block, on peut jouer sur la variable crProgressBlock qui sera de 0 à 1 mais juste pour le bloc. 
+
+Un exemple de mise en place :
+
+```
+::::{.cr-section}
+
+:::{.progress-block}
+text1 @cr-plot3
+
+text2 @cr-plot3
+
+text3 @cr-plot3
+
+text4 @cr-plot3
+
+text5 @cr-plot3
+
+text6 @cr-plot3
+:::
+
+
+:::{#cr-plot3}
+```{ojs}
+//| echo: false
+
+
+function createPlotDynamic(data, progress) {
+  const startYear = 1880; 
+  const endYear = 2024; 
+
+  const dynamicYear = startYear + (endYear - startYear) * progress;
+
+  return Plot.plot({
+    x: {
+      domain: [new Date("1880-01-01"), new Date("2016-12-01")], 
+      label: "Date →"
+    },
+    y: {
+      domain: [-0.8, 1.4], 
+      grid: true,
+      tickFormat: "+f",
+      label: "↑ Surface temperature anomaly (°C)"
+    },
+    color: {
+      scheme: "BuRd",
+      legend: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.dot(
+        data.filter(d => {
+          const year = new Date(d.Date).getFullYear();
+          return year <= dynamicYear; 
+        }), 
+        {x: "Date", y: "Anomaly", stroke: "Anomaly"}
+      )
+    ],
+    width: Math.max(width, 900)
+  });
+}
+
+chartDynamic = createPlotDynamic(gistemp, crProgressBlock);
+
+```
+:::
+
+
+::::
+```
+
+Vous pouvez consulter le fichier d'exemple ici : [7-scroll-observable](./example_formation/7-scroll-observable.qmd){target="_blank"}
+
+
+### Cartes
+
+Maintenant que l'on sait faire des blocs .ojs et qu'on arrive à les animer avec closeread, un univers de possibilités s'ouvre à nous... et en particulier l'univers des cartes. 
+
+Dans la dataviz sur Saint-Jacut de la Mer, un exemple de carte est disponible. 
+
+Vous pouvez également en faire avec le super [bertin.js](https://observablehq.com/@neocartocnrs/hello-bertin-js).
+
 
 ## Déploiement sur Github Pages [avancé]{.class key="hard"}
 

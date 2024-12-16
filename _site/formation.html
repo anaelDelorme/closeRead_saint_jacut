@@ -74,6 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,9 +104,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
 </head>
 
 <body class="nav-fixed">
@@ -143,58 +150,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#formation-closeread" id="toc-formation-closeread" class="nav-link active" data-scroll-target="#formation-closeread">Formation Closeread</a>
-  <ul class="collapse">
-  <li><a href="#objectif" id="toc-objectif" class="nav-link" data-scroll-target="#objectif">Objectif</a></li>
-  <li><a href="#déroulement" id="toc-déroulement" class="nav-link" data-scroll-target="#déroulement">Déroulement</a></li>
-  <li><a href="#prérequis" id="toc-prérequis" class="nav-link" data-scroll-target="#prérequis">Prérequis</a></li>
-  </ul></li>
-  <li><a href="#storyboard---réfléchir-avant-de-plonger" id="toc-storyboard---réfléchir-avant-de-plonger" class="nav-link" data-scroll-target="#storyboard---réfléchir-avant-de-plonger">Storyboard - réfléchir avant de plonger</a></li>
-  <li><a href="#initialisation-facile" id="toc-initialisation-facile" class="nav-link" data-scroll-target="#initialisation-facile">Initialisation <span class="class" data-key="easy">facile</span></a></li>
-  <li><a href="#squelette-de-la-viz-facile" id="toc-squelette-de-la-viz-facile" class="nav-link" data-scroll-target="#squelette-de-la-viz-facile">Squelette de la viz <span class="class" data-key="easy">facile</span></a></li>
-  <li><a href="#scroll-sur-images-facile" id="toc-scroll-sur-images-facile" class="nav-link" data-scroll-target="#scroll-sur-images-facile">Scroll sur images <span class="class" data-key="easy">facile</span></a>
-  <ul class="collapse">
-  <li><a href="#etape-1---chargement-des-textes-et-des-images" id="toc-etape-1---chargement-des-textes-et-des-images" class="nav-link" data-scroll-target="#etape-1---chargement-des-textes-et-des-images">Etape 1 - chargement des textes et des images</a></li>
-  <li><a href="#etape-2---ajout-dune-section-closeread" id="toc-etape-2---ajout-dune-section-closeread" class="nav-link" data-scroll-target="#etape-2---ajout-dune-section-closeread">Etape 2 - ajout d’une section closeread</a></li>
-  <li><a href="#etape-3---choix-des-éléments-de-défilement-et-darrière-plan" id="toc-etape-3---choix-des-éléments-de-défilement-et-darrière-plan" class="nav-link" data-scroll-target="#etape-3---choix-des-éléments-de-défilement-et-darrière-plan">Etape 3 - choix des éléments de défilement et d’arrière plan</a></li>
-  </ul></li>
-  <li><a href="#eléments-de-focus-pour-une-image-facile" id="toc-eléments-de-focus-pour-une-image-facile" class="nav-link" data-scroll-target="#eléments-de-focus-pour-une-image-facile">Eléments de focus pour une image <span class="class" data-key="easy">facile</span></a>
-  <ul class="collapse">
-  <li><a href="#mise-à-léchelle-scale-by" id="toc-mise-à-léchelle-scale-by" class="nav-link" data-scroll-target="#mise-à-léchelle-scale-by">Mise à l’échelle : <strong>scale-by</strong></a></li>
-  <li><a href="#déplacement-pan-to" id="toc-déplacement-pan-to" class="nav-link" data-scroll-target="#déplacement-pan-to">Déplacement : <strong>pan-to</strong></a></li>
-  <li><a href="#combinaison-deffets" id="toc-combinaison-deffets" class="nav-link" data-scroll-target="#combinaison-deffets">Combinaison d’effets</a></li>
-  <li><a href="#exemple" id="toc-exemple" class="nav-link" data-scroll-target="#exemple">Exemple</a></li>
-  </ul></li>
-  <li><a href="#scroll-sur-du-texte-intermédiaire" id="toc-scroll-sur-du-texte-intermédiaire" class="nav-link" data-scroll-target="#scroll-sur-du-texte-intermédiaire">Scroll sur du texte <span class="class" data-key="inter">intermédiaire</span></a>
-  <ul class="collapse">
-  <li><a href="#zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to" id="toc-zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to" class="nav-link" data-scroll-target="#zoom-sur-une-ligne-ou-un-élément-spécifique-zoom-to">Zoom sur une ligne ou un élément spécifique : <strong>zoom-to</strong></a></li>
-  <li><a href="#mise-en-surbrillance-highlight" id="toc-mise-en-surbrillance-highlight" class="nav-link" data-scroll-target="#mise-en-surbrillance-highlight">Mise en surbrillance : <strong>highlight</strong></a></li>
-  <li><a href="#cas-particulier-de-code" id="toc-cas-particulier-de-code" class="nav-link" data-scroll-target="#cas-particulier-de-code">Cas particulier de code</a></li>
-  </ul></li>
-  <li><a href="#scroll-sur-un-graphique-en-r-intermédiaire" id="toc-scroll-sur-un-graphique-en-r-intermédiaire" class="nav-link" data-scroll-target="#scroll-sur-un-graphique-en-r-intermédiaire">Scroll sur un graphique en R <span class="class" data-key="inter">intermédiaire</span></a></li>
-  <li><a href="#modification-du-thème-intermédiaire" id="toc-modification-du-thème-intermédiaire" class="nav-link" data-scroll-target="#modification-du-thème-intermédiaire">Modification du thème <span class="class" data-key="inter">intermédiaire</span></a>
-  <ul class="collapse">
-  <li><a href="#thèmes-quarto" id="toc-thèmes-quarto" class="nav-link" data-scroll-target="#thèmes-quarto">Thèmes quarto</a></li>
-  <li><a href="#mise-en-page-des-éléments-textuels" id="toc-mise-en-page-des-éléments-textuels" class="nav-link" data-scroll-target="#mise-en-page-des-éléments-textuels">Mise en page des éléments textuels</a></li>
-  <li><a href="#layouts-closeread" id="toc-layouts-closeread" class="nav-link" data-scroll-target="#layouts-closeread">Layouts CloseRead</a></li>
-  <li><a href="#thèmes-et-mise-en-page-closeread" id="toc-thèmes-et-mise-en-page-closeread" class="nav-link" data-scroll-target="#thèmes-et-mise-en-page-closeread">Thèmes et mise en page CloseRead</a></li>
-  <li><a href="#mise-en-page-closeread-en-css" id="toc-mise-en-page-closeread-en-css" class="nav-link" data-scroll-target="#mise-en-page-closeread-en-css">Mise en page CloseRead en CSS</a></li>
-  </ul></li>
-  <li><a href="#scroll-sur-des-graphs-ou-cartes-javascript-avancé" id="toc-scroll-sur-des-graphs-ou-cartes-javascript-avancé" class="nav-link" data-scroll-target="#scroll-sur-des-graphs-ou-cartes-javascript-avancé">Scroll sur des graphs ou cartes Javascript <span class="class" data-key="hard">avancé</span></a></li>
-  <li><a href="#déploiement-sur-github-pages-avancé" id="toc-déploiement-sur-github-pages-avancé" class="nav-link" data-scroll-target="#déploiement-sur-github-pages-avancé">Déploiement sur Github Pages <span class="class" data-key="hard">avancé</span></a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -203,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -862,11 +823,173 @@ format:
   }
   
 &lt;/style&gt;</code></pre>
-<p>Vous pouvez voir un exemple ici : <a href="6-scroll_image_with_theme.qmd">6-scroll_image_with_theme.qmd</a></p>
+<p>Vous pouvez voir un exemple ici : <a href="./example_formation/6-scroll_image_with_theme.html">6-scroll_image_with_theme.qmd</a></p>
 </section>
 </section>
 <section id="scroll-sur-des-graphs-ou-cartes-javascript-avancé" class="level2">
 <h2 class="anchored" data-anchor-id="scroll-sur-des-graphs-ou-cartes-javascript-avancé">Scroll sur des graphs ou cartes Javascript <span class="class" data-key="hard">avancé</span></h2>
+<p>Quarto permet d’intéger des chunks Observable Javascript - OJS, permettant de faire du javascript directement en quarto. Pour rappel Javascript est un langage de programmation principalement utilisé pour créer des interactions dynamiques et des fonctionnalités interactives sur les sites web. Closeread rentre en intéraction avec ces blocs ojs en les rendant dynamiques lors d’un scroll.</p>
+<section id="base-des-blocs-ojs" class="level3">
+<h3 class="anchored" data-anchor-id="base-des-blocs-ojs">Base des blocs ojs</h3>
+<p>Nativement Quarto d’intégrer des chunks ojs de la même manière que des chunks r ou python. Pour obtenir le rendu d’un chunk ojs il faut lancer le rendu de la page complète (le run du seul chunk ne suffit pas).</p>
+<p>Voici un exemple très simple en utilisant un plot Observable <a href="https://observablehq.com/plot/">Voir Observable plot</a> :</p>
+<pre><code>```{ojs}
+//| echo: false
+
+gistemp = FileAttachment("gistemp.csv").csv({typed: true})
+
+Plot.plot({
+  y: {
+    grid: true,
+    tickFormat: "+f",
+    label: "↑ Surface temperature anomaly (°C)"
+  },
+  color: {
+    scheme: "BuRd",
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0]),
+    Plot.dot(gistemp, {x: "Date", y: "Anomaly", stroke: "Anomaly"})
+  ]
+})
+</code></pre>
+<pre><code>
+:::{callout-tip}
+Par défaut le code {ojs} est affiché. Pour l'enlever il faut ajouter le paramètre `//| echo: false` ou mettre dans l'entête yaml :
+execute:     
+   echo: false
+:::
+
+En savoir sur le [site de documentation Quarto](https://quarto.org/docs/interactive/ojs/)
+
+### Intéraction ojs et closeread
+
+Quand on regarde le graphique généré sur les anomalies de température depuis 1860, on pourrait avoir envie de parler de trois périodes et d'afficher les données selon ces trois périodes. Pour cela closeread propose une variable qui s'incrémente au fur à mesure du scroll. Il s'agit de crTriggerIndex. 
+
+Le premier texte qui scrolle correspond à crTriggerIndex == 0, puis on passe à 1, puis 2, etc...
+
+Sachant cela il est possible de mettre à jour le graphique pour prendre en compte ce crTriggerIndex pour réduire les données aux dates précisées. 
+
+Comme on l'a vu précédemment, il fut mettre dans une section closeread comme cela : 
+</code></pre>
+<div class="cr-section cr-column-screen sidebar-left">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-plot">
+<div class="narrative">
+<p>Le premier texte à afficher sur le graphique vide</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot">
+<div class="narrative">
+<p>Le second texte à afficher</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot">
+<div class="narrative">
+<p>Le troisième</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot">
+<div class="narrative">
+<p>Le dernier</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-plot" class="sticky">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="682" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 681;"><span id="cb16-682"><a href="#cb16-682" aria-hidden="true" tabindex="-1"></a>gistemp <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"gistemp.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb16-683"><a href="#cb16-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-684"><a href="#cb16-684" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createPlot</span>(data<span class="op">,</span> startYear<span class="op">,</span> endYear) {</span>
+<span id="cb16-685"><a href="#cb16-685" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb16-686"><a href="#cb16-686" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb16-687"><a href="#cb16-687" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"1880-01-01"</span>)<span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">"2016-12-01"</span>)]<span class="op">,</span> </span>
+<span id="cb16-688"><a href="#cb16-688" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"Date →"</span></span>
+<span id="cb16-689"><a href="#cb16-689" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb16-690"><a href="#cb16-690" aria-hidden="true" tabindex="-1"></a>    <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb16-691"><a href="#cb16-691" aria-hidden="true" tabindex="-1"></a>      <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="fl">0.8</span><span class="op">,</span> <span class="fl">1.4</span>]<span class="op">,</span> </span>
+<span id="cb16-692"><a href="#cb16-692" aria-hidden="true" tabindex="-1"></a>      <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb16-693"><a href="#cb16-693" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tickFormat</span><span class="op">:</span> <span class="st">"+f"</span><span class="op">,</span></span>
+<span id="cb16-694"><a href="#cb16-694" aria-hidden="true" tabindex="-1"></a>      <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Surface temperature anomaly (°C)"</span></span>
+<span id="cb16-695"><a href="#cb16-695" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb16-696"><a href="#cb16-696" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb16-697"><a href="#cb16-697" aria-hidden="true" tabindex="-1"></a>      <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span></span>
+<span id="cb16-698"><a href="#cb16-698" aria-hidden="true" tabindex="-1"></a>      <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb16-699"><a href="#cb16-699" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb16-700"><a href="#cb16-700" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb16-701"><a href="#cb16-701" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb16-702"><a href="#cb16-702" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">dot</span>(</span>
+<span id="cb16-703"><a href="#cb16-703" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb16-704"><a href="#cb16-704" aria-hidden="true" tabindex="-1"></a>          <span class="kw">const</span> year <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(d<span class="op">.</span><span class="at">Date</span>)<span class="op">.</span><span class="fu">getFullYear</span>()<span class="op">;</span></span>
+<span id="cb16-705"><a href="#cb16-705" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> year <span class="op">&gt;=</span> startYear <span class="op">&amp;&amp;</span> year <span class="op">&lt;</span> endYear<span class="op">;</span></span>
+<span id="cb16-706"><a href="#cb16-706" aria-hidden="true" tabindex="-1"></a>        })<span class="op">,</span> </span>
+<span id="cb16-707"><a href="#cb16-707" aria-hidden="true" tabindex="-1"></a>        {<span class="dt">x</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Anomaly"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"Anomaly"</span>}</span>
+<span id="cb16-708"><a href="#cb16-708" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb16-709"><a href="#cb16-709" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb16-710"><a href="#cb16-710" aria-hidden="true" tabindex="-1"></a>    <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(width<span class="op">,</span> <span class="dv">900</span>)</span>
+<span id="cb16-711"><a href="#cb16-711" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb16-712"><a href="#cb16-712" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-713"><a href="#cb16-713" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-714"><a href="#cb16-714" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> {</span>
+<span id="cb16-715"><a href="#cb16-715" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">0</span>) {</span>
+<span id="cb16-716"><a href="#cb16-716" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb16-717"><a href="#cb16-717" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-718"><a href="#cb16-718" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">1</span>) {</span>
+<span id="cb16-719"><a href="#cb16-719" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1930</span>)<span class="op">;</span></span>
+<span id="cb16-720"><a href="#cb16-720" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">2</span>) {</span>
+<span id="cb16-721"><a href="#cb16-721" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1980</span>)<span class="op">;</span></span>
+<span id="cb16-722"><a href="#cb16-722" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (crTriggerIndex <span class="op">==</span> <span class="dv">3</span>) {</span>
+<span id="cb16-723"><a href="#cb16-723" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>)<span class="op">;</span></span>
+<span id="cb16-724"><a href="#cb16-724" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb16-725"><a href="#cb16-725" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">createPlot</span>(gistemp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">Infinity</span>)<span class="op">;</span> </span>
+<span id="cb16-726"><a href="#cb16-726" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-727"><a href="#cb16-727" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>```</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour plus de fluidité, la variable crTriggerProgress est</p>
+</div>
+</div>
+</section>
+<section id="cartes" class="level3">
+<h3 class="anchored" data-anchor-id="cartes">Cartes</h3>
+</section>
 </section>
 <section id="déploiement-sur-github-pages-avancé" class="level2">
 <h2 class="anchored" data-anchor-id="déploiement-sur-github-pages-avancé">Déploiement sur Github Pages <span class="class" data-key="hard">avancé</span></h2>
@@ -875,6 +998,17 @@ format:
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuZ2lzdGVtcCA9IEZpbGVBdHRhY2htZW50KFwiZ2lzdGVtcC5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pXG5cbmZ1bmN0aW9uIGNyZWF0ZVBsb3QoZGF0YSwgc3RhcnRZZWFyLCBlbmRZZWFyKSB7XG4gIHJldHVybiBQbG90LnBsb3Qoe1xuICAgIHg6IHtcbiAgICAgIGRvbWFpbjogW25ldyBEYXRlKFwiMTg4MC0wMS0wMVwiKSwgbmV3IERhdGUoXCIyMDE2LTEyLTAxXCIpXSwgXG4gICAgICBsYWJlbDogXCJEYXRlIOKGklwiXG4gICAgfSxcbiAgICB5OiB7XG4gICAgICBkb21haW46IFstMC44LCAxLjRdLCBcbiAgICAgIGdyaWQ6IHRydWUsXG4gICAgICB0aWNrRm9ybWF0OiBcIitmXCIsXG4gICAgICBsYWJlbDogXCLihpEgU3VyZmFjZSB0ZW1wZXJhdHVyZSBhbm9tYWx5ICjCsEMpXCJcbiAgICB9LFxuICAgIGNvbG9yOiB7XG4gICAgICBzY2hlbWU6IFwiQnVSZFwiLFxuICAgICAgbGVnZW5kOiB0cnVlXG4gICAgfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5ydWxlWShbMF0pLFxuICAgICAgUGxvdC5kb3QoXG4gICAgICAgIGRhdGEuZmlsdGVyKGQgPT4ge1xuICAgICAgICAgIGNvbnN0IHllYXIgPSBuZXcgRGF0ZShkLkRhdGUpLmdldEZ1bGxZZWFyKCk7XG4gICAgICAgICAgcmV0dXJuIHllYXIgPj0gc3RhcnRZZWFyICYmIHllYXIgPCBlbmRZZWFyO1xuICAgICAgICB9KSwgXG4gICAgICAgIHt4OiBcIkRhdGVcIiwgeTogXCJBbm9tYWx5XCIsIHN0cm9rZTogXCJBbm9tYWx5XCJ9XG4gICAgICApXG4gICAgXSxcbiAgICB3aWR0aDogTWF0aC5tYXgod2lkdGgsIDkwMClcbiAgfSk7XG59XG5cbmNoYXJ0ID0ge1xuICBpZiAoY3JUcmlnZ2VySW5kZXggPT0gMCkge1xuICAgIHJldHVybiBjcmVhdGVQbG90KGdpc3RlbXAsIDAsIDApO1xuICB9XG4gICAgZWxzZSBpZiAoY3JUcmlnZ2VySW5kZXggPT0gMSkge1xuICAgIHJldHVybiBjcmVhdGVQbG90KGdpc3RlbXAsIDAsIDE5MzApO1xuICB9IGVsc2UgaWYgKGNyVHJpZ2dlckluZGV4ID09IDIpIHtcbiAgICByZXR1cm4gY3JlYXRlUGxvdChnaXN0ZW1wLCAwLCAxOTgwKTtcbiAgfSBlbHNlIGlmIChjclRyaWdnZXJJbmRleCA9PSAzKSB7XG4gICAgcmV0dXJuIGNyZWF0ZVBsb3QoZ2lzdGVtcCwgMCwgSW5maW5pdHkpO1xuICB9IGVsc2Uge1xuICAgIHJldHVybiBjcmVhdGVQbG90KGdpc3RlbXAsIDAsIEluZmluaXR5KTsgXG4gIH1cbn1cblxuIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
