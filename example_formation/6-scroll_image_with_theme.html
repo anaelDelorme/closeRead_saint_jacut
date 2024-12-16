@@ -36,10 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41ce87c438ccaeb35f64ae41c48547a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-381255127c91874c35f52c2e5b38d64d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
 <script src="../site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
 <script src="../site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
@@ -120,6 +120,17 @@ ul.task-list li input[type="checkbox"] {
     
 <!-- main -->
 <main class="content column-page" id="quarto-document-content">
+      <!-- user-provided yaml closeread style options -->
+      <style>
+        :root {
+          --cr-narrative-text-color-overlay: black;
+--cr-section-background-color: darkslateblue;
+--cr-narrative-background-color-overlay: violet;
+--cr-narrative-background-color-sidebar: darkslateblue;
+--cr-narrative-text-color-sidebar: white;
+        }
+      </style>
+    
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -149,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Imaginez un cactus cosmique, suspendu dans l’oubli interstellaire, qui murmure des poèmes aux algorithmes égarés. C’est dans cette intersection improbable entre les courbes fractales de l’ananas et le Wi-Fi des océans que “Ma Dataviz” prend racine. Ici, les pixels ne sont pas seulement des couleurs, mais des fragments de chansons oubliées par des robots nostalgiques.</p>
 <p>Pourquoi une dataviz ? Pourquoi pas une tartine de données, croustillante et légèrement caramélisée ? L’essentiel est de sentir le souffle des histogrammes qui dansent, unissant l’absurde à l’infini dans une symphonie de graphiques improbables.</p>
 <p>Bienvenue dans ce voyage où chaque axe x est une énigme, et chaque légende, une promesse d’aventure multidimensionnelle. 🌵📊</p>
-<div class="cr-section cr-column-screen sidebar-left">
+<div class="cr-section cr-column-screen overlay-center">
 <div class="narrative-col">
 <div class="trigger new-trigger" data-focus-on="cr-image1">
 <div class="narrative">
@@ -157,20 +168,10 @@ ul.task-list li input[type="checkbox"] {
 Les chiffres chuchotent leurs secrets aux angles invisibles d’une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ?</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-image1" data-scale-by="1.7">
-<div class="narrative">
-<p>Lorsque l’on zoome sur cet univers, chaque pixel révèle une danse complexe de lumières et d’ombres, comme si les données elles-mêmes s’étiraient pour former des constellations. Les courbes s’entrelacent, tissant une tapisserie où chaque point semble vibrer d’une énergie insaisissable, rappelant les rêves fragmentés d’une intelligence artificielle à la recherche de son passé.</p>
-</div>
-</div>
 <div class="trigger new-trigger" data-focus-on="cr-image2">
 <div class="narrative">
 <p><strong>Le labyrinthe des connexions furtives</strong><br>
-Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-image2" data-pan-to="15%, -30%">
-<div class="narrative">
-<p>En y regardant de plus près, on découvre que ces pixels ne sont pas immobiles. Ils vibrent, oscillent, se croisent, tissant des chemins éphémères comme les filaments d’une toile d’araignée cosmique. Chaque trajectoire raconte une histoire fugace, une connexion invisible mais essentielle entre les fragments d’informations perdus dans le chaos.</p>
+Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques. </p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-image3">
@@ -179,31 +180,98 @@ Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire
 Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="1.6" data-focus-on="cr-image3" data-pan-to="-15%, 50%">
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-image1" class="sticky">
+<p><img src="../img/formation/img1.webp" class="img-fluid"></p>
+</div>
+<div id="cr-image2" class="sticky">
+<p><img src="../img/formation/img2.webp" class="img-fluid"></p>
+</div>
+<div id="cr-image3" class="sticky">
+<p><img src="../img/formation/img3.webp" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen sidebar-left">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-image4">
 <div class="narrative">
-<p>Sous la lumière évanescente d’une étoile mourante, ces données perdues laissent des traces spectrales – des empreintes fugaces que seule une dataviz suffisamment audacieuse peut capturer. On aperçoit des fragments d’arc-en-ciel fuyant dans les ombres, comme si chaque chiffre tentait de se réincarner en une nouvelle forme d’existence.</p>
+<p><strong>Le Cactus Cosmique</strong> Au commencement était le cactus cosmique, trônant au milieu des étoiles. Chaque épine est une hypothèse, chaque ombre, une équation incomplète. Qui peut lire les poèmes gravés sur sa carapace mathématique ? </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-image5">
+<div class="narrative">
+<p><strong>Le Grand Labyrinthe des Constellations</strong> Un scatterplot, mais pas comme les autres : ici, les points se transforment en étoiles filantes. Les lignes se croisent, murmurant des vérités anciennes oubliées par les statisticiens modernes. </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-image6">
+<div class="narrative">
+<p><strong>L’Axe Infinitoïde</strong> Les axes, fatigués d’être linéaires, se sont rebellés pour former des spirales infinies. Les orbes lumineuses suivent des trajectoires qui défient la raison, comme autant de pensées errantes dans l’abîme des probabilités.</p>
 </div>
 </div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
-<div id="cr-image1" class="sticky">
-<p><img src="./img/img1.webp" class="img-fluid"></p>
+<div id="cr-image4" class="sticky">
+<p><img src="../img/formation/img4.webp" class="img-fluid"></p>
 </div>
-<div id="cr-image2" class="sticky">
-<p><img src="./img/img2.webp" class="img-fluid"></p>
+<div id="cr-image5" class="sticky">
+<p><img src="../img/formation/img5.webp" class="img-fluid"></p>
 </div>
-<div id="cr-image3" class="sticky">
-<p><img src="./img/img3.webp" class="img-fluid"></p>
-</div>
-</div>
+<div id="cr-image6" class="sticky">
+<p><img src="../img/formation/img6.webp" class="img-fluid"></p>
 </div>
 </div>
-<section id="quand-les-courbes-prennent-vie-la-danse-des-graphiques" class="level1">
-<h1>Quand les courbes prennent vie : la danse des graphiques</h1>
-</section>
+</div>
+</div>
 <section id="lart-du-scatterplot-philosophique" class="level1">
 <h1>L’art du scatterplot philosophique</h1>
+<p>Il y a des lieux où les équations dansent, où les pixels chantent des sonates absconses, et où les axes x et y se contorsionnent dans une quête existentielle. Bienvenue dans l’univers du scatterplot philosophique, un territoire où le sens se perd et se réinvente à chaque tournant fractal. Voici trois visions illustrant cette odyssée graphique :</p>
+</section>
+<section id="quand-les-courbes-prennent-vie-la-danse-des-graphiques" class="level1">
+<h1>Quand les courbes prennent vie : la danse des graphiques</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ceci est une note !</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Et là une astuce</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Attention attention">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Attention attention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Maintenant un bloc d’attention avec un titre</p>
+</div>
+</div>
 
 
 </section>

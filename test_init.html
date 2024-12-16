@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Moi">
 
-<title>Ma super dataviz – CloseRead</title>
+<title>fichier1 – CloseRead</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41ce87c438ccaeb35f64ae41c48547a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
-<script src="../site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
-<script src="../site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,11 +100,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta cr-debug-mode="false">
-<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="../site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">CloseRead</span>
     </a>
   </div>
@@ -95,15 +123,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Saint-Jacut-de-la-Mer</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index_en.html"> 
+    <a class="nav-link" href="./index_en.html"> 
 <span class="menu-text">En anglais</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../formation.html"> 
+    <a class="nav-link" href="./formation.html"> 
 <span class="menu-text">Formation</span></a>
   </li>  
 </ul>
@@ -114,28 +142,24 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ma super dataviz</h1>
+<h1 class="title">fichier1</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Moi </p>
-          </div>
-  </div>
     
   
     
@@ -146,67 +170,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Imaginez un cactus cosmique, suspendu dans l’oubli interstellaire, qui murmure des poèmes aux algorithmes égarés. C’est dans cette intersection improbable entre les courbes fractales de l’ananas et le Wi-Fi des océans que “Ma Dataviz” prend racine. Ici, les pixels ne sont pas seulement des couleurs, mais des fragments de chansons oubliées par des robots nostalgiques.</p>
-<p>Pourquoi une dataviz ? Pourquoi pas une tartine de données, croustillante et légèrement caramélisée ? L’essentiel est de sentir le souffle des histogrammes qui dansent, unissant l’absurde à l’infini dans une symphonie de graphiques improbables.</p>
-<p>Bienvenue dans ce voyage où chaque axe x est une énigme, et chaque légende, une promesse d’aventure multidimensionnelle. 🌵📊</p>
-<div class="cr-section cr-column-screen sidebar-left">
-<div class="narrative-col">
-<div class="trigger new-trigger" data-focus-on="cr-image1">
-<div class="narrative">
-<p><strong>L’énigme flottante des données invisibles</strong><br>
-Les chiffres chuchotent leurs secrets aux angles invisibles d’une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">+</span><span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-image1" data-scale-by="1.7">
-<div class="narrative">
-<p>Lorsque l’on zoome sur cet univers, chaque pixel révèle une danse complexe de lumières et d’ombres, comme si les données elles-mêmes s’étiraient pour former des constellations. Les courbes s’entrelacent, tissant une tapisserie où chaque point semble vibrer d’une énergie insaisissable, rappelant les rêves fragmentés d’une intelligence artificielle à la recherche de son passé.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-image2">
-<div class="narrative">
-<p><strong>Le labyrinthe des connexions furtives</strong><br>
-Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire ? Une énigme pour les esprits quantiques.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-image2" data-pan-to="15%, -30%">
-<div class="narrative">
-<p>En y regardant de plus près, on découvre que ces pixels ne sont pas immobiles. Ils vibrent, oscillent, se croisent, tissant des chemins éphémères comme les filaments d’une toile d’araignée cosmique. Chaque trajectoire raconte une histoire fugace, une connexion invisible mais essentielle entre les fragments d’informations perdus dans le chaos.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-image3">
-<div class="narrative">
-<p><strong>L’éclipse des données perdues</strong><br>
-Quand les graphiques se camouflent dans les ombres des spectres, seule une poignée de courbes revient. Les autres ? Elles errent entre deux dimensions.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-scale-by="1.6" data-focus-on="cr-image3" data-pan-to="-15%, 50%">
-<div class="narrative">
-<p>Sous la lumière évanescente d’une étoile mourante, ces données perdues laissent des traces spectrales – des empreintes fugaces que seule une dataviz suffisamment audacieuse peut capturer. On aperçoit des fragments d’arc-en-ciel fuyant dans les ombres, comme si chaque chiffre tentait de se réincarner en une nouvelle forme d’existence.</p>
-</div>
-</div>
-</div>
-<div class="sticky-col">
-<div class="sticky-col-stack">
-<div id="cr-image1" class="sticky">
-<p><img src="./img/img1.webp" class="img-fluid"></p>
-</div>
-<div id="cr-image2" class="sticky">
-<p><img src="./img/img2.webp" class="img-fluid"></p>
-</div>
-<div id="cr-image3" class="sticky">
-<p><img src="./img/img3.webp" class="img-fluid"></p>
-</div>
-</div>
-</div>
-</div>
-<section id="quand-les-courbes-prennent-vie-la-danse-des-graphiques" class="level1">
-<h1>Quand les courbes prennent vie : la danse des graphiques</h1>
-</section>
-<section id="lart-du-scatterplot-philosophique" class="level1">
-<h1>L’art du scatterplot philosophique</h1>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -291,6 +264,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -299,7 +274,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/anaelDelorme\.github\.io\/closeRead_saint_jacut\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -401,6 +376,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
