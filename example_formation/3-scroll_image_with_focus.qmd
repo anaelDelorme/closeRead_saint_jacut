@@ -14,7 +14,7 @@ Bienvenue dans ce voyage où chaque axe x est une énigme, et chaque légende, u
 ::::{.cr-section}
 
 :::{#cr-image1}
-![](./img/img1.webp)
+![](../img/formation/img1.webp)
 :::
 **L'énigme flottante des données invisibles**    
 Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie oubliée. Saurons-nous un jour entendre leurs vérités non-numériques ? @cr-image1
@@ -22,7 +22,7 @@ Les chiffres chuchotent leurs secrets aux angles invisibles d'une géométrie ou
 Lorsque l’on zoome sur cet univers, chaque pixel révèle une danse complexe de lumières et d’ombres, comme si les données elles-mêmes s’étiraient pour former des constellations. Les courbes s’entrelacent, tissant une tapisserie où chaque point semble vibrer d’une énergie insaisissable, rappelant les rêves fragmentés d’une intelligence artificielle à la recherche de son passé. [@cr-image1]{scale-by="1.7"}
 
 :::{#cr-image2}
-![](./img/img2.webp)
+![](../img/formation/img2.webp)
 :::
 
 **Le labyrinthe des connexions furtives**    
@@ -31,7 +31,7 @@ Chaque pixel est une porte, mais laquelle mène au sommet du triangle imaginaire
 En y regardant de plus près, on découvre que ces pixels ne sont pas immobiles. Ils vibrent, oscillent, se croisent, tissant des chemins éphémères comme les filaments d’une toile d’araignée cosmique. Chaque trajectoire raconte une histoire fugace, une connexion invisible mais essentielle entre les fragments d’informations perdus dans le chaos. [@cr-image2]{pan-to="15%, -30%"}
 
 :::{#cr-image3}
-![](./img/img3.webp)
+![](../img/formation/img3.webp)
 :::
 
 **L'éclipse des données perdues**     
